@@ -1,24 +1,3 @@
-<!-- <form ng-submit="userSignup()">
-  <legend>Signup</legend>
-
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="test@test.com" ng-model="user.email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="********" ng-model="user.password">
-  </div>
-  <div class="form-group">
-    <label for="phone">Phone</label>
-    <input type="text" class="form-control" id="phone" placeholder="555-555-5555" ng-model="user.phone">
-  </div>
-
-  <button type="submit" class="btn btn-primary">Signup</button>
-</form> -->
-
-
-<!-- Guru signup form -->
 <form ng-submit="userSignup()">
   <legend>Guru Signup</legend>
 
@@ -55,9 +34,8 @@
       <option value="user">I Need Help</option>
       <option value="guru">I Can Help</option>
     </select>
-    {{ user.guru }}
   </div>
-  <div ng-model="user.skills">
+  <div ng-show="user.guru == 'guru'" ng-model="user.skills">
     <label for="skills">Your Skills</label>
     <p>
       <input
@@ -119,11 +97,6 @@
 
       <label for="">Television</label>
     </p>
-  </div>
-
-  <h1>Test selected skills</h1>
-  <div ng-repeat='skill in user.skills'>
-    <p>{{ skill.type }}</p>
   </div>
 
   <div class="input-field">

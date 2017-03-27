@@ -9,7 +9,7 @@ angular
     // PUBLIC VARIABLES & FUNCTIONS
     $scope.user = user;
     $scope.userSignup = userSignup;
-    
+
     //PRIVATE VARIABLES & FUNCTIONS
     var user = {
       email: '',

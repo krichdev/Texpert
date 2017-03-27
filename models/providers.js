@@ -47,6 +47,7 @@ var ProviderSchema = mongoose.Schema({
   }
   phone: {
     type: String,
+    required: true
   }
 
 

@@ -11,6 +11,10 @@ var UserSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  phone: {
+    type: String,
+    required: true
   }
 });
 
@@ -19,7 +23,8 @@ UserSchema.set('toJSON', {
     var returnJson = {
       id: ret._id,
       email: ret.email,
-      name: ret.name
+      name: ret.name,
+      phone: ret.phone
     };
     return returnJson;
   }

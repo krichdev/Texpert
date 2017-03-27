@@ -9,6 +9,64 @@
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" placeholder="********" ng-model="user.password">
   </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" id="phone" placeholder="555-555-5555" ng-model="user.phone">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Signup</button>
+</form>
+
+
+<!-- Guru signup form -->
+<form ng-submit="guruSignup()">
+  <legend>Guru Signup</legend>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="test@test.com" ng-model="guru.email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="********" ng-model="guru.password">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" id="phone" placeholder="555-555-5555" ng-model="guru.phone">
+  </div>
+  <div class="" ng-model="guru.skills">
+    <label for="skills">Your Skills</label>
+    <p>
+      <input type="checkbox" name="skills" value="mobile">
+      <label for="">Mobile</label>
+    </p>
+    <p>
+      <input type="checkbox" name="skills" value="pc">
+      <label for="">PC</label>
+    </p>
+    <p>
+      <input type="checkbox" name="skills" value="homeTheater">
+      <label for="">Home Theater</label>
+    </p>
+    <p>
+      <input type="checkbox" name="skills" value="printer">
+      <label for="">Printer</label>
+    </p>
+    <p>
+      <input type="checkbox" name="skills" value="homeRouter">
+      <label for="">Home Router</label>
+    </p>
+    <p>
+      <input type="checkbox" name="skills" value="tv">
+      <label for="">Television</label>
+    </p>
+  </div>
+  {{guru.skills}}
+  <div class="input-field">
+    <textarea class="materialize-textarea" id="bio" ng-model="guru.bio"></textarea>
+    <label for="bio">Tell Us About Yourself</label>
+  </div>
+
 
   <button type="submit" class="btn btn-primary">Signup</button>
 </form>

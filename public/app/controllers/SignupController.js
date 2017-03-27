@@ -7,12 +7,12 @@ angular
   '$state',
   function($scope, UserFactory, AlertsFactory, $state) {
     // VARIABLES
-    $scope.user = {
-      email: '',
-      password: ''
-    },
+    // $scope.user = {
+    //   email: '',
+    //   password: ''
+    // },
     
-    $scope.guru = {
+    $scope.user = {
       email: '',
       password: '',
       skills: [
@@ -51,6 +51,7 @@ angular
       .then(
         function success(res) {
           $state.go('home');
+          console.log('success, user: ', $scope.user)
         },
         function error(err) {
           AlertsFactory.add('error', err.data.message)
@@ -59,7 +60,12 @@ angular
     }
     $scope.addSkill = function(skill) {
       var skillIndex = skill;
-      $scope.guru.skills[skillIndex].type = true;
+
+      if ($scope.user.skills[skillIndex].type) {
+        $scope.user.skills[skillIndex].type = false
+      } else {
+        $scope.user.skills[skillIndex].type = true;
+      }
     }
 
   }

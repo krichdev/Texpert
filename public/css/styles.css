@@ -1,0 +1,16 @@
+/*Home Page*/
+.homeImg {
+  border: 1px solid red;
+  background-image: url('http://placebeard.it/640/480');
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.welcomeImgText {
+  font-size:4.5em;
+  color: coral;
+}
+/**/

@@ -11,7 +11,7 @@ angular
     //   email: '',
     //   password: ''
     // },
-    
+
     $scope.user = {
       email: '',
       password: '',
@@ -40,8 +40,10 @@ angular
           type: false,
           skill: 'tv'
         }
-      ]
+      ],
+      guru: ""
     },
+
 
 
     // Functions

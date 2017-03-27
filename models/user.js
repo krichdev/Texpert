@@ -12,10 +12,40 @@ var UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  skills: [
+    {
+      type: Boolean,
+      skill: 'mobile'
+    },
+    {
+      type: Boolean,
+      skills: 'pc'
+    },
+    {
+      type: Boolean,
+      skills: 'homeTheater'
+    },
+    {
+      type: Boolean,
+      skills: 'printer'
+    },
+    {
+      type: Boolean,
+      skills: 'homeRouter'
+    },
+    {
+      type: Boolean,
+      skills: 'tv'
+    }
+  ],
+  reviews: String,
+  bio: String,
   phone: {
     type: String,
     required: true
   }
+
+
 });
 
 UserSchema.set('toJSON', {
@@ -24,16 +54,19 @@ UserSchema.set('toJSON', {
       id: ret._id,
       email: ret.email,
       name: ret.name,
-      phone: ret.phone
+      reviews: ret.reviews,
+      bio: ret.bio,
+      phone: ret.phone,
+      skills: ret.skills
     };
     return returnJson;
   }
 });
 
 UserSchema.methods.authenticated = function(password) {
-  var user = this;
-  var isAuthenticated = bcrypt.compareSync(password, user.password);
-  return isAuthenticated ? user : false;
+  var provider = this;
+  var isAuthenticated = bcrypt.compareSync(password, provider.password);
+  return isAuthenticated ? provider : false;
 };
 
 UserSchema.pre('save', function(next) {

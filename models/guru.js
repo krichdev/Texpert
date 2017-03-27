@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
-var ProviderSchema = mongoose.Schema({
+var GuruSchema = mongoose.Schema({
   name: String,
   email: {
     type: String,
@@ -53,7 +53,7 @@ var ProviderSchema = mongoose.Schema({
 
 });
 
-ProviderSchema.set('toJSON', {
+GuruSchema.set('toJSON', {
   transform: function(doc, ret, options) {
     var returnJson = {
       id: ret._id,
@@ -68,13 +68,13 @@ ProviderSchema.set('toJSON', {
   }
 });
 
-ProviderSchema.methods.authenticated = function(password) {
+GuruSchema.methods.authenticated = function(password) {
   var provider = this;
   var isAuthenticated = bcrypt.compareSync(password, provider.password);
   return isAuthenticated ? provider : false;
 };
 
-ProviderSchema.pre('save', function(next) {
+GuruSchema.pre('save', function(next) {
   if (!this.isModified('password')) {
     next();
   } else {
@@ -83,4 +83,4 @@ ProviderSchema.pre('save', function(next) {
   }
 });
 
-module.exports = mongoose.model('Provider', ProviderSchema);
+module.exports = mongoose.model('Provider', GuruSchema);

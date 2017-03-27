@@ -6,16 +6,46 @@ angular
   'AlertsFactory',
   '$state',
   function($scope, UserFactory, AlertsFactory, $state) {
-    // PUBLIC VARIABLES & FUNCTIONS
-    $scope.user = user;
-    $scope.userSignup = userSignup;
-
-    //PRIVATE VARIABLES & FUNCTIONS
-    var user = {
+    // VARIABLES
+    $scope.user = {
       email: '',
       password: ''
-    }
-    function userSignup() {
+    },
+    
+    $scope.guru = {
+      email: '',
+      password: '',
+      skills: [
+        {
+          type: false,
+          skill: 'mobile'
+        },
+        {
+          type: false,
+          skill: 'pc'
+        },
+        {
+          type: false,
+          skill: 'homeTheater'
+        },
+        {
+          type: false,
+          skill: 'printer'
+        },
+        {
+          type: false,
+          skill: 'homeRouter'
+        },
+        {
+          type: false,
+          skill: 'tv'
+        }
+      ]
+    },
+
+
+    // Functions
+    $scope.userSignup = function() {
       console.log($scope.user)
       UserFactory.userSignup($scope.user)
       .then(
@@ -27,5 +57,10 @@ angular
         }
       )
     }
+    $scope.addSkill = function(skill) {
+      var skillIndex = skill;
+      $scope.guru.skills[skillIndex].type = true;
+    }
+
   }
 ]);

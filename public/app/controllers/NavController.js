@@ -6,11 +6,19 @@ angular
   'AlertsFactory',
   'AuthFactory',
   function($scope, $location, AlertsFactory, AuthFactory) {
-    // PUBLIC VARIABLES & FUNCTIONS
+    // VARIABLES
     $scope.isLoggedIn = isLoggedIn;
     $scope.logout = logout;    
+    $scope.showLogin = true;
+    $scope.showSignup = false;
+    $scope.toggleLogin = function() {
+      console.log('clicked')
+      $scope.showLogin = $scope.showLogin ? false : true;
+    }
+    $scope.toggleSignup = function() {
+      $scope.showSignup = $scope.showSignup ? false : true;
+    }
 
-    
     //PRIVATE FUNCTIONS
     function isLoggedIn() {
       return AuthFactory.isLoggedIn();

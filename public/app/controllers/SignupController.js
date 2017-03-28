@@ -11,32 +11,14 @@ angular
       email: '',
       password: '',
       skills: [
-        {
-          type: false,
-          skill: 'mobile'
-        },
-        {
-          type: false,
-          skill: 'pc'
-        },
-        {
-          type: false,
-          skill: 'homeTheater'
-        },
-        {
-          type: false,
-          skill: 'printer'
-        },
-        {
-          type: false,
-          skill: 'homeRouter'
-        },
-        {
-          type: false,
-          skill: 'tv'
-        }
-      ],
-      userType: ''
+        { mobile: false },
+        { pc: false },
+        { homeTheater: false },
+        { printer: false },
+        { homeRouter: false },
+        { tv: false }
+      ]
+      guru: ''
     },
 
     // Functions

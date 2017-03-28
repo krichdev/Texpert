@@ -7,11 +7,10 @@ angular
   'AuthFactory',
   function($scope, $location, AlertsFactory, AuthFactory) {
     // VARIABLES
-    $scope.isLoggedIn = isLoggedIn;
-    $scope.logout = logout;    
     $scope.showLogin = false;
     $scope.showSignup = false;
 
+    // FUNCTIONS
     $scope.toggleLogin = function() {
       $scope.showLogin = $scope.showLogin ? false : true;
       if ($scope.showSignup) {
@@ -24,12 +23,10 @@ angular
         $scope.showLogin = false;
       }
     }
-
-    //PRIVATE FUNCTIONS
-    function isLoggedIn() {
+    $scope.isLoggedIn = function() {
       return AuthFactory.isLoggedIn();
     };
-    function logout() {
+    $scope.logout = function() {
       AuthFactory.removeToken();
       AlertsFactory.add('success', 'You are now logged out');
       $location.path('/');

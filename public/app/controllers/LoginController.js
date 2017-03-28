@@ -7,17 +7,14 @@ angular
   'AlertsFactory',
   'AuthFactory',
   function($scope, UserFactory, $state, AlertsFactory, AuthFactory) {
-    // PUBLIC VARIABLES & FUNCTIONS
-    $scope.user = user;
-    $scope.userLogin = userLogin;
-
-    // PRIVATE VARIABLES & FUNCTIONS
-    var user = {
+    // VARIABLES
+    $scope.user = {
       email: '',
       password: ''
     };
 
-    function userLogin() {
+    // FUNCTIONS
+    $scope.userLogin = function () {
       UserFactory.userLogin($scope.user)
       .then(
         function success (res) {

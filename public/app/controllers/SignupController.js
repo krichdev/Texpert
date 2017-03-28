@@ -6,7 +6,7 @@ angular
   'AlertsFactory',
   '$state',
   function($scope, UserFactory, AlertsFactory, $state) {
-    // variables
+    // VARIABLES
     $scope.user = {
       name: '',
       email: '',
@@ -20,7 +20,7 @@ angular
       userType: ''
     },
 
-    // Functions
+    // FUNCTIONS
     $scope.userSignup = function() {
       UserFactory.userSignup($scope.user)
       .then(

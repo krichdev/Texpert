@@ -23,9 +23,9 @@ app.use(require('morgan')('dev'));
 
 
 // controllers
-app.use('/users', expressJWT({secret: secret})
+app.use('/api/users', expressJWT({secret: secret})
   .unless({
-    path: [{ url: '/users', methods: ['POST'] }]
+    path: [{ url: '/api/users', methods: ['POST'] }]
   }), require('./controllers/users'));
 
 // this middleware will check if expressJWT did not authorize the user, and return a message
@@ -36,7 +36,7 @@ app.use(function (err, req, res, next) {
 });
 
 // POST /api/auth - if authenticated, return a signed JWT
-app.post('/auth', function(req, res) {
+app.post('/api/auth', function(req, res) {
   User.findOne({ email: req.body.email }, function(err, user) {
     // return 401 if error or no user
     if (err || !user) return res.status(401).send({ message: 'User not found' });

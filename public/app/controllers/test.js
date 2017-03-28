@@ -5,10 +5,10 @@ angular
   '$stateParams',
   'AuthFactory',
   function($scope, $stateParams, AuthFactory) {
-    getUser();
+    $scope.getUser;
 
 
-    getUser = function() {
+    $scope.getUser = function() {
       var user = AuthFactory.currentUser();
       console.log(user);
     }

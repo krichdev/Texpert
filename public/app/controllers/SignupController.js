@@ -17,7 +17,7 @@ angular
         { printer: false },
         { homeRouter: false },
         { tv: false }
-      ]
+      ],
       guru: ''
     },
 

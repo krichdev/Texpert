@@ -9,10 +9,10 @@ angular
     // VARIABLES
     $scope.isLoggedIn = isLoggedIn;
     $scope.logout = logout;    
-    $scope.showLogin = true;
-    $scope.showSignup = false;
+    $scope.showLogin = false;
+    $scope.showSignup = true;
+    
     $scope.toggleLogin = function() {
-      console.log('clicked')
       $scope.showLogin = $scope.showLogin ? false : true;
     }
     $scope.toggleSignup = function() {

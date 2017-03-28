@@ -1,6 +1,17 @@
 <form ng-submit="userSignup()">
-  <legend>Guru Signup</legend>
+  <legend>User Signup</legend>
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="test@test.com"
+      ng-model="user.name">
+  </div>
 
+  <!-- Email -->
   <div class="form-group">
     <label for="email">Email</label>
     <input
@@ -10,6 +21,8 @@
       placeholder="test@test.com"
       ng-model="user.email">
   </div>
+
+  <!-- Password -->
   <div class="form-group">
     <label for="password">Password</label>
     <input
@@ -19,6 +32,8 @@
       placeholder="********"
       ng-model="user.password">
   </div>
+
+  <!-- Phone -->
   <div class="form-group">
     <label for="phone">Phone</label>
     <input
@@ -29,6 +44,7 @@
       ng-model="user.phone">
   </div>
 
+  <!-- User Type -->
   <div>
     <label for="userType">Type of User</label>
     <select class="browser-default" ng-model="user.userType">
@@ -37,88 +53,90 @@
       <option value="guru">I Can Help</option>
     </select>
   </div>
-  <div ng-show="user.userType == 'guru'">
-    <label for="skills">Your Skills</label>
-    <p>
-      <input
-        id='mobile'
-        type="checkbox"
-        name="skills"
-        class='filled-in'
-        value="mobile"
-        ng-model="user.mobile">
-      <label for="mobile">Mobile</label>
-    </p>
-    <p>
-      <input
-        id="pc"
-        type="checkbox"
-        name="skills"
-        class="filled-in"
-        value="pc"
-        ng-model="user.pc">
 
-      <label for="pc">PC</label>
-    </p>
-    <p>
-      <input
-        id="homeTheater"
-        type="checkbox"
-        name="skills"
-        class="filled-in"
-        value="homeTheater"
-        ng-model="user.homeTheater">
-
-      <label for="homeTheater">Home Theater</label>
-    </p>
-    <p>
-      <input
-        id="printer"
-        type="checkbox"
-        name="skills"
-        class="filled-in"
-        value="printer"
-        ng-model="user.printer">
-
-      <label for="printer">Printer</label>
-    </p>
-    <p>
-      <input
-        id="homeRouter"
-        type="checkbox"
-        name="skills"
-        class="filled-in"
-        value="homeRouter"
-        ng-model="user.homeRouter">
-
-      <label for="homeRouter">Home Router</label>
-    </p>
-    <p>
-      <input
-        id="tv"
-        type="checkbox"
-        name="skills"
-        class="filled-in"
-        value="tv"
-        ng-model="user.tv">
-
-      <label for="tv">Television</label>
-    </p>
+  <!-- Skills -->
+  <div>
+    <label ng-show="user.userType == 'guru'">Your Skills</label>
+    <div class="skillGroup" ng-show="user.userType == 'guru'">
+      <div>
+        <p>
+          <input
+            id='mobile'
+            type="checkbox"
+            name="skills"
+            class='filled-in'
+            value="mobile"
+            ng-model="user.mobile">
+          <label for="mobile">Mobile</label>
+        </p>
+        <p>
+          <input
+            id="pc"
+            type="checkbox"
+            name="skills"
+            class="filled-in"
+            value="pc"
+            ng-model="user.pc">
+          <label for="pc">PC</label>
+        </p>
+      </div>
+      <div>
+        <p>
+          <input
+            id="printer"
+            type="checkbox"
+            name="skills"
+            class="filled-in"
+            value="printer"
+            ng-model="user.printer">
+          <label for="printer">Printer</label>
+        </p> 
+        <p>
+          <input
+            id="homeTheater"
+            type="checkbox"
+            name="skills"
+            class="filled-in"
+            value="homeTheater"
+            ng-model="user.homeTheater">
+          <label for="homeTheater">Home Theater</label>
+        </p> 
+      </div>
+      <div>
+        <p>
+          <input
+            id="homeRouter"
+            type="checkbox"
+            name="skills"
+            class="filled-in"
+            value="homeRouter"
+            ng-model="user.homeRouter">
+          <label for="homeRouter">Home Router</label>
+        </p>
+        <p>
+          <input
+            id="tv"
+            type="checkbox"
+            name="skills"
+            class="filled-in"
+            value="tv"
+            ng-model="user.tv">
+          <label for="tv">Television</label>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div class="input-field">
-    <textarea class="materialize-textarea" id="bio" ng-model="user.bio"></textarea>
-    <label for="bio">Tell Us About Yourself</label>
+  <!-- Text Area -->
+  <div class="input-field" ng-show="user.userType == 'guru'">
+    <textarea 
+      id="bio" 
+      class="materialize-textarea" 
+      ng-model="user.bio"
+      placeholder="Tell us about yourself" 
+      >
+    </textarea>
   </div>
 
   <button type="submit" class="btn btn-primary">Signup</button>
 </form>
-
-<hr>
-
-{{ user.mobile }}
-{{ user.pc }}
-{{ user.homeTheater }}
-{{ user.printer }}
-{{ user.homeRouter }}
-{{ user.tv }}

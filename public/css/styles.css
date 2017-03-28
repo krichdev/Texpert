@@ -46,7 +46,7 @@ ul {
 /*Modals*/
 .loggerModal {
   left: 20%;
-  top: 20%;
+  top: 5%;
   position: fixed;
   width: 40em;
   padding: 3em;
@@ -56,7 +56,7 @@ ul {
   box-shadow: 0 0 25px 5 black;
 }
 
-.loggerModal legend {
-
+.skillGroup {
+  display: flex;
+  justify-content: space-around;
 }
-

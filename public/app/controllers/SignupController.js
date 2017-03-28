@@ -8,6 +8,7 @@ angular
   function($scope, UserFactory, AlertsFactory, $state) {
     // variables
     $scope.user = {
+      name: '',
       email: '',
       password: '',
       mobile: false,

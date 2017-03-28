@@ -41,7 +41,7 @@ angular
           skill: 'tv'
         }
       ],
-      guru: ""
+      userType: ''
     },
 
 

@@ -13,30 +13,12 @@ var UserSchema = mongoose.Schema({
     required: true
   },
   skills: [
-    {
-      type: Boolean,
-      skill: 'mobile'
-    },
-    {
-      type: Boolean,
-      skills: 'pc'
-    },
-    {
-      type: Boolean,
-      skills: 'homeTheater'
-    },
-    {
-      type: Boolean,
-      skills: 'printer'
-    },
-    {
-      type: Boolean,
-      skills: 'homeRouter'
-    },
-    {
-      type: Boolean,
-      skills: 'tv'
-    }
+    { mobile: Boolean },
+    { pc: Boolean },
+    { homeTheater: Boolean },
+    { printer: Boolean },
+    { homeRouter: Boolean },
+    { tv: Boolean }
   ],
   reviews: String,
   bio: String,

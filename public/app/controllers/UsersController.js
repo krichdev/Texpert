@@ -20,8 +20,8 @@ angular
     )
 
     $scope.getUser = function() {
-      var user = AuthFactory.currentUser();
-      console.log(user);
+      $scope.user = AuthFactory.currentUser();
+      console.log($scope.user);
     }
 
     

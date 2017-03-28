@@ -10,13 +10,19 @@ angular
     $scope.isLoggedIn = isLoggedIn;
     $scope.logout = logout;    
     $scope.showLogin = false;
-    $scope.showSignup = true;
-    
+    $scope.showSignup = false;
+
     $scope.toggleLogin = function() {
       $scope.showLogin = $scope.showLogin ? false : true;
+      if ($scope.showSignup) {
+        $scope.showSignup = false;
+      }
     }
     $scope.toggleSignup = function() {
       $scope.showSignup = $scope.showSignup ? false : true;
+      if ($scope.showLogin) {
+        $scope.showLogin = false;
+      }
     }
 
     //PRIVATE FUNCTIONS

@@ -10,15 +10,13 @@ angular
     $scope.user = {
       email: '',
       password: '',
-      skills: [
-        { mobile: false },
-        { pc: false },
-        { homeTheater: false },
-        { printer: false },
-        { homeRouter: false },
-        { tv: false }
-      ],
-      guru: ''
+      mobile: false,
+      pc: false,
+      homeTheater: false,
+      printer: false,
+      homeRouter: false,
+      tv: false,
+      userType: ''
     },
 
     // Functions
@@ -34,15 +32,6 @@ angular
           AlertsFactory.add('error', err.data.message)
         }
       )
-    }
-    $scope.addSkill = function(skill) {
-      var skillIndex = skill;
-
-      if ($scope.user.skills[skillIndex].type) {
-        $scope.user.skills[skillIndex].type = false
-      } else {
-        $scope.user.skills[skillIndex].type = true;
-      }
     }
   }
 ]);

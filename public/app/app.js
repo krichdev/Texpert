@@ -33,12 +33,12 @@ angular
       templateUrl: 'app/views/test.html',
       controller: 'Test'
     })
-    
+    .state('allGurus', {
+      url: '/users',
+      templateUrl: 'app/views/allGurus.html',
+      controller: 'Test'
+    })
+
     $locationProvider.html5Mode(true);
 
   }])
-
-
-
-
-

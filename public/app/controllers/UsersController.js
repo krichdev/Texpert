@@ -2,28 +2,33 @@ angular
 .module('GenericApp')
 .controller('UsersController', [
   '$scope',
+  '$state',
   '$stateParams',
   'AuthFactory',
   'UserFactory',
-  function($scope, $stateParams, AuthFactory, UserFactory) {
-    // DB call to get all gurus
+  function($scope, $state, $stateParams, AuthFactory, UserFactory) {
     
-    UserFactory.getAllGurus()
-    .then(
-      function success(res){
-        console.log("get all gurus in test controller ", res)
-        $scope.gurus = res.data;
-      }, 
-      function error(err){
-        console.log("Error", err);
-      }
-    )
+    // DB call based on page accessing it
+    // shows all users for /users, single for /users/:id
+    $state.current.name == 'profilePage' ? 
+      getUser() : getAllUsers();
 
-    $scope.getUser = function() {
+    function getAllUsers() {
+      UserFactory.getAllGurus()
+      .then(
+        function success(res){
+          console.log('getting allGurus')
+          $scope.gurus = res.data;
+        }, 
+        function error(err){
+          console.log("Error", err);
+        }
+      )
+    }
+
+    function getUser() {
       $scope.user = AuthFactory.currentUser();
       console.log($scope.user);
     }
-
-    
   }
 ])

@@ -1,4 +1,12 @@
-{{getUser()}}
 
 {{ user}}
 <h1>Hey welcome!</h1>
+
+<div ng-repeat="(key,val) in user">
+  <p>{{key}}: {{val}}</p>
+  
+
+</div>
+{{ user.name }}
+
+

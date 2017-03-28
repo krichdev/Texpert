@@ -19,14 +19,14 @@ angular
       url: '/404',
       templateUrl: 'app/views/404.html'
     })
-    .state('test', {
-      url: '/users/:id',
-      templateUrl: 'app/views/singleUser.html',
-      controller: 'UsersController'
-    })
     .state('allGurus', {
       url: '/users',
       templateUrl: 'app/views/allGurus.html',
+      controller: 'UsersController'
+    })
+    .state('profilePage', {
+      url: '/users/:id',
+      templateUrl: 'app/views/singleUser.html',
       controller: 'UsersController'
     })
 

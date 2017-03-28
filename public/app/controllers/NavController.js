@@ -14,7 +14,7 @@ angular
     $scope.showSignup = false;
 
     // login
-    $scope.user = {
+    $scope.loginUser = {
       email: '',
       password: ''
     };
@@ -59,12 +59,14 @@ angular
 
     // login
     $scope.userLogin = function () {
-      UserFactory.userLogin($scope.user)
+      UserFactory.userLogin($scope.loginUser)
       .then(
         function success (res) {
+          var userId = res.data.user.id;
           AuthFactory.saveToken(res.data.token);
           AlertsFactory.add('success', 'You are now logged in!');
           $scope.showLogin = false;
+          $location.path('/users/' + userId)
         },
         function error (err) {
           AlertsFactory.add('error', err.data.message);

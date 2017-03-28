@@ -21,6 +21,7 @@ angular
       UserFactory.userLogin($scope.user)
       .then(
         function success (res) {
+          console.log(res);
           AuthFactory.saveToken(res.data.token);
           AlertsFactory.add('success', 'You are now logged in!');
           $state.go('home');

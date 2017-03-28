@@ -29,9 +29,6 @@
       ng-model="user.phone">
   </div>
 
-    <input type="checkbox" class="filled-in" id="filled-in-box">
-    <label for="filled-in-box">Filled in</label>
-    
   <div>
     <label for="guru">Type of User</label>
     <select class="browser-default" ng-model="user.guru">
@@ -44,63 +41,74 @@
     <label for="skills">Your Skills</label>
     <p>
       <input
+        id='mobile'
         type="checkbox"
         name="skills"
+        class='filled-in'
         value="mobile"
         ng-model="user.skills.mobile"
         ng-click='addSkill("0")'>
-
-      <label for="">Mobile</label>
+      <label for="mobile">Mobile</label>
     </p>
     <p>
       <input
+        id="pc"
         type="checkbox"
         name="skills"
+        class="filled-in"
         value="pc"
         ng-model="user.skills.pc"
         ng-click='addSkill("1")'>
 
-      <label for="">PC</label>
+      <label for="pc">PC</label>
     </p>
     <p>
       <input
+        id="homeTheater"
         type="checkbox"
         name="skills"
+        class="filled-in"
         value="homeTheater"
         ng-model="user.skills.homeTheater"
         ng-click='addSkill("2")'>
 
-      <label for="">Home Theater</label>
+      <label for="homeTheater">Home Theater</label>
     </p>
     <p>
       <input
-      type="checkbox"
-      name="skills"
-      value="printer"
-      ng-model="user.skills.printer"
-      ng-click='addSkill("3")'>
-
-      <label for="">Printer</label>
-    </p>
-    <p>
-      <input
+        id="printer"
         type="checkbox"
         name="skills"
+        class="filled-in"
+        value="printer"
+        ng-model="user.skills.printer"
+        ng-click='addSkill("3")'>
+
+      <label for="printer">Printer</label>
+    </p>
+    <p>
+      <input
+        id="homeRouter"
+        type="checkbox"
+        name="skills"
+        class="filled-in"
         value="homeRouter"
         ng-model="user.skills.homeRouter"
         ng-click='addSkill("4")'>
 
-      <label for="">Home Router</label>
+      <label for="homeRouter">Home Router</label>
     </p>
     <p>
       <input
+        id="tv"
         type="checkbox"
         name="skills"
+        class="filled-in"
         value="tv"
         ng-model="user.skills.tv"
         ng-click='addSkill("5")'>
 
-      <label for="">Television</label>
+      <label for="tv">Television</label>
     </p>
   </div>
 

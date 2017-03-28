@@ -18,17 +18,15 @@ angular
         { homeRouter: false },
         { tv: false }
       ],
-      guru: ''
+      userType: ''
     },
 
     // Functions
     $scope.userSignup = function() {
-      console.log('in controller', $scope.user)
       UserFactory.userSignup($scope.user)
       .then(
         function success(res) {
           $state.go('home');
-          console.log('success, user: ', res)
         },
         function error(err) {
           AlertsFactory.add('error', err.data.message)

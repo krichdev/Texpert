@@ -26,7 +26,7 @@ var UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  guru: {
+  userType: {
     type: String,
     required: true
   }

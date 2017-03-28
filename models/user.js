@@ -42,7 +42,7 @@ UserSchema.set('toJSON', {
       bio: ret.bio,
       phone: ret.phone,
       skills: ret.skills,
-      guru: ret.guru
+      userType: ret.guru
     };
     return returnJson;
   }

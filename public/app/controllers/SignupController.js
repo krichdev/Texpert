@@ -6,12 +6,7 @@ angular
   'AlertsFactory',
   '$state',
   function($scope, UserFactory, AlertsFactory, $state) {
-    // VARIABLES
-    // $scope.user = {
-    //   email: '',
-    //   password: ''
-    // },
-
+    // variables
     $scope.user = {
       email: '',
       password: '',
@@ -44,16 +39,14 @@ angular
       userType: ''
     },
 
-
-
     // Functions
     $scope.userSignup = function() {
-      console.log($scope.user)
+      console.log('in controller', $scope.user)
       UserFactory.userSignup($scope.user)
       .then(
         function success(res) {
           $state.go('home');
-          console.log('success, user: ', $scope.user)
+          console.log('success, user: ', res)
         },
         function error(err) {
           AlertsFactory.add('error', err.data.message)
@@ -69,6 +62,5 @@ angular
         $scope.user.skills[skillIndex].type = true;
       }
     }
-
   }
 ]);

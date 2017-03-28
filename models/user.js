@@ -44,11 +44,10 @@ var UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  userType: {
+  guru: {
     type: String,
     required: true
-}
-
+  }
 });
 
 UserSchema.set('toJSON', {
@@ -61,7 +60,7 @@ UserSchema.set('toJSON', {
       bio: ret.bio,
       phone: ret.phone,
       skills: ret.skills,
-      userType: ret.userType
+      guru: ret.guru
     };
     return returnJson;
   }

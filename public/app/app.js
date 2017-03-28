@@ -28,6 +28,11 @@ angular
       url: '/404',
       templateUrl: 'app/views/404.html'
     })
+    .state('test', {
+      url: '/users/:id',
+      templateUrl: 'app/views/test.html',
+      controller: 'Test'
+    })
     
     $locationProvider.html5Mode(true);
 

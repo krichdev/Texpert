@@ -9,10 +9,9 @@ angular
         return $http.post('/auth', userObject);
       },
       userSignup: function(userObject) {
+        console.log('in factory', userObject);
         return $http.post('/users', userObject);
       },
-      
     }
-
   }
 ])

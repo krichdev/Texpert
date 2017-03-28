@@ -42,3 +42,21 @@ ul {
 .catDetail h4 {
   margin: 10px 0 0 0;
 }
+
+/*Modals*/
+.loggerModal {
+  left: 20%;
+  top: 5%;
+  position: fixed;
+  width: 40em;
+  padding: 2em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 25px 5 black;
+}
+
+.skillGroup {
+  display: flex;
+  justify-content: space-around;
+}

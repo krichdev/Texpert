@@ -9,7 +9,7 @@ angular
         return $http.post('/api/auth', userObject);
       },
       userSignup: function(userObject) {
-        console.log('in factory', userObject);
+        console.log('user signup factory')
         return $http.post('/api/users', userObject);
       },
       getAllGurus: function(){

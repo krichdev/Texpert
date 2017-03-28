@@ -1,22 +1,57 @@
-<nav class="navbar navbar-default" role="navigation" ng-controller="NavCtrl">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="nav-wrapper">
-    <!-- BOOTSTRAP BUTTON, MUST CHANGE -->
-    <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button> -->
+<div ng-controller="NavCtrl">
+  <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="nav-wrapper">
+      <!-- BOOTSTRAP BUTTON, MUST CHANGE -->
+      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> -->
 
 
-    <a class="brand-logo" href="/">Generic Home</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="/signup" ng-hide="isLoggedIn()">Signup</a></li>
-      <li><a href="/login" ng-hide="isLoggedIn()">Login</a></li>
-      <li><a ng-click="logout()" ng-show="isLoggedIn()">Logout</a></li>
-    </ul>
+      <a class="brand-logo" href="/">Generic Home</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a href="#" 
+            ng-hide="isLoggedIn()" 
+            ng-click="toggleSignup()">
+            Signup
+          </a>
+        </li>
+        <li>
+          <a href="#" 
+            ng-hide="isLoggedIn()" 
+            ng-click="toggleLogin()">
+            Login
+          </a>
+        </li>
+        <li>
+          <a ng-click="logout()" ng-show="isLoggedIn()">
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+  </nav>
+  {{ isLoggedIn }}
+
+  <!-- Modals -->
+  <div 
+    id="loginModal" 
+    class="loggerModal" 
+    ng-if="showLogin"
+    ng-include="'app/views/userLogin.html'">
   </div>
-  <!-- Collect the nav links, forms, and other content for toggling -->
-</nav>
-{{ isLoggedIn }}
+
+  <div
+    id="signupModal"
+    class="loggerModal"
+    ng-if="showSignup"
+    ng-include="'app/views/userSignup.html'">
+    
+  </div>
+
+</div>

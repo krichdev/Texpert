@@ -12,9 +12,6 @@ angular
         console.log('in factory', userObject);
         return $http.post('/api/users', userObject);
       },
-      allGurus: function(userObject) {
-        return $http.get('/users', userObject)
-      }
     }
   }
 ])

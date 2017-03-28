@@ -3,12 +3,14 @@
   border: 1px solid orange;
   height: 400px;
   width: 100%;
+  
+  text-align: center;
 
-  display: flex;
+  /*display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: center;*/
 }
 .homeImg {
   border: 1px solid red;
@@ -25,18 +27,18 @@ ul {
 }
 /*Category stuff*/
 .catIcon {
-  margin: 10px;
+  /*margin: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: center;
+  align-content: center;*/
 }
-.catDetail {
+/*.catDetail {
   width: 20%;
   text-align: justify;
-}
+}*/
 .catDetail h4 {
   margin: 10px 0 0 0;
 }

@@ -7,7 +7,7 @@ angular
   function($scope, $stateParams, AuthFactory) {
     getUser();
 
-    getUser = function() {
+    function getUser() {
       var user = AuthFactory.currentUser();
       console.log(user);
     }

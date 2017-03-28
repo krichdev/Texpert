@@ -28,9 +28,14 @@
       placeholder="555-555-5555"
       ng-model="user.phone">
   </div>
-  <div class="">
+
+    <input type="checkbox" class="filled-in" id="filled-in-box">
+    <label for="filled-in-box">Filled in</label>
+    
+  <div>
     <label for="guru">Type of User</label>
-    <select ng-model="user.guru">
+    <select class="browser-default" ng-model="user.guru">
+      <option value="" disabled selected>Type of User</option>
       <option value="user">I Need Help</option>
       <option value="guru">I Can Help</option>
     </select>

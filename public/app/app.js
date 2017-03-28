@@ -1,3 +1,4 @@
+
 angular
 .module('GenericApp', ['ui.router'])
 .config([
@@ -20,15 +21,16 @@ angular
     })
     .state('test', {
       url: '/users/:id',
-      templateUrl: 'app/views/test.html',
-      controller: 'Test'
+      templateUrl: 'app/views/singleUser.html',
+      controller: 'UsersController'
     })
     .state('allGurus', {
       url: '/users',
       templateUrl: 'app/views/allGurus.html',
-      controller: 'Test'
+      controller: 'UsersController'
     })
 
     $locationProvider.html5Mode(true);
 
   }])
+

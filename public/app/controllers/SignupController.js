@@ -36,7 +36,7 @@ angular
           skill: 'tv'
         }
       ],
-      guru: ""
+      userType: ''
     },
 
     // Functions

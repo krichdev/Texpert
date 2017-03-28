@@ -1,0 +1,14 @@
+<h1>All Gurus</h1>
+<div ng-repeat="guru in gurus">
+  <h3>{{ guru.email }}</h3>
+  <p>Helps With</p>
+  <ul>
+    <li ng-if="guru.mobile">Mobile</li>
+    <li ng-if="guru.pc">PC</li>
+    <li ng-if="guru.homeTheater">Home Theater</li>
+    <li ng-if="guru.printer">Printer</li>
+    <li ng-if="guru.homeRouter">Home Router</li>
+    <li ng-if="guru.tv">Televisions</li>
+  </ul>
+
+</div>

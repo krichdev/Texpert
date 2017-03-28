@@ -12,14 +12,12 @@ var UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  skills: [
-    { mobile: Boolean },
-    { pc: Boolean },
-    { homeTheater: Boolean },
-    { printer: Boolean },
-    { homeRouter: Boolean },
-    { tv: Boolean }
-  ],
+  mobile: Boolean,
+  pc: Boolean,
+  homeTheater: Boolean,
+  printer: Boolean,
+  homeRouter: Boolean,
+  tv: Boolean,
   reviews: String,
   bio: String,
   phone: {
@@ -41,7 +39,12 @@ UserSchema.set('toJSON', {
       reviews: ret.reviews,
       bio: ret.bio,
       phone: ret.phone,
-      skills: ret.skills,
+      mobile: ret.mobile,
+      pc: ret.pc,
+      homeTheater: ret.homeTheater,
+      printer: ret.printer,
+      homeRouter: ret.homeRouter,
+      tv: ret.tv,
       userType: ret.guru
     };
     return returnJson;

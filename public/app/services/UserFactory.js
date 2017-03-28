@@ -11,6 +11,9 @@ angular
       userSignup: function(userObject) {
         return $http.post('/api/users', userObject);
       },
+      getAllGurus: function(){
+          return $http.get("/api/users/");
+      }
     }
   }
 ])

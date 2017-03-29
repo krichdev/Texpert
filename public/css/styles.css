@@ -50,7 +50,7 @@
 
 .catsExplained {
   height: 450px;
-  background: linear-gradient(to bottom right, #b39ddb, #673ab7);
+  background: linear-gradient(to bottom, #673ab7, #b39ddb);
 }
 
 .catsExplained h2 {

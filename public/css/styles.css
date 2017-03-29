@@ -31,6 +31,17 @@
   border: 1px solid #311b92;
 }
 
+.iconRow {
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.homeIcon {
+
+}
+
 .steps {
   height: 450px;
   margin-top: 50px;

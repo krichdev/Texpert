@@ -1,5 +1,5 @@
 angular
-.module('GenericApp')
+.module('TexpertApp')
 .factory('UserFactory', [
   '$http',
   function($http) {

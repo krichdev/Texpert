@@ -1,5 +1,5 @@
 angular
-.module('GenericApp')
+.module('TexpertApp')
 .controller('AlertsCtrl', [
   '$scope',
   'AlertsFactory',

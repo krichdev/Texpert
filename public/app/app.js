@@ -1,6 +1,6 @@
 
 angular
-.module('GenericApp', ['ui.router'])
+.module('TexpertApp', ['ui.router'])
 .config([
   '$stateProvider',
   '$urlRouterProvider',
@@ -38,4 +38,3 @@ angular
     $locationProvider.html5Mode(true);
 
   }])
-

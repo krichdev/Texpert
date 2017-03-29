@@ -6,7 +6,11 @@
         <span class="card-title">{{ guru.name }}</span>
         <p>{{ guru.bio }}</p>
         <div>
-          <a ng-href="/users/update/{{ CurrentUser.id }}" ng-if='currentUser.id == guru.id'>Update user</a>
+          <a 
+            ng-if="currentUser.id == guru.id"
+            ng-href="/users/update/{{ currentUser.id }}"> 
+            Update user
+          </a>
         </div>
         <a ng-href="mailto:{{ guru.email }}">Email Me</a>
       </div>

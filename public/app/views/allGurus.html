@@ -7,7 +7,12 @@
           <div class="card-content white-text">
             <span class="card-title">{{ guru.name }}</span>
             <p>{{ guru.bio }}</p>
-            <a ng-href="/users/{{guru.id}}">Request My Help</a>
+            <a 
+              ng-href="/users/{{ guru.id }}"
+              ng-if="guru.id != currentUser.id">See Guru's Profile</a>
+            <a 
+              ng-href="/users/{{ guru.id }}"
+              ng-if="guru.id == currentUser.id">See My Profile</a>
           </div>
           <div class="card-action">
             <div class="chip" ng-if="guru.mobile">

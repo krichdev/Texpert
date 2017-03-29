@@ -5,6 +5,9 @@
       <div class="card-content white-text">
         <span class="card-title">{{ guru.name }}</span>
         <p>{{ guru.bio }}</p>
+        <div>
+          <a ng-href="/users/update/{{ CurrentUser.id }}" ng-if='currentUser.id == guru.id'>Update user</a>
+        </div>
         <a ng-href="mailto:{{ guru.email }}">Email Me</a>
       </div>
       <div class="card-action">

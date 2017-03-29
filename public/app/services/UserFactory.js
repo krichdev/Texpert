@@ -16,15 +16,15 @@ angular
       },
       getGuru: function(id){
           return $http.get("/api/users/" + id)
+      },
+
+
+
+
+
+      updateUser: function(id, userObject) {
+        return $http.put('/api/users/' + id, userObject);
       }
-
-
-
-
-
-      // updateUser: function(id, userObject) {
-      //   //return $http.put('/api/users' + id, userObject);
-      // }
 
     }
   }

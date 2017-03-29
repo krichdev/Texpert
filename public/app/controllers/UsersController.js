@@ -8,26 +8,29 @@ angular
   'UserFactory',
   function($scope, $state, $stateParams, AuthFactory, UserFactory) {
 
-    // functions that are called on page render
-    if ($state.current.name == 'profilePage') {
-      // db call for a single user
-      getGuru();
-    } else if ($state.current.name == 'allGurus') {
-      // db call for all gurus
-      getAllUsers();
-    } else if ($state.current.name == 'profileUpdate') {
-      getGuru();
-    }
-
     // VARIABLES
     $scope.guru;
     $scope.gurus;
+    $scope.currentUser;
 
     $scope.getUser = getUser;
     $scope.getGuru = getGuru;
     $scope.getAllUsers = getAllUsers;
     $scope.updateUser = updateUser;
 
+
+    // functions that are called on page render
+    getUser();
+    if ($state.current.name == 'profilePage') {
+      // db call for a single user
+      getGuru();
+    } else if ($state.current.name == 'allGurus') {
+      // db call for all gurus
+      getAllUsers();
+
+    } else if ($state.current.name == 'profileUpdate') {
+      getGuru();
+    }
 
     // FUNCTIONS
     function getAllUsers() {
@@ -44,8 +47,8 @@ angular
     }
 
     function getUser() {
-      user = AuthFactory.currentUser();
-      console.log('got a user: ', $scope.user);
+      $scope.currentUser = AuthFactory.currentUser();
+      console.log('got a user: ', $scope.currentUser);
     }
 
     function getGuru(){

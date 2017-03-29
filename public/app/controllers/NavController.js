@@ -66,7 +66,7 @@ angular
           AuthFactory.saveToken(res.data.token);
           AlertsFactory.add('success', 'You are now logged in!');
           $scope.showLogin = false;
-          $location.path('/users/' + userId)
+          $state.go('allGurus', {id: userId});
         },
         function error (err) {
           AlertsFactory.add('error', err.data.message);

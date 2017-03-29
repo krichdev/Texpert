@@ -1,4 +1,5 @@
-<h1>Find A Guru</h1>
+<h1 class="center">Find A Guru</h1>
+<div class="container">
   <div class="row">
     <div ng-if="guru.userType == 'guru'" ng-repeat="guru in gurus">
       <div class="col s12 m6">
@@ -6,7 +7,6 @@
           <div class="card-content white-text">
             <span class="card-title">{{ guru.name }}</span>
             <p>{{ guru.bio }}</p>
-            <p>{{ guru.email }}</p>
             <a ng-href="/users/{{guru.id}}">Request My Help</a>
           </div>
           <div class="card-action">
@@ -33,3 +33,4 @@
       </div>
     </div>
   </div>
+</div>

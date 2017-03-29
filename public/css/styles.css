@@ -3,7 +3,7 @@
   border: 1px solid orange;
   height: 400px;
   width: 100%;
-  
+
   text-align: center;
 
   /*display: flex;
@@ -14,7 +14,7 @@
 }
 .homeImg {
   border: 1px solid red;
-  background-image: url('http://placebeard.it/640/480');
+  background-image: url('../img/main-home.jpg');
   background-size: cover;
 }
 .welcomeImgText {

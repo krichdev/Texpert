@@ -1,5 +1,5 @@
 angular
-.module('GenericApp')
+.module('TexpertApp')
 .factory('AuthFactory', [
   '$window',
   function($window) {
@@ -43,6 +43,3 @@ angular
     }
   }
 ]);
-
-
-

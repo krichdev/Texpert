@@ -58,7 +58,7 @@ angular
       $scope.loginUser = {
         email: '',
         password: ''
-      };
+      }; 
     }
 
     // login

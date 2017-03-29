@@ -53,10 +53,10 @@ body {
 
 /*Modals*/
 .loggerModal {
-  left: 20%;
+  left: 25%;
   top: 5%;
   position: fixed;
-  width: 40em;
+  width: 50%;
   padding: 2em;
   background-color: white;
   border: 1px solid black;

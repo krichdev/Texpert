@@ -55,6 +55,10 @@ angular
       AuthFactory.removeToken();
       AlertsFactory.add('success', 'You are now logged out');
       $location.path('/');
+      $scope.loginUser = {
+        email: '',
+        password: ''
+      };
     }
 
     // login

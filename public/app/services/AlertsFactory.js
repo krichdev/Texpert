@@ -1,5 +1,5 @@
 angular
-.module('GenericApp')
+.module('TexpertApp')
 .factory('AlertsFactory', [
   function() {
     var alerts = [];
@@ -13,7 +13,7 @@ angular
 
     function add(type, message) {
       alerts.push({
-        type: type, 
+        type: type,
         message: message
       })
     }

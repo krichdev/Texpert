@@ -1,6 +1,6 @@
 <h1>Find A Guru</h1>
   <div class="row">
-    <div ng-repeat="guru in gurus">
+    <div ng-if="guru.userType == 'guru'" ng-repeat="guru in gurus">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">

@@ -7,13 +7,13 @@ angular
   'UserFactory',
   function($scope, $stateParams, AuthFactory, UserFactory) {
     // DB call to get all gurus
-    
+
     UserFactory.getAllGurus()
     .then(
       function success(res){
-        console.log("get all gurus in test controller ", res)
+        console.log(res.data)
         $scope.gurus = res.data;
-      }, 
+      },
       function error(err){
         console.log("Error", err);
       }
@@ -24,6 +24,6 @@ angular
       console.log($scope.user);
     }
 
-    
+
   }
 ])

@@ -29,6 +29,11 @@ angular
       templateUrl: 'app/views/singleUser.html',
       controller: 'UsersController'
     })
+    .state('profileUpdate', {
+      url: '/users/update/:id',
+      templateUrl: 'app/views/updateUser.html',
+      controller: 'UsersController'
+    })
 
     $locationProvider.html5Mode(true);
 

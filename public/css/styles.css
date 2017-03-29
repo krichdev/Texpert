@@ -25,6 +25,11 @@
 ul {
   list-style: none;
 }
+
+body {
+  background: linear-gradient(to bottom right, #13B06E, #49D4E8);
+}
+
 /*Category stuff*/
 .catIcon {
   /*margin: 10px;
@@ -61,4 +66,8 @@ ul {
   justify-content: space-around;
 }
 
-
+/*UpdateUser*/
+.updateDiv {
+  padding: 3em;
+  background-color: rgba(0,0,0, 0.5);
+}

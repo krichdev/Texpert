@@ -8,11 +8,19 @@ angular
   'UserFactory',
   function($scope, $state, $stateParams, AuthFactory, UserFactory) {
     
-    // DB call based on page accessing it
-    // shows all users for /users, single for /users/:id
-    $state.current.name == 'profilePage' ? 
-      getUser() : getAllUsers();
+    // functions that are called on page render
+    if ($state.current.name == 'profilePage') {
+      // db call for a single user
+      getUser();
+    } else if ($state.current.name == 'allGurus') {
+      // db call for all gurus
+      getAllUsers();
+    } else {
+      getUser();
+    }
 
+
+    // FUNCTIONS
     function getAllUsers() {
       UserFactory.getAllGurus()
       .then(
@@ -30,5 +38,14 @@ angular
       $scope.user = AuthFactory.currentUser();
       console.log($scope.user);
     }
+
+    function updateUser() {
+      var id = $stateParams.id;
+      console.log($state.current)
+      //UserFactory.updateUser(id, )
+      
+    }
+
+
   }
 ])

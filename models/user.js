@@ -45,7 +45,7 @@ UserSchema.set('toJSON', {
       printer: ret.printer,
       homeRouter: ret.homeRouter,
       tv: ret.tv,
-      userType: ret.guru
+      userType: ret.userType
     };
     return returnJson;
   }

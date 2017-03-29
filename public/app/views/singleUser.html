@@ -1,12 +1,36 @@
-
-{{ user}}
 <h1>Hey welcome!</h1>
 
-<div ng-repeat="(key,val) in user">
-  <p>{{key}}: {{val}}</p>
-  
-
+<div class="col s12 m6">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title">{{ user.name }}</span>
+      <p>{{ user.bio }}</p>
+      <p>{{ user.email }}</p>
+      <a ng-href="/users/{{user.id}}">Request My Help</a>
+      <div>
+        <a href="/users/update/{{ user.id }}">Edit User</a>
+      </div>
+    </div>
+    <div class="card-action">
+      <div class="chip" ng-if="user.mobile">
+        Mobile
+      </div>
+      <div class="chip" ng-if="user.pc">
+        PC
+      </div>
+      <div class="chip" ng-if="user.homeTheater">
+        Home Theater
+      </div>
+      <div class="chip" ng-if="user.printer">
+        Printer
+      </div>
+      <div class="chip" ng-if="user.homeRouter">
+        Home Router
+      </div>
+      <div class="chip" ng-if="user.tv">
+        TV
+      </div>
+    </div>
+  </div>
 </div>
-{{ user.name }}
-
 

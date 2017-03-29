@@ -45,4 +45,14 @@
 .steps {
   height: 450px;
   margin-top: 50px;
+  text-align: center;
+}
+
+.catsExplained {
+  height: 450px;
+  background: linear-gradient(to bottom right, #b39ddb, #673ab7);
+}
+
+.catsExplained h2 {
+  padding-top: 25px;
 }

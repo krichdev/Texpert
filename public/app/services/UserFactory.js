@@ -14,14 +14,17 @@ angular
       getAllGurus: function(){
           return $http.get("/api/users/");
       },
-
-
-
-
-
-      updateUser: function(id, userObject) {
-        //return $http.put('/api/users' + id, userObject);
+      getGuru: function(id){
+          return $http.get("/api/users/" + id)
       }
+
+
+
+
+
+      // updateUser: function(id, userObject) {
+      //   //return $http.put('/api/users' + id, userObject);
+      // }
 
     }
   }

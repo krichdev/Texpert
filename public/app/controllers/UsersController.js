@@ -15,9 +15,18 @@ angular
     } else if ($state.current.name == 'allGurus') {
       // db call for all gurus
       getAllUsers();
-    } else {
-      getUser();
+    } else if ($state.current.name == 'profileUpdate') {
+      getGuru();
     }
+
+    // VARIABLES
+    $scope.guru;
+    $scope.gurus;
+
+    $scope.getUser = getUser;
+    $scope.getGuru = getGuru;
+    $scope.getAllUsers = getAllUsers;
+    $scope.updateUser = updateUser;
 
 
     // FUNCTIONS
@@ -35,16 +44,16 @@ angular
     }
 
     function getUser() {
-      $scope.user = AuthFactory.currentUser();
-      console.log($scope.user);
+      user = AuthFactory.currentUser();
+      console.log('got a user: ', $scope.user);
     }
 
     function getGuru(){
       UserFactory.getGuru($stateParams.id)
       .then(
         function success(res) {
-          $scope.guru = res.data;
-          console.log(res.data)
+          $scope.guru = res.data
+          console.log('got a guru: ', $scope.guru)
         },
         function error(err){
           console.log(err);
@@ -54,11 +63,17 @@ angular
 
     function updateUser() {
       var id = $stateParams.id;
-      console.log($state.current)
-      //UserFactory.updateUser(id, )
+      UserFactory.updateUser(id, $scope.guru)
+      .then(
+        function success(res) {
+        $state.go('profilePage', {id: id});
+        },
+        function error(err) {
+          console.log('error', err);
+        }
+      )
 
     }
-
 
   }
 ])

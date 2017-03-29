@@ -1,5 +1,6 @@
 <h1>User Update</h1>
-<div class='updateDiv'>
+{{guru}}
+<div class="updateDiv">
   <form ng-submit="updateUser()">
     <legend>User Signup</legend>
     <!-- Name -->
@@ -9,7 +10,7 @@
         type="text"
         class="form-control"
         id="name"
-        ng-model="user.name">
+        ng-model="guru.name">
     </div>
 
     <!-- Email -->
@@ -19,7 +20,7 @@
         type="email"
         class="form-control"
         id="email"
-        ng-model="user.email">
+        ng-model="guru.email">
     </div>
 
     <!-- Phone -->
@@ -29,7 +30,7 @@
         type="text"
         class="form-control"
         id="phone"
-        ng-model="user.phone">
+        ng-model="guru.phone">
     </div>
 
     <div>
@@ -40,12 +41,12 @@
         <div>
           <p>
             <input
-              id='mobile'
+              id="mobile"
               type="checkbox"
               name="skills"
-              class='filled-in'
+              class="filled-in"
               value="mobile"
-              ng-model="user.mobile">
+              ng-model="guru.mobile">
             <label for="mobile">Mobile</label>
           </p>
           <p>
@@ -55,7 +56,7 @@
               name="skills"
               class="filled-in"
               value="pc"
-              ng-model="user.pc">
+              ng-model="guru.pc">
             <label for="pc">PC</label>
           </p>
         </div>
@@ -68,7 +69,7 @@
               name="skills"
               class="filled-in"
               value="printer"
-              ng-model="user.printer">
+              ng-model="guru.printer">
             <label for="printer">Printer</label>
           </p> 
           <p>
@@ -78,7 +79,7 @@
               name="skills"
               class="filled-in"
               value="homeTheater"
-              ng-model="user.homeTheater">
+              ng-model="guru.homeTheater">
             <label for="homeTheater">Home Theater</label>
           </p> 
         </div>
@@ -91,7 +92,7 @@
               name="skills"
               class="filled-in"
               value="homeRouter"
-              ng-model="user.homeRouter">
+              ng-model="guru.homeRouter">
             <label for="homeRouter">Home Router</label>
           </p>
           <p>
@@ -101,7 +102,7 @@
               name="skills"
               class="filled-in"
               value="tv"
-              ng-model="user.tv">
+              ng-model="guru.tv">
             <label for="tv">Television</label>
           </p>
         </div>
@@ -110,12 +111,12 @@
     </div>
 
       <!-- Text Area -->
-      <div class="input-field" ng-show="user.userType == 'guru'">
+      <div class="input-field" ng-show="guru.userType == 'guru'">
         <p>Bio</p>
         <textarea 
           id="bio" 
           class="materialize-textarea" 
-          ng-model="user.bio"
+          ng-model="guru.bio"
           placeholder="Tell us about yourself" 
           >
         </textarea>

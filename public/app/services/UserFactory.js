@@ -13,7 +13,16 @@ angular
       },
       getAllGurus: function(){
           return $http.get("/api/users/");
+      },
+
+
+
+
+
+      updateUser: function(id, userObject) {
+        //return $http.put('/api/users' + id, userObject);
       }
+
     }
   }
 ])

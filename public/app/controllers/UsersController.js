@@ -2,26 +2,48 @@ angular
 .module('GenericApp')
 .controller('UsersController', [
   '$scope',
+  '$state',
   '$stateParams',
   'AuthFactory',
   'UserFactory',
-  function($scope, $stateParams, AuthFactory, UserFactory) {
-    // DB call to get all gurus
+  function($scope, $state, $stateParams, AuthFactory, UserFactory) {
+    
+    // functions that are called on page render
+    if ($state.current.name == 'profilePage') {
+      // db call for a single user
+      getUser();
+    } else if ($state.current.name == 'allGurus') {
+      // db call for all gurus
+      getAllUsers();
+    } else {
+      getUser();
+    }
 
-    UserFactory.getAllGurus()
-    .then(
-      function success(res){
-        console.log(res.data)
-        $scope.gurus = res.data;
-      },
-      function error(err){
-        console.log("Error", err);
-      }
-    )
 
-    $scope.getUser = function() {
+    // FUNCTIONS
+    function getAllUsers() {
+      UserFactory.getAllGurus()
+      .then(
+        function success(res){
+          console.log('getting allGurus')
+          $scope.gurus = res.data;
+        }, 
+        function error(err){
+          console.log("Error", err);
+        }
+      )
+    }
+
+    function getUser() {
       $scope.user = AuthFactory.currentUser();
       console.log($scope.user);
+    }
+
+    function updateUser() {
+      var id = $stateParams.id;
+      console.log($state.current)
+      //UserFactory.updateUser(id, )
+      
     }
 
 

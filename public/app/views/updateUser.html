@@ -1,0 +1,126 @@
+<h1>User Update</h1>
+<div class='updateDiv'>
+  <form ng-submit="updateUser()">
+    <legend>User Signup</legend>
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        ng-model="user.name">
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        ng-model="user.email">
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        ng-model="user.phone">
+    </div>
+
+    <div>
+      <label>Skills</label>
+      <div class="skillGroup">
+
+        <!-- mobile/pc -->
+        <div>
+          <p>
+            <input
+              id='mobile'
+              type="checkbox"
+              name="skills"
+              class='filled-in'
+              value="mobile"
+              ng-model="user.mobile">
+            <label for="mobile">Mobile</label>
+          </p>
+          <p>
+            <input
+              id="pc"
+              type="checkbox"
+              name="skills"
+              class="filled-in"
+              value="pc"
+              ng-model="user.pc">
+            <label for="pc">PC</label>
+          </p>
+        </div>
+        <!-- printer/homeTheater -->
+        <div>
+          <p>
+            <input
+              id="printer"
+              type="checkbox"
+              name="skills"
+              class="filled-in"
+              value="printer"
+              ng-model="user.printer">
+            <label for="printer">Printer</label>
+          </p> 
+          <p>
+            <input
+              id="homeTheater"
+              type="checkbox"
+              name="skills"
+              class="filled-in"
+              value="homeTheater"
+              ng-model="user.homeTheater">
+            <label for="homeTheater">Home Theater</label>
+          </p> 
+        </div>
+        <!-- homeRouter/tv -->
+        <div>
+          <p>
+            <input
+              id="homeRouter"
+              type="checkbox"
+              name="skills"
+              class="filled-in"
+              value="homeRouter"
+              ng-model="user.homeRouter">
+            <label for="homeRouter">Home Router</label>
+          </p>
+          <p>
+            <input
+              id="tv"
+              type="checkbox"
+              name="skills"
+              class="filled-in"
+              value="tv"
+              ng-model="user.tv">
+            <label for="tv">Television</label>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+      <!-- Text Area -->
+      <div class="input-field" ng-show="user.userType == 'guru'">
+        <p>Bio</p>
+        <textarea 
+          id="bio" 
+          class="materialize-textarea" 
+          ng-model="user.bio"
+          placeholder="Tell us about yourself" 
+          >
+        </textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>

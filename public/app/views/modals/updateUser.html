@@ -30,6 +30,15 @@
           ng-model="guru.phone">
       </div>
 
+      <!-- Profile -->
+      <div input-field>
+        <label for="profilePic">Profile picture: add an Image link</label>
+        <input
+          type="text"
+          id="profilePic"
+          ng-model="guru.profilePic">
+      </div>
+
       <div>
         <label>Skills</label>
         <div class="skillGroup">
@@ -114,7 +123,7 @@
 <div class="modal-footer">
   <button
     ng-click="updateUser()"
-    class="btn btn-primary">
+    class="btn btn-primary modal-close">
     Update
   </button>
 </div>

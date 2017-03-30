@@ -4,23 +4,29 @@
     <div ng-if="guru.userType == 'guru'" ng-repeat="guru in gurus">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
+          
           <div class="card-content white-text">
             <span class="card-title">{{ guru.name }}</span>
+            <img class="responsive-img userImg" ng-src="{{guru.profilePic}}">
+
             <p>{{ guru.bio }}</p>
             <a 
               ng-href="/users/{{ guru.id }}"
-              ng-if="guru.id != currentUserId">See Guru's Profile</a>
+              ng-if="guru.id != currentUserId">
+              See Guru's Profile
+            </a>
             <a 
               ng-href="/users/{{ guru.id }}"
-              ng-if="guru.id == currentUserId">See My Profile</a>
-<<<<<<< HEAD
-              <button
-=======
-              <button 
->>>>>>> 553cab93041476efe3ad952d4b00f52d1d552714
+              ng-if="guru.id == currentUserId">
+              See My Profile
+            </a>
+            <button 
               ng-click="join()"
-              ng-if="guru.id == currentUserId">Create Help Room</button>
+              ng-if="guru.id == currentUserId">
+              Create Help Room
+            </button>
           </div>
+
           <div class="card-action">
             <div class="chip" ng-if="guru.mobile">
               Mobile
@@ -46,13 +52,3 @@
     </div>
   </div>
 </div>
-
-
- <div class="row">
-  <div class="section col s4">
-      <div input-field>
-          <select ng-model="select.value" material-select>
-              <option ng-repeat="value in select.choices">{{value}}</option>
-          </select>
-      </div>
-  </div>

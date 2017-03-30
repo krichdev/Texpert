@@ -25,10 +25,9 @@
 }
 
 /*Modals*/
+
 .modalATag:hover {
   cursor: pointer;
-}
-box-shadow: 0 0 10px black;
 }
 .skillGroup {
   display: flex;
@@ -76,4 +75,14 @@ box-shadow: 0 0 10px black;
 
 .catsExplained h2 {
   padding-top: 25px;
+}
+
+
+
+/* User Profile*/
+.userImg {
+  max-height: 100px;
+  max-width: 100px;
+  border-radius: 10px 20px;
+  box-shadow: 0 0 5px black;
 }

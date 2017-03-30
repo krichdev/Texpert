@@ -11,17 +11,12 @@ angular
       userSignup: function(userObject) {
         return $http.post('/api/users', userObject);
       },
-      getAllGurus: function(){
+      getAllUsers: function(){
           return $http.get("/api/users/");
       },
-      getGuru: function(id){
+      getUser: function(id){
           return $http.get("/api/users/" + id)
       },
-
-
-
-
-
       updateUser: function(id, userObject) {
         return $http.put('/api/users/' + id, userObject);
       }

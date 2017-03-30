@@ -1,18 +1,5 @@
 <div ng-controller="NavCtrl">
   <nav class="navbar-fixed deep-purple" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-
-    <!-- <div class="nav-wrapper container"> -->
-      <!-- BOOTSTRAP BUTTON, MUST CHANGE -->
-      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button> -->
-
-
-
     <div class="nav-wrapper">
       <a class="brand-logo" href="/"><img class="logo" ng-src="../../img/logo.png"></a>
 
@@ -65,13 +52,13 @@
   <div 
     id="loginModal" 
     class="modal">
-    <div ng-include="'app/views/userLogin.html'"></div>
+    <div ng-include="'app/views/modals/userLogin.html'"></div>
   </div>
 
   <div
     id="signupModal"
     class="modal">
-    <div ng-include="'app/views/userSignup.html'"></div>
+    <div ng-include="'app/views/modals/userSignup.html'"></div>
   </div>
 
 </div>

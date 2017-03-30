@@ -42,7 +42,7 @@ app.use(function (err, req, res, next) {
 //Socket user
 var users = [];
 
-io.on('connection', function(socket) {
+io.sockets.on('connection', function(socket) {
  console.log('a user has connected');
 //connections
  socket.on('get-users', function() {
@@ -50,16 +50,17 @@ io.on('connection', function(socket) {
  });
 // new user
  socket.on('join', function(data) {
-   console.log(data);
+   console.log('this is my data ', data);
  //user name
    socket.nickname = data.nickname;
+   socket.room = data.room;
    users[socket.nickname] = socket;
 
    var userObj = {
      nickname: data.nickname,
      socketid: socket.id
    };
-   console.log(userObj)
+   console.log('this is my userObj ', userObj)
    users.push(userObj);
    console.log('all users', users);
    io.emit('all-users', users);
@@ -70,7 +71,7 @@ io.on('connection', function(socket) {
    io.emit('message-received', data);
  });
 
- socket.on('room', function(room){
+ socket.on('create', function(room){
     socket.join(room);
  });
 

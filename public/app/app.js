@@ -44,6 +44,11 @@ angular
      templateUrl: 'app/views/join.html',
      controller: 'JoinCtrl'
    })
+   .state('chat', {
+     url: '/chat/:id',
+     templateUrl: 'app/views/main.html',
+     controller: 'MainCtrl'
+   })
 
     $locationProvider.html5Mode(true);
 

@@ -4,9 +4,11 @@ angular
   '$scope',
   '$state',
   '$stateParams',
+  '$window',
   'AuthFactory',
   'UserFactory',
-  function($scope, $state, $stateParams, AuthFactory, UserFactory) {
+  'socket',
+  function($scope, $state, $stateParams, $window, AuthFactory, UserFactory, socket) {
 
     // VARIABLES
     $scope.guru;
@@ -85,19 +87,30 @@ angular
 
     }
 
-    function roomId(){
-      var id = "";
-      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var nickname;
+        var roomId = roomId();
 
-      for( var i=0; i < 5; i++ )
-        id += possible.charAt(Math.floor(Math.random() * possible.length));
-        return id;
-      }
+        function roomId(){
+          var roomId = '';
+          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()";
 
-    $scope.createRoom = function(){
-      console.log(roomId());
+          for(var i = 0; i < 4; i++){
+            roomId += possible.charAt(Math.floor(Math.random() * possible.length));
+            return roomId;
+          }
+        }
 
-    }
+        $scope.join = function() {
+          nickname = AuthFactory.currentUser();
+          $window.localStorage['nickname'] = nickname;
+          console.log('nickname, ', nickname)
+          socket.emit('join', {
+            nickname: nickname,
+            room: roomId
+          });
+
+          $state.go('chat', {id: roomId});
+        };
 
   }
 ])

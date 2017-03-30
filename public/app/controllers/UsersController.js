@@ -74,19 +74,19 @@ angular
 
         var nickname;
         var roomId = roomId();
-
+        console.log(roomId)
         function roomId(){
-          var roomId = '';
+          var room = '';
           var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()";
 
           for(var i = 0; i < 4; i++){
-            roomId += possible.charAt(Math.floor(Math.random() * possible.length));
+            room += possible.charAt(Math.floor(Math.random() * possible.length));
           }
-          console.log(roomId)
-          return roomId;
+          return room;
         }
 
         $scope.join = function() {
+        
           nickname = AuthFactory.currentUser();
           $window.localStorage['nickname'] = nickname;
           console.log('nickname, ', nickname)

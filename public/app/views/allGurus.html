@@ -13,9 +13,13 @@
             <a 
               ng-href="/users/{{ guru.id }}"
               ng-if="guru.id == currentUserId">See My Profile</a>
+<<<<<<< HEAD
               <button
+=======
+              <button 
+>>>>>>> 553cab93041476efe3ad952d4b00f52d1d552714
               ng-click="join()"
-              ng-if="guru.id == currentUser.id">Create Help Room</button>
+              ng-if="guru.id == currentUserId">Create Help Room</button>
           </div>
           <div class="card-action">
             <div class="chip" ng-if="guru.mobile">

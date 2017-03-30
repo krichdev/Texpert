@@ -67,14 +67,16 @@ angular
       UserFactory.userSignup($scope.user)
       .then(
         function success(res) {
-          $scope.autoLoginAfterSignup();
+          autoLoginAfterSignup();
         },
         function error(err) {
           errorMsg();
         }
       )
     }
-    $scope.autoLoginAfterSignup = function() {
+
+    // auto logs in user after signing up
+    function autoLoginAfterSignup() {
       UserFactory.userLogin($scope.user)
       .then(
         function success (res) {

@@ -18,8 +18,14 @@ angular
     $scope.getAllUsers = getAllUsers;
     $scope.updateUser = updateUser;
 
+    $scope.select = {
+      value: "Option1",
+       choices: ["Option1", "I'm an option", "This is materialize", "No, this is Patrick."]
+    };
 
     // functions that are called on page render
+    // TO BE FIXED when better understanding of
+    // who has access to what pages
     getUser();
     
     if ($state.current.name == 'profilePage') {
@@ -53,7 +59,7 @@ angular
     }
 
     function getGuru(){
-      UserFactory.getGuru($stateParams.id)
+      UserFactory.getGuru($scope.currentUser.id)
       .then(
         function success(res) {
           $scope.guru = res.data

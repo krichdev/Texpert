@@ -23,6 +23,7 @@
         <i class="material-icons">menu</i>
       </a>
       <ul class="right hide-on-med-and-down">
+        <!-- TEST -->
         <li>
           <a ng-show="isLoggedIn()"
             href="/users">
@@ -30,12 +31,23 @@
           </a>
         </li>
         <li>
-          <a ng-hide="isLoggedIn()" ng-click="toggleSignup()">
+          <a ng-show="isLoggedIn()"
+            href="/main/join">
+            TEST chatroom
+          </a>
+        </li>
+        <!-- TEST -->
+        <li>
+          <a 
+            ng-hide="isLoggedIn()" 
+            data-target="signupModal" modal>
             Signup
           </a>
         </li>
         <li>
-          <a href="#" ng-hide="isLoggedIn()" ng-click="toggleLogin()">
+          <a
+            ng-hide="isLoggedIn()"
+            data-target="loginModal" modal>
             Login
           </a>
         </li>
@@ -46,24 +58,20 @@
         </li>
       </ul>
     </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
   </nav>
   {{ isLoggedIn }}
 
   <!-- Modals -->
   <div 
     id="loginModal" 
-    class="loggerModal" 
-    ng-if="showLogin"
-    ng-include="'app/views/userLogin.html'">
+    class="modal">
+    <div ng-include="'app/views/userLogin.html'"></div>
   </div>
 
   <div
     id="signupModal"
-    class="loggerModal"
-    ng-if="showSignup"
-    ng-include="'app/views/userSignup.html'">
-    
+    class="modal">
+    <div ng-include="'app/views/userSignup.html'"></div>
   </div>
 
 </div>

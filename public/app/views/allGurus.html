@@ -42,3 +42,26 @@
     </div>
   </div>
 </div>
+
+
+ <div class="row">
+  <div class="section col s4">
+      <div input-field>
+          <select ng-model="select.value" material-select>
+              <option ng-repeat="value in select.choices">{{value}}</option>
+          </select>
+      </div>
+  </div>
+  <div class="section col s8">
+      <h5>You selected: <b>{{select.value}}</b></h5>
+  </div>
+</div>
+
+<div input-field>
+    <input type="text" ng-model="dummyInputs.inputFieldInput" length="150">
+    <label>Input label</label>
+</div>
+<div input-field>
+    <textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"></textarea>
+    <label>Textarea</label>
+</div>

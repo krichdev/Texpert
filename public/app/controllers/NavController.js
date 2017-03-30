@@ -4,14 +4,10 @@ angular
   '$scope',
   '$state',
   '$location',
-  'AlertsFactory',
   'AuthFactory',
   'UserFactory',
-  function($scope, $state, $location, AlertsFactory, AuthFactory, UserFactory) {
+  function($scope, $state, $location, AuthFactory, UserFactory) {
     // VARIABLES
-    //nav bar
-    $scope.showLogin = false;
-    $scope.showSignup = false;
 
     // login
     $scope.loginUser = {
@@ -36,24 +32,12 @@ angular
     // FUNCTIONS
 
     //navbar
-    $scope.toggleLogin = function() {
-      $scope.showLogin = $scope.showLogin ? false : true;
-      if ($scope.showSignup) {
-        $scope.showSignup = false;
-      }
-    }
-    $scope.toggleSignup = function() {
-      $scope.showSignup = $scope.showSignup ? false : true;
-      if ($scope.showLogin) {
-        $scope.showLogin = false;
-      }
-    }
     $scope.isLoggedIn = function() {
       return AuthFactory.isLoggedIn();
     };
     $scope.logout = function() {
       AuthFactory.removeToken();
-      AlertsFactory.add('success', 'You are now logged out');
+      Materialize.toast('You have logged out');
       $location.path('/');
       $scope.loginUser = {
         email: '',
@@ -68,12 +52,12 @@ angular
         function success (res) {
           var userId = res.data.user.id;
           AuthFactory.saveToken(res.data.token);
-          AlertsFactory.add('success', 'You are now logged in!');
+          Materialize.toast('Successfully Logged in', '2000');
           $scope.showLogin = false;
           $state.go('allGurus', {id: userId});
         },
         function error (err) {
-          AlertsFactory.add('error', err.data.message);
+          errorMsg();
         }
       )
     }
@@ -83,26 +67,33 @@ angular
       UserFactory.userSignup($scope.user)
       .then(
         function success(res) {
-          $scope.autoLoginAfterSignup();
+          autoLoginAfterSignup();
         },
         function error(err) {
-          AlertsFactory.add('error', err.data.message)
+          errorMsg();
         }
       )
     }
-    $scope.autoLoginAfterSignup = function() {
+
+    // auto logs in user after signing up
+    function autoLoginAfterSignup() {
       UserFactory.userLogin($scope.user)
       .then(
         function success (res) {
-          console.log(res);
           AuthFactory.saveToken(res.data.token);
-          AlertsFactory.add('success', 'You are now logged in!');
-          $scope.showSignup = false;
+          Materialize.toast('Successfully Logged in', '2000');
+          $state.go('home');
         },
         function error (err) {
-          AlertsFactory.add('error', err.data.message);
+          errorMsg();
         }
       )
     }
+
+    // displays error message for 5 seconds
+    function errorMsg() {
+      Materialize.toast('An error occurred: ' + err.data.message, '5000');
+    }
+
   }
 ]);

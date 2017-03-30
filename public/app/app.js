@@ -1,6 +1,6 @@
-
 angular
-.module('TexpertApp', ['ui.router'])
+.module('TexpertApp', ['ui.router', 'ui.materialize'])
+
 .config([
   '$stateProvider',
   '$urlRouterProvider',

@@ -1,51 +1,39 @@
 <div class="modal-content">
-  <a 
-    ng-click="toggleSignup()"
-    class="right closeBtn">
-    X
-  </a>
   <form ng-submit="userSignup()">
+  <h4>SignUp</h4>
     <!-- Name -->
-    <div class="form-group">
+    <div input-field>
       <label for="name">Name</label>
       <input
         type="text"
-        class="form-control"
         id="name"
-        placeholder="Cool Person"
         ng-model="user.name">
     </div>
 
     <!-- Email -->
-    <div class="form-group">
+    <div input-field>
       <label for="email">Email</label>
       <input
         type="email"
-        class="form-control"
         id="email"
-        placeholder="test@test.com"
         ng-model="user.email">
     </div>
 
     <!-- Password -->
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        placeholder="********"
-        ng-model="user.password">
-    </div>
+      <div input-field>
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          ng-model="user.password">
+      </div>
 
     <!-- Phone -->
-    <div class="form-group">
+    <div input-field>
       <label for="phone">Phone</label>
       <input
         type="text"
-        class="form-control"
         id="phone"
-        placeholder="555-555-5555"
         ng-model="user.phone">
     </div>
 
@@ -134,20 +122,22 @@
     </div>
 
     <!-- Text Area -->
-    <div class="materialize-textarea" ng-show="user.userType == 'guru'">
+    <div input-field ng-show="user.userType == 'guru'">
       <textarea 
         id="bio" 
         class="materialize-textarea" 
         ng-model="user.bio"
-        placeholder="Tell us about yourself" 
         >
       </textarea>
+      <label>Tell us about yourself</label>
     </div>
-
-    <button 
-      type="submit" 
-      class="btn btn-primary signupBtn">
-      Signup
-    </button>
   </form>
+</div>
+
+<div class="modal-footer">
+  <button 
+  type="submit" 
+  class="modal-action modal-close waves-effect btn-flat">
+    Signup
+  </button>
 </div>

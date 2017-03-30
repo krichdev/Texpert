@@ -1,7 +1,10 @@
 <div class="modal-content">
+  <a 
+    ng-click="toggleLogin()"
+    class="right closeBtn">
+    X
+  </a>
   <form ng-submit="userLogin()">
-    <h3>Login</h3>
-
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" class="form-control" id="email" placeholder="test@test.com" ng-model="loginUser.email">

@@ -84,9 +84,6 @@ io.on('connection', function(socket) {
  });
 
 });
-server.listen(5000, function(){
-  console.log("swag shhh")
-})
 
 
 // POST /api/auth - if authenticated, return a signed JWT
@@ -114,3 +111,7 @@ app.get('/*', function(req, res) {
 // var server = app.listen(process.env.PORT || 3000);
 
 module.exports = server;
+
+server.listen(3000, function(){
+  console.log("swag shhh")
+})

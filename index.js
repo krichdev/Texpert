@@ -10,6 +10,10 @@ var secret = process.env.JWT_SECRET;
 
 var app = express();
 
+//Sockets
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
 // mongoose models and connection
 var mongoose = require('mongoose');
 var User = require('./models/user');
@@ -35,6 +39,56 @@ app.use(function (err, req, res, next) {
   }
 });
 
+//Socket user
+var users = [];
+
+io.on('connection', function(socket) {
+ console.log('a user has connected');
+//connections
+ socket.on('get-users', function() {
+     socket.emit('all-users', users);
+ });
+// new user
+ socket.on('join', function(data) {
+   console.log(data);
+ //user name
+   socket.nickname = data.nickname;
+   users[socket.nickname] = socket;
+
+   var userObj = {
+     nickname: data.nickname,
+     socketid: socket.id
+   };
+   console.log(userObj)
+   users.push(userObj);
+   console.log('all users', users);
+   io.emit('all-users', users);
+ });
+
+ socket.on('send-message', function(data) {
+   //socket.broadcast.emit('message-received', data);
+   io.emit('message-received', data);
+ });
+
+ socket.on('send-like', function(data){
+   console.log(data);
+   socket.broadcast.to(data.like).emit('user-liked',data);
+ });
+
+ socket.on('disconnect', function(){
+   // console.log('user disconnected', function() {
+   users = users.filter(function(item) {
+     return item.nickname !== socket.nickname;
+   });
+   io.emit('all-users', users);
+ });
+
+});
+server.listen(5000, function(){
+  console.log("swag shhh")
+})
+
+
 // POST /api/auth - if authenticated, return a signed JWT
 app.post('/api/auth', function(req, res) {
   User.findOne({ email: req.body.email }, function(err, user) {
@@ -57,6 +111,6 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-var server = app.listen(process.env.PORT || 3000);
+// var server = app.listen(process.env.PORT || 3000);
 
 module.exports = server;

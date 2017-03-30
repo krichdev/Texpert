@@ -30,6 +30,7 @@
   position: fixed;
   width: 50%;
   padding: 2em;
+}
 
 .catRow {
   height: 150px;
@@ -38,6 +39,7 @@
   border-radius: 10px;
   border: 1px solid #311b92;
 }
+
 
 .iconRow {
   margin-top: 15px;

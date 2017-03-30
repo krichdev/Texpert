@@ -9,9 +9,6 @@ angular
   'UserFactory',
   function($scope, $state, $location, AlertsFactory, AuthFactory, UserFactory) {
     // VARIABLES
-    //nav bar
-    $scope.showLogin = false;
-    $scope.showSignup = false;
 
     // login
     $scope.loginUser = {
@@ -36,18 +33,6 @@ angular
     // FUNCTIONS
 
     //navbar
-    $scope.toggleLogin = function() {
-      $scope.showLogin = $scope.showLogin ? false : true;
-      if ($scope.showSignup) {
-        $scope.showSignup = false;
-      }
-    }
-    $scope.toggleSignup = function() {
-      $scope.showSignup = $scope.showSignup ? false : true;
-      if ($scope.showLogin) {
-        $scope.showLogin = false;
-      }
-    }
     $scope.isLoggedIn = function() {
       return AuthFactory.isLoggedIn();
     };

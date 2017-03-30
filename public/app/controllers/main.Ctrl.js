@@ -5,16 +5,24 @@
     .module('TexpertApp')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$window', 'socket'];
+  MainCtrl.$inject = ['$scope', '$window', 'socket', 'AuthFactory', 'UserFactory'];
 
-  function MainCtrl($scope, $window, socket) {
+  function MainCtrl($scope, $window, socket, AuthFactory, UserFactory) {
       $scope.message = '';
       $scope.messages = [];
       $scope.users = [];
       $scope.likes = [];
-      $scope.mynickname = $window.localStorage['nickname'];
-      var nickname = $scope.mynickname;
+      $scope.mynickname = '';
+      $scope.singleUser = UserFactory.getUser($window.localStorage['currentUserId']).then(function success(data){
+                            $scope.mynickname = data.data.name;
+                            console.log($scope.mynickname);
+                            return data.data;
+                          }, function error(err){
+                            console.log('error ',err);
+                          });
 
+      var nickname = $scope.mynickname;
+      console.log($scope.my);
       socket.emit('get-users');
 
       socket.on('all-users', function(data) {

@@ -1,5 +1,5 @@
 <div class="modal-content">
-  <form ng-submit="userSignup()">
+  <form>
   <h4>SignUp</h4>
     <!-- Name -->
     <div input-field>
@@ -136,7 +136,7 @@
 
 <div class="modal-footer">
   <button 
-  type="submit" 
+  ng-click="userSignup()"
   class="modal-action modal-close waves-effect btn-flat">
     Signup
   </button>

@@ -54,7 +54,6 @@ angular
           var userId = res.data.user.id;
           AuthFactory.saveToken(res.data.token);
           AlertsFactory.add('success', 'You are now logged in!');
-          $scope.showLogin = false;
           $state.go('allGurus', {id: userId});
         },
         function error (err) {
@@ -81,8 +80,8 @@ angular
         function success (res) {
           console.log(res);
           AuthFactory.saveToken(res.data.token);
-          AlertsFactory.add('success', 'You are now logged in!');
-          $scope.showSignup = false;
+          AlertsFactory.add('success', 'Welcome, You are now logged in!');
+          $state.go('home');
         },
         function error (err) {
           AlertsFactory.add('error', err.data.message);

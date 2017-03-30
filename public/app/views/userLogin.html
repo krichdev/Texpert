@@ -1,5 +1,5 @@
 <div class="modal-content">
-  <form ng-submit="userLogin()">
+  <form>
     <h4>SignUp</h4>
     <div>
       <label for="email">Email</label>
@@ -13,9 +13,10 @@
 </div>
 
 <div class="modal-footer">
-  <button 
-    type="submit" 
-    class="modal-action modal-close waves-effect btn-flat">
-    Login
-  </button>
+    <button 
+      type="submit"
+      ng-click="userLogin()" 
+      class="modal-action modal-close waves-effect btn-flat">
+      Login
+    </button>
 </div>

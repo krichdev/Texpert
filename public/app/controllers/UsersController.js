@@ -78,5 +78,9 @@ angular
 
     }
 
+    $scope.createRoom = function(){
+      console.log('create room clicked');
+    }
+
   }
 ])

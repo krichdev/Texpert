@@ -21,6 +21,7 @@ angular
 
     // functions that are called on page render
     getUser();
+    
     if ($state.current.name == 'profilePage') {
       // db call for a single user
       getGuru();

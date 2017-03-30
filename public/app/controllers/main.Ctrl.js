@@ -13,16 +13,20 @@
       $scope.users = [];
       $scope.likes = [];
       $scope.mynickname = '';
+      $scope.myUserType = '';
       $scope.singleUser = UserFactory.getUser($window.localStorage['currentUserId']).then(function success(data){
                             $scope.mynickname = data.data.name;
-                            console.log($scope.mynickname);
+                            $scope.myUserType = data.data.userType;
                             return data.data;
                           }, function error(err){
                             console.log('error ',err);
                           });
 
+      $scope.saveChat = function(){
+        console.log('save chat clicked')
+      }
+
       var nickname = $scope.mynickname;
-      console.log($scope.my);
       socket.emit('get-users');
 
       socket.on('all-users', function(data) {

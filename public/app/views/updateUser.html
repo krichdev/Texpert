@@ -1,45 +1,42 @@
-<h1>User Update</h1>
-{{guru}}
-<div class="updateDiv">
-  <form ng-submit="updateUser()">
-    <legend>User Signup</legend>
-    <!-- Name -->
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        ng-model="guru.name">
-    </div>
+<div class="modal-content">
+  <h1>User Update</h1>
+  {{guru}}
+  <div>
+    <form>
+      <legend>User Signup</legend>
+      <!-- Name -->
+      <div>
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          ng-model="guru.name">
+      </div>
 
-    <!-- Email -->
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        ng-model="guru.email">
-    </div>
+      <!-- Email -->
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          ng-model="guru.email">
+      </div>
 
-    <!-- Phone -->
-    <div class="form-group">
-      <label for="phone">Phone</label>
-      <input
-        type="text"
-        class="form-control"
-        id="phone"
-        ng-model="guru.phone">
-    </div>
+      <!-- Phone -->
+      <div>
+        <label for="phone">Phone</label>
+        <input
+          type="text"
+          id="phone"
+          ng-model="guru.phone">
+      </div>
 
-    <div>
-      <label>Skills</label>
-      <div class="skillGroup">
+      <div>
+        <label>Skills</label>
+        <div class="skillGroup">
 
-        <!-- mobile/pc -->
-        <div>
-          <p>
+          <!-- mobile/pc -->
+          <div>
             <input
               id="mobile"
               type="checkbox"
@@ -48,8 +45,7 @@
               value="mobile"
               ng-model="guru.mobile">
             <label for="mobile">Mobile</label>
-          </p>
-          <p>
+            
             <input
               id="pc"
               type="checkbox"
@@ -58,11 +54,9 @@
               value="pc"
               ng-model="guru.pc">
             <label for="pc">PC</label>
-          </p>
-        </div>
-        <!-- printer/homeTheater -->
-        <div>
-          <p>
+          </div>
+          <!-- printer/homeTheater -->
+          <div>
             <input
               id="printer"
               type="checkbox"
@@ -71,8 +65,6 @@
               value="printer"
               ng-model="guru.printer">
             <label for="printer">Printer</label>
-          </p> 
-          <p>
             <input
               id="homeTheater"
               type="checkbox"
@@ -81,11 +73,9 @@
               value="homeTheater"
               ng-model="guru.homeTheater">
             <label for="homeTheater">Home Theater</label>
-          </p> 
-        </div>
-        <!-- homeRouter/tv -->
-        <div>
-          <p>
+          </div>
+          <!-- homeRouter/tv -->
+          <div>
             <input
               id="homeRouter"
               type="checkbox"
@@ -94,8 +84,6 @@
               value="homeRouter"
               ng-model="guru.homeRouter">
             <label for="homeRouter">Home Router</label>
-          </p>
-          <p>
             <input
               id="tv"
               type="checkbox"
@@ -104,11 +92,10 @@
               value="tv"
               ng-model="guru.tv">
             <label for="tv">Television</label>
-          </p>
-        </div>
+          </div>
 
+        </div>
       </div>
-    </div>
 
       <!-- Text Area -->
       <div class="input-field" ng-show="guru.userType == 'guru'">
@@ -122,6 +109,14 @@
         </textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">Update</button>
-  </form>
+    </form>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button
+    ng-click="updateUser()"
+    class="btn btn-primary">
+    Update
+  </button>
 </div>

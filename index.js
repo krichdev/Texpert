@@ -70,6 +70,10 @@ io.on('connection', function(socket) {
    io.emit('message-received', data);
  });
 
+ socket.on('room', function(room){
+    socket.join(room);
+ });
+
  socket.on('send-like', function(data){
    console.log(data);
    socket.broadcast.to(data.like).emit('user-liked',data);

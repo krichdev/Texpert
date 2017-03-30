@@ -1,6 +1,7 @@
 <div ng-controller="NavCtrl">
   <nav class="navbar-fixed deep-purple" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
+
     <div class="nav-wrapper container">
       <!-- BOOTSTRAP BUTTON, MUST CHANGE -->
       <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -12,6 +13,16 @@
 
 
       <a class="brand-logo" href="/"><img class="logo" ng-src="../../img/logo.png"></a>
+
+    <div class="nav-wrapper">
+      
+      <a class="brand-logo" href="/">Generic Home</a>
+      <a 
+        href="#" 
+        data-activates="mobile" 
+        class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
       <ul class="right hide-on-med-and-down">
         <li>
           <a ng-hide="isLoggedIn()" ng-click="toggleSignup()">

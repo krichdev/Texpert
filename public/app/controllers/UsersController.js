@@ -11,40 +11,32 @@ angular
     // VARIABLES
     $scope.guru;
     $scope.gurus;
-    $scope.currentUser;
+    $scope.currentUserId = AuthFactory.getCurrentUserId();
 
     $scope.getUser = getUser;
-    $scope.getGuru = getGuru;
     $scope.getAllUsers = getAllUsers;
     $scope.updateUser = updateUser;
 
-    $scope.select = {
-      value: "Option1",
-       choices: ["Option1", "I'm an option", "This is materialize", "No, this is Patrick."]
-    };
+    // DB call to get required info based on page
+    // called on page render
+    getPageData()
 
-    // functions that are called on page render
-    // TO BE FIXED when better understanding of
-    // who has access to what pages
-    getUser();
-    
-    if ($state.current.name == 'profilePage') {
-      // db call for a single user
-      getGuru();
-    } else if ($state.current.name == 'allGurus') {
-      // db call for all gurus
-      getAllUsers();
-
-    } else if ($state.current.name == 'profileUpdate') {
-      getGuru();
-    }
 
     // FUNCTIONS
+    //determines which userdata is required
+    function getPageData () {
+      getUser();
+      
+      if ($state.current.name == 'allGurus') {
+        getAllUsers();
+      }
+    }
+
     function getAllUsers() {
-      UserFactory.getAllGurus()
+      UserFactory.getAllUsers()
       .then(
         function success(res){
-          console.log('getting allGurus')
+          console.log('getting allGurus');
           $scope.gurus = res.data;
         },
         function error(err){
@@ -53,24 +45,18 @@ angular
       )
     }
 
-    function getUser() {
-      $scope.currentUser = AuthFactory.currentUser();
-      console.log('got a user: ', $scope.currentUser);
-    }
-
-    function getGuru(){
-      UserFactory.getGuru($scope.currentUser.id)
+    function getUser(){
+      UserFactory.getUser($scope.currentUserId)
       .then(
         function success(res) {
-          $scope.guru = res.data
-          console.log('got a guru: ', $scope.guru)
+          $scope.guru = res.data;
+          console.log('got a guru: ', $scope.guru);
         },
         function error(err){
           console.log(err);
         }
       )
     }
-
     function updateUser() {
       var id = $stateParams.id;
       UserFactory.updateUser(id, $scope.guru)
@@ -82,8 +68,6 @@ angular
           console.log('error', err);
         }
       )
-
     }
-
   }
 ])

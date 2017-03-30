@@ -9,10 +9,10 @@
             <p>{{ guru.bio }}</p>
             <a 
               ng-href="/users/{{ guru.id }}"
-              ng-if="guru.id != currentUser.id">See Guru's Profile</a>
+              ng-if="guru.id != currentUserId">See Guru's Profile</a>
             <a 
               ng-href="/users/{{ guru.id }}"
-              ng-if="guru.id == currentUser.id">See My Profile</a>
+              ng-if="guru.id == currentUserId">See My Profile</a>
           </div>
           <div class="card-action">
             <div class="chip" ng-if="guru.mobile">
@@ -49,16 +49,3 @@
           </select>
       </div>
   </div>
-  <div class="section col s8">
-      <h5>You selected: <b>{{select.value}}</b></h5>
-  </div>
-</div>
-
-<div input-field>
-    <input type="text" ng-model="dummyInputs.inputFieldInput" length="150">
-    <label>Input label</label>
-</div>
-<div input-field>
-    <textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"></textarea>
-    <label>Textarea</label>
-</div>

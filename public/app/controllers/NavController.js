@@ -4,10 +4,9 @@ angular
   '$scope',
   '$state',
   '$location',
-  'AlertsFactory',
   'AuthFactory',
   'UserFactory',
-  function($scope, $state, $location, AlertsFactory, AuthFactory, UserFactory) {
+  function($scope, $state, $location, AuthFactory, UserFactory) {
     // VARIABLES
 
     // login
@@ -38,7 +37,7 @@ angular
     };
     $scope.logout = function() {
       AuthFactory.removeToken();
-      AlertsFactory.add('success', 'You are now logged out');
+      Materialize.toast('You have logged out');
       $location.path('/');
       $scope.loginUser = {
         email: '',
@@ -53,11 +52,12 @@ angular
         function success (res) {
           var userId = res.data.user.id;
           AuthFactory.saveToken(res.data.token);
-          AlertsFactory.add('success', 'You are now logged in!');
+          Materialize.toast('Successfully Logged in', '2000');
+          $scope.showLogin = false;
           $state.go('allGurus', {id: userId});
         },
         function error (err) {
-          AlertsFactory.add('error', err.data.message);
+          errorMsg();
         }
       )
     }
@@ -70,7 +70,7 @@ angular
           $scope.autoLoginAfterSignup();
         },
         function error(err) {
-          AlertsFactory.add('error', err.data.message)
+          errorMsg();
         }
       )
     }
@@ -78,15 +78,20 @@ angular
       UserFactory.userLogin($scope.user)
       .then(
         function success (res) {
-          console.log(res);
           AuthFactory.saveToken(res.data.token);
-          AlertsFactory.add('success', 'Welcome, You are now logged in!');
+          Materialize.toast('Successfully Logged in', '2000');
           $state.go('home');
         },
         function error (err) {
-          AlertsFactory.add('error', err.data.message);
+          errorMsg();
         }
       )
     }
+
+    // displays error message for 5 seconds
+    function errorMsg() {
+      Materialize.toast('An error occurred: ' + err.data.message, '5000');
+    }
+
   }
 ]);

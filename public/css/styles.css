@@ -1,54 +1,26 @@
-/*Home Page*/
-.homeRow {
-  height: 400px;
-  width: 100%;
-  border: 1px solid red;
+.logo {
+  margin-top: 5px;
+}
 
+.hero {
+  height: 500px;
+  width: 100%;
+  background: url('../img/home-hero.jpg') no-repeat center;
+}
+
+.hero h1 {
+  margin-top: 0;
+}
+
+.heroText {
+  width: 570px;
+  margin: 0 auto;
   text-align: center;
-
-  /*display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;*/
-}
-.homeImg {
-  border: 1px solid red;
-  width: 100%;
-  height: 400px;
-  background: url('../img/main-home.jpg') no-repeat;
-  background-size: cover;
-}
-.welcomeImgText {
-  font-size:4.5em;
-  color: coral;
-  margin-top: 15vh;
-}
-/*NavBar*/
-ul {
-  list-style: none;
+  background-color: rgba(54, 69, 79, 0.75)
 }
 
-body {
-  background: linear-gradient(to bottom right, #13B06E, #49D4E8);
-}
-
-/*Category stuff*/
-.catIcon {
-  /*margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;*/
-}
-/*.catDetail {
-  width: 20%;
-  text-align: justify;
-}*/
-.catDetail h4 {
-  margin: 10px 0 0 0;
+.heroText a {
+  margin-bottom: 10px; 
 }
 
 /*Modals*/
@@ -58,19 +30,39 @@ body {
   position: fixed;
   width: 50%;
   padding: 2em;
+}
+
+.catRow {
+  height: 150px;
+  margin-top: -75px;
   background-color: white;
-  border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 0 0 25px 5 black;
+  border: 1px solid #311b92;
 }
 
-.skillGroup {
-  display: flex;
-  justify-content: space-around;
+
+.iconRow {
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
 }
 
-/*UpdateUser*/
-.updateDiv {
-  padding: 3em;
-  background-color: rgba(0,0,0, 0.5);
+.homeIcon {
+
+}
+
+.steps {
+  height: 450px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.catsExplained {
+  height: 450px;
+  background: linear-gradient(to bottom, #673ab7, #b39ddb);
+}
+
+.catsExplained h2 {
+  padding-top: 25px;
 }

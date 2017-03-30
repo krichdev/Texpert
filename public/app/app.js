@@ -34,6 +34,16 @@ angular
       templateUrl: 'app/views/updateUser.html',
       controller: 'UsersController'
     })
+    .state('main', {
+     url:'/main/main',
+     templateUrl: 'app/views/main.html',
+     controller: 'MainCtrl'
+   })
+   .state('join', {
+     url:'/main/join' ,
+     templateUrl: 'app/views/join.html',
+     controller: 'JoinCtrl'
+   })
 
     $locationProvider.html5Mode(true);
 

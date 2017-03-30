@@ -59,7 +59,7 @@ angular
     }
 
     function getGuru(){
-      UserFactory.getGuru($stateParams.id)
+      UserFactory.getGuru($scope.currentUser.id)
       .then(
         function success(res) {
           $scope.guru = res.data

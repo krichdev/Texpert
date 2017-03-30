@@ -6,9 +6,10 @@
         <span class="card-title">{{ guru.name }}</span>
         <p>{{ guru.bio }}</p>
         <div>
-          <a 
-            ng-if="currentUser.id == guru.id"
-            ng-href="/users/update/{{ currentUser.id }}"> 
+          <a
+            class="modalATag"
+            ng-if="currentUserId == guru.id"
+            data-target="updateModal" modal> 
             Update user
           </a>
         </div>
@@ -37,3 +38,9 @@
     </div>
   </div>
 </div>
+
+ <div 
+    id="updateModal" 
+    class="modal">
+    <div ng-include="'app/views/modals/updateUser.html'"></div>
+  </div>

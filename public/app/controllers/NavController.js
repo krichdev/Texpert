@@ -37,7 +37,7 @@ angular
     };
     $scope.logout = function() {
       AuthFactory.removeToken();
-      Materialize.toast('You have logged out');
+      Materialize.toast('You have logged out', '2000');
       $location.path('/');
       $scope.loginUser = {
         email: '',
@@ -50,11 +50,11 @@ angular
       UserFactory.userLogin($scope.loginUser)
       .then(
         function success (res) {
-          var userId = res.data.user.id;
           AuthFactory.saveToken(res.data.token);
+          AuthFactory.saveCurrentUserId(res.data.user.id);
           Materialize.toast('Successfully Logged in', '2000');
           $scope.showLogin = false;
-          $state.go('allGurus', {id: userId});
+          $state.go('allGurus');
         },
         function error (err) {
           errorMsg();
@@ -75,6 +75,7 @@ angular
       )
     }
 
+    //signup helper functions
     // auto logs in user after signing up
     function autoLoginAfterSignup() {
       UserFactory.userLogin($scope.user)
@@ -89,7 +90,7 @@ angular
         }
       )
     }
-
+    
     // displays error message for 5 seconds
     function errorMsg() {
       Materialize.toast('An error occurred: ' + err.data.message, '5000');

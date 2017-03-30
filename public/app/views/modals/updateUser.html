@@ -1,11 +1,10 @@
 <div class="modal-content">
-  <h1>User Update</h1>
-  {{guru}}
+  <h4>User Update</h4>
   <div>
     <form>
       <legend>User Signup</legend>
       <!-- Name -->
-      <div>
+      <div input-field>
         <label for="name">Name</label>
         <input
           type="text"
@@ -14,7 +13,7 @@
       </div>
 
       <!-- Email -->
-      <div>
+      <div input-field>
         <label for="email">Email</label>
         <input
           type="email"
@@ -23,7 +22,7 @@
       </div>
 
       <!-- Phone -->
-      <div>
+      <div input-field>
         <label for="phone">Phone</label>
         <input
           type="text"
@@ -36,7 +35,7 @@
         <div class="skillGroup">
 
           <!-- mobile/pc -->
-          <div>
+          <div class="skillPair">
             <input
               id="mobile"
               type="checkbox"
@@ -45,7 +44,7 @@
               value="mobile"
               ng-model="guru.mobile">
             <label for="mobile">Mobile</label>
-            
+
             <input
               id="pc"
               type="checkbox"
@@ -56,7 +55,7 @@
             <label for="pc">PC</label>
           </div>
           <!-- printer/homeTheater -->
-          <div>
+          <div class="skillPair">
             <input
               id="printer"
               type="checkbox"
@@ -75,7 +74,7 @@
             <label for="homeTheater">Home Theater</label>
           </div>
           <!-- homeRouter/tv -->
-          <div>
+          <div class="skillPair">
             <input
               id="homeRouter"
               type="checkbox"
@@ -98,15 +97,14 @@
       </div>
 
       <!-- Text Area -->
-      <div class="input-field" ng-show="guru.userType == 'guru'">
-        <p>Bio</p>
+      <div input-field class="input-field">
         <textarea 
           id="bio" 
           class="materialize-textarea" 
           ng-model="guru.bio"
-          placeholder="Tell us about yourself" 
           >
         </textarea>
+        <label>Bio</label>
       </div>
 
     </form>

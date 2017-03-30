@@ -24,6 +24,9 @@
 }
 
 /*Modals*/
+.modalATag:hover {
+  cursor: pointer;
+}
 .loggerModal {
   left: 25%;
   top: 8%;
@@ -39,9 +42,14 @@
   display: flex;
   justify-content: space-around;
 }
+.skillPair { 
+  display: flex;
+  flex-direction: column;
+}
 .signupBtn {
   margin-top: 20px;
 }
+.
 
 .catRow {
   height: 150px;

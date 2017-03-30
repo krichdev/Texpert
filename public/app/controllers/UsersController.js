@@ -81,8 +81,9 @@ angular
 
           for(var i = 0; i < 4; i++){
             roomId += possible.charAt(Math.floor(Math.random() * possible.length));
-            return roomId;
           }
+          console.log(roomId)
+          return roomId;
         }
 
         $scope.join = function() {

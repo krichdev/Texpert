@@ -13,8 +13,8 @@ angular
     // VARIABLES
     $scope.guru;
     $scope.gurus;
+    $scope.chatHistory;
     $scope.currentUserId = AuthFactory.getCurrentUserId();
-
     $scope.getUser = getUser;
     $scope.getAllUsers = getAllUsers;
     $scope.updateUser = updateUser;
@@ -52,8 +52,11 @@ angular
       .then(
         function success(res) {
           $scope.guru = res.data;
+          $scope.chatHistory = $scope.guru.chatHistory;
           console.log('user controller', $scope.guru.profilePic)
           console.log('got a guru: ', $scope.guru);
+
+          console.log($scope.chatHistory)
         },
         function error(err){
           console.log(err);

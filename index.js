@@ -17,7 +17,7 @@ var io = require('socket.io')(server);
 // mongoose models and connection
 var mongoose = require('mongoose');
 var User = require('./models/user');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/techport');
+mongoose.connect(process.env.MONGOLAB_BLUE_URI || 'mongodb://localhost/techport');
 
 // decode POST data in JSON and URL encoded formats
 app.use(bodyParser.json());

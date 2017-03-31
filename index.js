@@ -11,8 +11,8 @@ var secret = process.env.JWT_SECRET;
 var app = express();
 
 //Sockets
-var server1 = require('http').Server(app);
-var io = require('socket.io')(server1);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 // mongoose models and connection
 var mongoose = require('mongoose');
@@ -113,8 +113,9 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-var server = app.listen(process.env.PORT || 3000);
+// var server = app.listen(process.env.PORT || 3000);
 
 module.exports = server;
 
+server.listen(process.env.PORT || 3000)
 

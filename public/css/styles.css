@@ -68,12 +68,17 @@
 }
 
 .catsExplained {
-  height: 450px;
   background: linear-gradient(to bottom, #673ab7, #b39ddb);
+  text-align: center;
+  padding-bottom: 20px;
 }
 
 .catsExplained h2 {
   padding-top: 25px;
+}
+
+.catsExplained p {
+  text-align: left;
 }
 
 

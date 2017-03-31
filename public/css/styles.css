@@ -70,6 +70,7 @@
 .catsExplained {
   background: linear-gradient(to bottom, #673ab7, #b39ddb);
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .catsExplained h2 {

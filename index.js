@@ -113,9 +113,9 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-// var server = app.listen(process.env.PORT || 3000);
+var server = app.listen(process.env.PORT || 3000);
+// server.listen(process.env.PORT || 3000)
 
 module.exports = server;
 
-server.listen(process.env.PORT || 3000)
 

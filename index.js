@@ -117,6 +117,4 @@ app.get('/*', function(req, res) {
 
 module.exports = server;
 
-server.listen(3000, function(){
-  console.log("swag shhh")
-})
+server.listen(process.env.PORT || 3000)

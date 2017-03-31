@@ -29,7 +29,10 @@ var UserSchema = mongoose.Schema({
     required: true
   },
   profilePic: String,
-  chatHistory: Object
+  chatHistory: {
+    type:Object,
+    required: false
+  }
 });
 
 UserSchema.set('toJSON', {

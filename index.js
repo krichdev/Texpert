@@ -11,8 +11,8 @@ var secret = process.env.JWT_SECRET;
 var app = express();
 
 //Sockets
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var server1 = require('http').Server(app);
+var io = require('socket.io')(server1);
 
 // mongoose models and connection
 var mongoose = require('mongoose');

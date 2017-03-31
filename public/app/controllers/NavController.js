@@ -26,7 +26,8 @@ angular
       printer: false,
       homeRouter: false,
       tv: false,
-      userType: ''
+      userType: '',
+      chatHistory: {messages: []}
     },
 
     // FUNCTIONS

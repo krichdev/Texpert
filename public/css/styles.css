@@ -77,3 +77,8 @@ box-shadow: 0 0 10px black;
 .catsExplained h2 {
   padding-top: 25px;
 }
+
+.saveBtn {
+  display: inline;
+  margin-left: 25px;
+}

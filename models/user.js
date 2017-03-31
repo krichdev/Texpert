@@ -27,7 +27,8 @@ var UserSchema = mongoose.Schema({
   userType: {
     type: String,
     required: true
-  }
+  },
+  chatHistory: Object
 });
 
 UserSchema.set('toJSON', {
@@ -45,7 +46,8 @@ UserSchema.set('toJSON', {
       printer: ret.printer,
       homeRouter: ret.homeRouter,
       tv: ret.tv,
-      userType: ret.userType
+      userType: ret.userType,
+      chatHistory: ret.chatHistory
     };
     return returnJson;
   }

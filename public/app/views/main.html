@@ -2,7 +2,7 @@
   <h2 class="center"> Welcome <b>{{mynickname}}!</b></h2>
 
     <div class="col-md-8">
-      <form ng-submit='sendMessage()'>
+      <form>
         <div class='input-group'>
           <input class='input-sm form-control'
                       ng-model='message'
@@ -11,15 +11,21 @@
           <span class='input-group-btn'>
             <input class='btn btn-default deep-purple'
             type='submit'
+            ng-click='sendMessage()'
             value='Send'>
           </span>
+          <input type="text" 
+          length="10" class='input-sm form-control'
+          ng-model="chatName"
+          placeholder="Name your chat">
+          <button class='btn btn-default saveBtn'
+                ng-if="myUserType == 'user'"
+                ng-click="saveChat()"
+                >Save Chat</button>
+
+    
         </div>
       </form>
-      <br>
-      <button class='btn btn-default'
-            ng-if="myUserType == 'user'"
-            ng-click="saveChat()"
-            >Save Chat</button>
       <br>
       <div class='well chatbox' id='chat_history'>
         <ul class='list-unstyled'>

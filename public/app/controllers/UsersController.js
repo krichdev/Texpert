@@ -20,6 +20,7 @@ angular
     $scope.getUser = getUser;
     $scope.getAllUsers = getAllUsers;
     $scope.updateUser = updateUser;
+    $scope.getAProfile = getAProfile;
 
     // DB call to get required info based on page
     // called on page render
@@ -33,7 +34,9 @@ angular
       if ($state.current.name == 'allGurus') {
         getAllUsers();
       }
-
+      if ($state.current.name == 'profilePage') {
+        getAProfile();
+      }
       if ($state.current.name == 'profilePage' &&
       $scope.currentUserId == $stateParams.id) {
         $scope.isCurrentUsersPage = true;
@@ -75,6 +78,25 @@ angular
         }
       )
     }
+    function getAProfile() {
+      UserFactory.getUser($stateParams.id)
+      .then(
+        function success(res) {
+          $scope.guru = res.data;
+          if ($scope.guru.chatHistory) {
+            $scope.chatHistory = $scope.guru.chatHistory;
+            console.log('user controller', $scope.guru.profilePic)
+            console.log('got a guru: ', $scope.guru);
+
+            console.log($scope.chatHistory)
+          }
+        },
+        function error() {
+          Materialize.toast('Sorry, there was some sort of error', 3000);
+        }
+      )
+    }
+
     function updateUser() {
       console.log('updatebtn clicked')
       var id = $stateParams.id;

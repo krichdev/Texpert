@@ -27,7 +27,10 @@ angular
       homeRouter: false,
       tv: false,
       userType: '',
-      chatHistory: {messages: []}
+      profilePic: '',
+      chatHistory: {
+        messages: []
+      }
     },
 
     // FUNCTIONS

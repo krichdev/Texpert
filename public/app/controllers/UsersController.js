@@ -52,6 +52,7 @@ angular
       .then(
         function success(res) {
           $scope.guru = res.data;
+          console.log('user controller', $scope.guru.profilePic)
           console.log('got a guru: ', $scope.guru);
         },
         function error(err){
@@ -60,6 +61,7 @@ angular
       )
     }
     function updateUser() {
+      console.log('updatebtn clicked')
       var id = $stateParams.id;
       UserFactory.updateUser(id, $scope.guru)
       .then(

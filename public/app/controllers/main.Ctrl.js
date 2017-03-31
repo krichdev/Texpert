@@ -10,19 +10,27 @@
   function MainCtrl($scope, $window, socket, AuthFactory, UserFactory) {
       $scope.message = '';
       $scope.messages = [];
+      $scope.chatLog = {messages: []};
+      $scope.chatName = '';
       $scope.users = [];
       $scope.likes = [];
       $scope.mynickname = '';
+      $scope.myUserType = '';
       $scope.singleUser = UserFactory.getUser($window.localStorage['currentUserId']).then(function success(data){
                             $scope.mynickname = data.data.name;
-                            console.log($scope.mynickname);
+                            $scope.myUserType = data.data.userType;
+                            $scope.chatHistory = data.data.chatHistory
                             return data.data;
                           }, function error(err){
                             console.log('error ',err);
                           });
+      $scope.saveChat = function(){
+        console.log($scope.chatLog)
+        $scope.singleUser.chatHistory[$scope.chatName] = $scope.chatLog;
+        console.log($scope.singleUser.chatHistory[$scope.chatName])
+      }
 
       var nickname = $scope.mynickname;
-      console.log($scope.my);
       socket.emit('get-users');
 
       socket.on('all-users', function(data) {
@@ -34,6 +42,7 @@
 
       socket.on('message-received', function(data) {
         $scope.messages.push(data);
+        console.log('from main ctrl msg arr ', $scope.chatLog.messages)
       });
 
       socket.on('user-liked', function(data) {

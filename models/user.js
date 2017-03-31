@@ -28,7 +28,8 @@ var UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  profilePic: String
+  profilePic: String,
+  chatHistory: Object
 });
 
 UserSchema.set('toJSON', {
@@ -47,7 +48,8 @@ UserSchema.set('toJSON', {
       homeRouter: ret.homeRouter,
       tv: ret.tv,
       userType: ret.userType,
-      profilePic: ret.profilePic
+      profilePic: ret.profilePic,
+      chatHistory: ret.chatHistory
     };
     return returnJson;
   }

@@ -79,9 +79,10 @@
 
 
 /* User Profile*/
-.userImg {
-  max-height: 100px;
+img.userImg {
+  height: 100px;
   max-width: 100px;
+  object-fit: cover;
   border-radius: 10px 20px;
   box-shadow: 0 0 5px black;
 }

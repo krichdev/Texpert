@@ -28,9 +28,6 @@ angular
       tv: false,
       userType: '',
       profilePic: '',
-      chatHistory: {
-        messages: []
-      }
     },
 
     // FUNCTIONS

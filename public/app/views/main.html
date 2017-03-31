@@ -4,26 +4,30 @@
     <div class="col-md-8">
       <form>
         <div class='input-group'>
-          <input class='input-sm form-control'
-                      ng-model='message'
-                      type='text'
-                      placeholder="Type a message...">
+          <input 
+            class='input-sm form-control'
+            ng-model='message'
+            type='text'
+            placeholder="Type a message...">
           <span class='input-group-btn'>
             <input class='btn btn-default deep-purple'
             type='submit'
             ng-click='sendMessage()'
             value='Send'>
           </span>
-          <input type="text" 
-          length="10" class='input-sm form-control'
-          ng-model="chatName"
-          placeholder="Name your chat">
-          <button class='btn btn-default saveBtn'
-                ng-if="myUserType == 'user'"
-                ng-click="saveChat()"
-                >Save Chat</button>
-
-    
+          <input 
+            type="text" 
+            length="10" 
+            class='input-sm form-control'
+            ng-model="chatName"
+            placeholder="Name your chat">
+          <button 
+            class='btn btn-default saveBtn'
+            ng-if="myUserType == 'user'"
+            ng-click="saveChat()">
+            Save Chat
+          </button>
+          
         </div>
       </form>
       <br>

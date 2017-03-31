@@ -9,6 +9,7 @@
         <input
           type="text"
           id="name"
+          length="16"
           ng-model="guru.name">
       </div>
 
@@ -27,6 +28,7 @@
         <input
           type="text"
           id="phone"
+          length="10"
           ng-model="guru.phone">
       </div>
 
@@ -108,7 +110,8 @@
       <!-- Text Area -->
       <div input-field class="input-field">
         <textarea 
-          id="bio" 
+          id="bio"
+          length="160" 
           class="materialize-textarea" 
           ng-model="guru.bio"
           >

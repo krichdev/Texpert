@@ -10,34 +10,69 @@
   function MainCtrl($scope, $window, socket, AuthFactory, UserFactory) {
       $scope.message = '';
       $scope.messages = [];
-      $scope.chatLog = {messages: []};
       $scope.chatName = '';
       $scope.users = [];
       $scope.likes = [];
       $scope.mynickname = '';
       $scope.myUserType = '';
-      $scope.singleUser = UserFactory.getUser($window.localStorage['currentUserId']).then(function success(data){
-                            $scope.mynickname = data.data.name;
-                            $scope.myUserType = data.data.userType;
-                            $scope.chatHistory = data.data.chatHistory
-                            return data.data;
-                          }, function error(err){
-                            console.log('error ',err);
-                          });
+      $scope.singleUser = {};
+      $scope.currentUserId = $window.localStorage['currentUserId'];
+      $scope.chatLog = {
+        messages: $scope.messages
+      };
+      
+      // call this function on chatroom start
+      getSingleUser();
+
+
+      // get user object from database and store into $scope.singleUser
+      function getSingleUser() {
+        UserFactory.getUser($scope.currentUserId)
+        .then(
+          function success(res) {
+            $scope.singleUser = res.data;
+            $scope.mynickname = $scope.singleUser.name;
+            $scope.myUserType = $scope.singleUser.userType;
+            $scope.chatHistory = $scope.singleUser.chatHistory;
+          },
+          function error(err) {
+            console.log('error', err);
+          });
+      }
+      
       $scope.saveChat = function(){
-        console.log($scope.chatLog)
+        // if !user.chatHistory, make it
+        if (!$scope.singleUser.chatHistory) {         
+          $scope.singleUser.chatHistory = {};
+        }
+        // save chat log to user's
         $scope.singleUser.chatHistory[$scope.chatName] = $scope.chatLog;
-        console.log($scope.singleUser.chatHistory[$scope.chatName])
+        Materialize.toast('Chatlog has been saved', 2000);
+
+        //make put request to update user's db
+        UserFactory.updateUser($scope.currentUserId, $scope.singleUser)
       }
 
       var nickname = $scope.mynickname;
       socket.emit('get-users');
 
+
+      // Socket Stuff
+      $scope.sendMessage = function(data) {
+        var newMessage = {
+          message: $scope.message,
+          from: $scope.mynickname
+        };
+        socket.emit('send-message', newMessage);
+        $scope.message = '';
+        //   $scope.messages.push(newMessage);
+      };
+
       socket.on('all-users', function(data) {
-          console.log(data);
-          $scope.users = data.filter(function(item){
-              return item.nickname !== nickname;
-          });
+        console.log(data);
+        $scope.users = data.filter(function(item){
+          return item.nickname !== nickname;
+        });
       });
 
       socket.on('message-received', function(data) {
@@ -46,18 +81,9 @@
       });
 
       socket.on('user-liked', function(data) {
-          console.log(data);
-          $scope.likes.push(data.from);
+        console.log(data);
+        $scope.likes.push(data.from);
       });
 
-      $scope.sendMessage = function(data) {
-          var newMessage = {
-            message: $scope.message,
-            from: $scope.mynickname
-        };
-        socket.emit('send-message', newMessage);
-          $scope.message = '';
-        //   $scope.messages.push(newMessage);
-      };
   }
 })();

@@ -37,6 +37,15 @@
         </div>
       </div>
     </div>
+  </div> 
+</div>
+            <!-- sweat, obj -->
+<div class="card" ng-repeat="(chatName, chatObj) in chatHistory">
+  <h3>{{ chatName }}</h3>
+  <div ng-repeat="msgObj in chatObj.messages">
+    <div>
+      {{ msgObj.from }}: {{ msgObj.message }}
+    </div>
   </div>
 </div>
 

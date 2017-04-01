@@ -93,6 +93,8 @@ io.sockets.on('connection', function(socket) {
 
 // POST /api/auth - if authenticated, return a signed JWT
 app.post('/api/auth', function(req, res) {
+  console.log('****************************************************************************')
+  console.log('trying to log user in ',req)
   User.findOne({ email: req.body.email }, function(err, user) {
     // return 401 if error or no user
     if (err || !user) return res.status(401).send({ message: 'User not found' });

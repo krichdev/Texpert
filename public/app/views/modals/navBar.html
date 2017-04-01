@@ -12,13 +12,13 @@
       <ul class="right hide-on-med-and-down">
         <!-- TEST -->
         <li>
-          <a ng-show="LoggedInCheck"
+          <a ng-show="isLoggedIn()"
             href="/users">
             Gurus
           </a>
         </li>
         <li>
-          <a ng-show="LoggedInCheck"
+          <a ng-show="isLoggedIn()"
             href="/main/join">
             TEST chatroom
           </a>
@@ -26,20 +26,20 @@
         <!-- TEST -->
         <li>
           <a 
-            ng-hide="LoggedInCheck" 
+            ng-hide="isLoggedIn()" 
             data-target="signupModal" modal>
             Signup
           </a>
         </li>
         <li>
           <a
-            ng-hide="LoggedInCheck"
+            ng-hide="isLoggedIn()"
             data-target="loginModal" modal>
             Login
           </a>
         </li>
         <li>
-          <a ng-click="logout()" ng-show="LoggedInCheck">
+          <a ng-click="logout()" ng-show="isLoggedIn()">
             Logout
           </a>
         </li>

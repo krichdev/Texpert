@@ -83,8 +83,12 @@
 
 
 /* User Profile*/
-div.card-content.white-text {
+
+.guruCard {
   height: 455px;
+}
+.userCard {
+  height: 420px;
 }
 img.userImg {
   object-fit: cover;

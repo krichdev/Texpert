@@ -2,7 +2,6 @@
   <h4>User Update</h4>
   <div>
     <form>
-      <legend>User Signup</legend>
       <!-- Name -->
       <div input-field>
         <label for="name">Name</label>
@@ -41,7 +40,7 @@
           ng-model="guru.profilePic">
       </div>
 
-      <div>
+      <div ng-if="guru.userType == guru">
         <label>Skills</label>
         <div class="skillGroup">
 
@@ -108,7 +107,10 @@
       </div>
 
       <!-- Text Area -->
-      <div input-field class="input-field">
+      <div 
+        input-field 
+        class="input-field"
+        ng-if="guru.userType == guru">
         <textarea 
           id="bio"
           length="160" 

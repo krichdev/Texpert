@@ -9,6 +9,7 @@ angular
   'UserFactory',
   function($scope, $state, $location, $window, AuthFactory, UserFactory) {
     // VARIABLES
+    $scope.isLoggedIn = isLoggedIn;
 
     // login
     $scope.loginUser = {
@@ -38,20 +39,25 @@ angular
       userType: ''
     };
 
-    // FUNCTIONS
+    // runs on every page render
+    if (isLoggedIn()) {
+      $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+      getUser();
+    }
 
+
+    // FUNCTIONS
     //navbar
-    $scope.isLoggedIn = function() {
+    function isLoggedIn() {
       return AuthFactory.isLoggedIn();
     };
     $scope.logout = function() {
       AuthFactory.removeToken();
       Materialize.toast('You have logged out', '2000');
-      $scope.loginUser = { email: '', password: '' }; 
-      $scope.currentUserInfo = {};
-      $location.path('/');
+      clearUserData();
+      $state.go('home');
     }
-
+  
     // gets current user's db info
     function getUser() {
       UserFactory.getUser($scope.currentUserInfo.id)
@@ -103,6 +109,12 @@ angular
     // displays error message for 5 seconds
     function errorMsg(err) {
       Materialize.toast('An error occurred: ' + err.data.message, '5000');
+    }
+
+    function clearUserData() {
+      $scope.loginUser = { email: '', password: '' }; 
+      $scope.currentUserInfo = {};
+      $scope.user = {};
     }
 
   }

@@ -12,7 +12,7 @@
       <ul class="right hide-on-med-and-down">
         <li>
           <a
-            ng-show="isLoggedIn && currentUser.userType == 'user'" 
+            ng-show="currentUser && currentUser.userType == 'user'" 
             data-target="helpModal" modal>
             Request Help
           </a>
@@ -39,8 +39,6 @@
       </ul>
     </div>
   </nav>
-  {{ isLoggedIn }}
-
   <!-- Modals -->
   <div 
     id="helpModal" 

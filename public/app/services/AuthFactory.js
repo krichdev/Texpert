@@ -29,7 +29,7 @@ angular
     }
     function removeToken() {
       $window.localStorage.removeItem('secretToken');
-      $window.localStorage.removeItem('currentUserId');
+      $window.localStorage.removeItem('currentUserInfo');
     }
     function isLoggedIn() {
       var token = this.getToken();

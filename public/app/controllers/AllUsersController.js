@@ -11,14 +11,17 @@ angular
     // VARIABLES
     $scope.guru;
     $scope.gurus;
-    $scope.currentUserId;
+    $scope.currentUserInfo = {
+      id: '',
+      userType: ''
+    };
 
     //DB call to get required Info on page render
     getPageData();
 
     // FUNCTIONS
     function getPageData() {
-      $scope.currentUserId = AuthFactory.getCurrentUserId();
+      $scope.currentUserInfo = JSON.parse(AuthFactory.getCurrentUserInfo());
       getUser();
       getAllUsers();
     }
@@ -26,27 +29,21 @@ angular
     function getAllUsers() {
       UserFactory.getAllUsers()
       .then(
-        function success(res){
-          $scope.gurus = res.data;
-        },
-        function error(err){
-          errorMsg(err);
-        }
+        function success(res){ $scope.gurus = res.data; },
+        function error(err){ errorMsg(err); }
       )
     }
 
+
+    // gets current User's db info
     function getUser() {
-      UserFactory.getUser($scope.currentUserId)
+      UserFactory.getUser($scope.currentUserInfo.id)
       .then(
-        function success(res) {
-          $scope.guru = res.data;
-        },
-        function error(err){
-          errorMsg(err);
-        }
+        function success(res) { $scope.guru = res.data; },
+        function error(err){ errorMsg(err); }
       )
     }
-    
+
     function errorMsg(err) {
       Materialize.toast('Sorry, an error occured', err);
     }

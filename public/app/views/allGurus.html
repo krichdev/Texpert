@@ -48,13 +48,13 @@
               <a 
                 class="btn deep-purple"
                 ng-href="/users/{{ guru.id }}"
-                ng-if="guru.id != currentUserId">
+                ng-if="guru.id != currentUserInfo.id">
                 See Guru's Profile
               </a>
               <a 
                 class="btn deep-purple allUsersChatRoomBtn"
                 ng-href="/users/{{ guru.id }}"
-                ng-if="guru.id == currentUserId">
+                ng-if="guru.id == currentUserInfo.id">
                 See My Profile
               </a>
             </div>
@@ -62,7 +62,7 @@
               <button 
                 class="btn deep-purple"
                 ng-click="join()"
-                ng-if="guru.id == currentUserId">
+                ng-if="guru.id == currentUserInfo.id">
                 Create Help Room
               </button>
             </div>

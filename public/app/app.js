@@ -32,7 +32,7 @@ angular
     .state('profileUpdate', {
       url: '/users/update/:id',
       templateUrl: 'app/views/updateUser.html',
-      controller: 'UsersController'
+      controller: 'SingleUserCtrl'
     })
     .state('main', {
      url:'/main/main',

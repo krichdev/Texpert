@@ -27,7 +27,7 @@ angular
     .state('profilePage', {
       url: '/users/:id',
       templateUrl: 'app/views/singleUser.html',
-      controller: 'UsersController'
+      controller: 'SingleUserCtrl'
     })
     .state('profileUpdate', {
       url: '/users/update/:id',

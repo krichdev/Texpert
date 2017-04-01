@@ -40,7 +40,7 @@
           ng-model="guru.profilePic">
       </div>
 
-      <div ng-if="guru.userType == guru">
+      <div ng-if="guru.userType == 'guru'">
         <label>Skills</label>
         <div class="skillGroup">
 
@@ -110,7 +110,7 @@
       <div 
         input-field 
         class="input-field"
-        ng-if="guru.userType == guru">
+        ng-if="guru.userType == 'guru'">
         <textarea 
           id="bio"
           length="160" 

@@ -10,28 +10,13 @@
         <i class="material-icons">menu</i>
       </a>
       <ul class="right hide-on-med-and-down">
-        <!-- TEST -->
         <li>
           <a
             ng-show="isLoggedIn && currentUser.userType == 'user'" 
-            href="#">
+            data-target="helpModal" modal>
             Request Help
           </a>
         </li>
-        
-        <li>
-          <a ng-show="isLoggedIn()"
-            href="/users">
-            Gurus
-          </a>
-        </li>
-        <li>
-          <a ng-show="isLoggedIn()"
-            href="/main/join">
-            TEST chatroom
-          </a>
-        </li>
-        <!-- TEST -->
         <li>
           <a 
             ng-hide="isLoggedIn()" 
@@ -57,6 +42,11 @@
   {{ isLoggedIn }}
 
   <!-- Modals -->
+  <div 
+    id="helpModal" 
+    class="modal">
+    <div ng-include="'app/views/modals/helpRequestForm.html'"></div>
+  </div>
   <div 
     id="loginModal" 
     class="modal">

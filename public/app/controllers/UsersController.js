@@ -111,31 +111,32 @@ angular
       )
     }
 
-    var nickname;
-    var roomId = roomId();
-    console.log(roomId)
-    function roomId(){
-      var room = '';
-      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()";
+    // Socket Chat *** NOW IN AllUsersController *** Commenting Out For Now
+    // var nickname;
+    // var roomId = roomId();
+    // console.log(roomId)
+    // function roomId(){
+    //   var room = '';
+    //   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()";
 
-      for(var i = 0; i < 4; i++){
-        room += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      return room;
-    }
+    //   for(var i = 0; i < 4; i++){
+    //     room += possible.charAt(Math.floor(Math.random() * possible.length));
+    //   }
+    //   return room;
+    // }
 
-    $scope.join = function() {
+    // $scope.join = function() {
     
-      nickname = AuthFactory.currentUser();
-      $window.localStorage['nickname'] = nickname;
-      console.log('nickname, ', nickname)
-      socket.emit('join', {
-        nickname: nickname,
-        room: roomId
-      });
+    //   nickname = AuthFactory.currentUser();
+    //   $window.localStorage['nickname'] = nickname;
+    //   console.log('nickname, ', nickname)
+    //   socket.emit('join', {
+    //     nickname: nickname,
+    //     room: roomId
+    //   });
 
-      $state.go('chat', {id: roomId});
-    };
+    //   $state.go('chat', {id: roomId});
+    // };
 
   }
 ]);

@@ -12,6 +12,14 @@
       <ul class="right hide-on-med-and-down">
         <!-- TEST -->
         <li>
+          <a
+            ng-show="isLoggedIn && currentUser.userType == 'user'" 
+            href="#">
+            Request Help
+          </a>
+        </li>
+        
+        <li>
           <a ng-show="isLoggedIn()"
             href="/users">
             Gurus

@@ -5,24 +5,24 @@ angular
   function($window) {
 
     return {
-      saveToken:          saveToken,
-      saveCurrentUserId:  saveCurrentUserId,
-      getCurrentUserId:   getCurrentUserId,
-      getToken:           getToken,
-      removeToken:        removeToken,
-      isLoggedIn:         isLoggedIn,
-      currentUser:        currentUser
+      saveToken:            saveToken,
+      saveCurrentUserInfo:  saveCurrentUserInfo,
+      getCurrentUserInfo:   getCurrentUserInfo,
+      getToken:             getToken,
+      removeToken:          removeToken,
+      isLoggedIn:           isLoggedIn,
+      currentUser:          currentUser
     }
 
     function saveToken(token) {
       $window.localStorage['secretToken'] = token;
     }
-    function saveCurrentUserId(id) {
-      console.log('id in factory', id)
-      $window.localStorage['currentUserId'] = id;
+    // accepts id & userType as an Obj
+    function saveCurrentUserInfo(userObj) {
+      $window.localStorage['currentUserInfo'] = JSON.stringify(userObj);
     }
-    function getCurrentUserId() {
-      return $window.localStorage['currentUserId'];
+    function getCurrentUserInfo() {
+      return $window.localStorage['currentUserInfo'];
     }
     function getToken() {
       return $window.localStorage['secretToken'];

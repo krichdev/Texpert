@@ -16,7 +16,7 @@
       $scope.mynickname = '';
       $scope.myUserType = '';
       $scope.singleUser = {};
-      $scope.currentUserId = $window.localStorage['currentUserId'];
+      $scope.currentUserId = $window.localStorage['currentUserId'].id;
       $scope.chatLog = {
         messages: $scope.messages
       };

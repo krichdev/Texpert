@@ -22,7 +22,7 @@ angular
     .state('allGurus', {
       url: '/users',
       templateUrl: 'app/views/allGurus.html',
-      controller: 'UsersController'
+      controller: 'AllUserCtrl'
     })
     .state('profilePage', {
       url: '/users/:id',

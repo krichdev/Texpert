@@ -29,39 +29,26 @@ angular
       userType: '',
       profilePic: '',
     }
-    $scope.LoggedInCheck = isLoggedIn();
-
 
     // FUNCTIONS
 
     //navbar
-    function isLoggedIn() {
+    $scope.isLoggedIn = function() {
       return AuthFactory.isLoggedIn();
     };
     $scope.logout = function() {
       AuthFactory.removeToken();
       Materialize.toast('You have logged out', '2000');
+      $scope.loginUser = { email: '', password: '' }; 
       $location.path('/');
-      $scope.loginUser = {
-        email: '',
-        password: ''
-      }; 
     }
 
     // login
     $scope.userLogin = function () {
       UserFactory.userLogin($scope.loginUser)
       .then(
-        function success (res) {
-          AuthFactory.saveToken(res.data.token);
-          AuthFactory.saveCurrentUserId(res.data.user.id);
-          Materialize.toast('Successfully Logged in', '2000');
-          $scope.showLogin = false;
-          $state.go('allGurus');
-        },
-        function error (err) {
-          errorMsg();
-        }
+        function success(res) { loginSuccess(res); },
+        function error (err) { errorMsg(err); }
       )
     }
 
@@ -70,32 +57,29 @@ angular
       UserFactory.userSignup($scope.user)
       .then(
         function success(res) {
-          autoLoginAfterSignup();
+          UserFactory.userLogin(res)
+          .then (
+            function success(res) { loginSuccess(res); },
+            function error(err) { errorMsg(err); }
+          )
         },
-        function error(err) {
-          errorMsg();
-        }
+        function error(err) { errorMsg(err); }
       )
     }
 
-    //signup helper functions
-    // auto logs in user after signing up
-    function autoLoginAfterSignup() {
-      UserFactory.userLogin($scope.user)
-      .then(
-        function success (res) {
-          AuthFactory.saveToken(res.data.token);
-          Materialize.toast('Successfully Logged in', '2000');
-          $state.go('home');
-        },
-        function error (err) {
-          errorMsg();
-        }
-      )
+    // helper functions
+    // success login
+    function loginSuccess(res) {
+      console.log('res after fresh signup', res.data.user);
+      console.log('id', res.data.user.id);
+      AuthFactory.saveToken(res.data.token);
+      AuthFactory.saveCurrentUserId(res.data.user.id);
+      Materialize.toast('Successfully Logged in', '2000');
+      $scope.showLogin = false;
+      $state.go('allGurus');
     }
-    
     // displays error message for 5 seconds
-    function errorMsg() {
+    function errorMsg(err) {
       Materialize.toast('An error occurred: ' + err.data.message, '5000');
     }
 

@@ -1,3 +1,10 @@
+<!-- Update Modal -->
+<div 
+  id="updateModal" 
+  class="modal">
+  <div ng-include="'app/views/modals/updateUser.html'"></div>
+</div>
+
 <div class="row">
   <div class="col">
     <!-- Shows if not currentUser -->
@@ -13,9 +20,15 @@
 
 <div class="row">
   <div class="col s12 m6 offset-m3">
-    <div class="card teal darken-1">
+    <!-- User Card -->
+    <div 
+      class="card teal darken-1"
+      ng-class="{
+        guruCard: guru.userType == 'guru',
+        userCard: guru.userType == 'user'
+      }">
      
-     <!-- Basic Info  -->
+      <!-- Basic Info  -->
       <div class="card-content white-text section">
         <span class="card-title center">
           <strong>{{ guru.name }}</strong>
@@ -27,10 +40,15 @@
             ng-src="{{ guru.profilePic }}">
         </div>
 
-        <p class="center profileBio">{{ guru.bio }}</p>
+        <!-- Guru Bio -->
+        <p 
+          class="center profileBio"
+          ng-if="guru.userType == guru">{{ guru.bio }}</p>
         
         <!-- Guru Skills -->
-        <div class="section">
+        <div
+          ng-if="guru.userType == guru"
+          class="section">
           <div class="chip" ng-if="guru.mobile">
             Mobile
           </div>
@@ -52,7 +70,6 @@
         </div>
       </div>
 
-
       <!-- Update Btn, Show if it's your profile -->
       <div class="center section">
         <a
@@ -67,21 +84,19 @@
   </div> 
 </div>
 
-<!-- Shows if current users profile page -->
+<!-- Chat messages, Shows if current users profile page & user !=guru -->
 <div 
-  class="card"
   ng-if="isCurrentUsersPage" 
   ng-repeat="(chatName, chatObj) in chatHistory">
-  <h3>{{ chatName }}</h3>
-  <div ng-repeat="msgObj in chatObj.messages">
-    <div>
-      {{ msgObj.from }}: {{ msgObj.message }}
+  <div class="row">
+    <div class="card col s10 offset-s1 card-content"> 
+      <h3>{{ chatName }}</h3>
+      <div ng-repeat="msgObj in chatObj.messages">
+        <p>
+          {{ msgObj.from }}: {{ msgObj.message }}
+        </p>
+      </div>
     </div>
   </div>
-</div>
 
- <div 
-    id="updateModal" 
-    class="modal">
-    <div ng-include="'app/views/modals/updateUser.html'"></div>
-  </div>
+</div>

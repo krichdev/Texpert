@@ -28,12 +28,14 @@ angular
       tv: false,
       userType: '',
       profilePic: '',
-    },
+    }
+    $scope.LoggedInCheck = isLoggedIn();
+
 
     // FUNCTIONS
 
     //navbar
-    $scope.isLoggedIn = function() {
+    function isLoggedIn() {
       return AuthFactory.isLoggedIn();
     };
     $scope.logout = function() {

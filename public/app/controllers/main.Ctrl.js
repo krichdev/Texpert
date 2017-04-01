@@ -16,6 +16,7 @@
       $scope.mynickname = '';
       $scope.myUserType = '';
       $scope.singleUser = {};
+      $scope.profilePic;
       $scope.currentUserId = $window.localStorage['currentUserId'];
       $scope.chatLog = {
         messages: $scope.messages
@@ -34,6 +35,7 @@
             $scope.mynickname = $scope.singleUser.name;
             $scope.myUserType = $scope.singleUser.userType;
             $scope.chatHistory = $scope.singleUser.chatHistory;
+            $scope.profilePic = $scope.singleUser.profilePic;
           },
           function error(err) {
             console.log('error', err);
@@ -61,7 +63,8 @@
       $scope.sendMessage = function(data) {
         var newMessage = {
           message: $scope.message,
-          from: $scope.mynickname
+          from: $scope.mynickname,
+          pic: $scope.profilePic
         };
         socket.emit('send-message', newMessage);
         $scope.message = '';

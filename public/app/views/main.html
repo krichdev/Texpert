@@ -1,6 +1,5 @@
 <div class="container">
   <h2 class="center"> Welcome <b>{{mynickname}}!</b></h2>
-
     <div class="col-md-8">
       <form>
         <div class='input-group'>
@@ -32,15 +31,16 @@
       </form>
       <br>
       <div class='well chatbox' id='chat_history'>
-        <ul class='list-unstyled'>
-          <li ng-repeat='m in messages'>
-            <i class='fa fa-comment'></i>
-            &nbsp;
-            <b>{{m.from}} </b>:
-            &nbsp;
-            {{m.message}}
-          </li>
-        </ul>
+          <ul class='list-unstyled'>
+            <li ng-repeat='m in messages'>
+              <!--<i class='fa fa-comment'></i>-->
+              <img ng-src="{{ profilePic }}" class="responsive-img chatImg circle">
+              &nbsp;
+              <p class="chatText"><b>{{m.from}} </b>:
+              &nbsp;
+              {{m.message}}</p>
+            </li>
+          </ul>
       </div>
     </div>
   </div>

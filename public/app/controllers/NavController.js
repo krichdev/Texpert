@@ -95,7 +95,7 @@ angular
 
       AuthFactory.saveToken(res.data.token);
       AuthFactory.saveCurrentUserInfo($scope.currentUserInfo);
-      $scope.currentUserInfo = $window.localStorage['currentUserInfo'];
+      $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
       getUser();
       Materialize.toast('Successfully Logged in', '2000');
       $state.go('allGurus');

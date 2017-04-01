@@ -22,6 +22,7 @@ angular
       getUser();
       getAllUsers();
     }
+
     function getAllUsers() {
       UserFactory.getAllUsers()
       .then(
@@ -33,6 +34,7 @@ angular
         }
       )
     }
+
     function getUser() {
       UserFactory.getUser($scope.currentUserId)
       .then(
@@ -44,6 +46,7 @@ angular
         }
       )
     }
+    
     function errorMsg(err) {
       Materialize.toast('Sorry, an error occured', err);
     }

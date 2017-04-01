@@ -5,6 +5,7 @@
   <div ng-include="'app/views/modals/updateUser.html'"></div>
 </div>
 
+{{ guru.userType }}
 <div class="row">
   <div class="col">
     <!-- Shows if not currentUser -->
@@ -43,11 +44,11 @@
         <!-- Guru Bio -->
         <p 
           class="center profileBio"
-          ng-if="guru.userType == guru">{{ guru.bio }}</p>
+          ng-if="guru.userType == 'guru'">{{ guru.bio }}</p>
         
         <!-- Guru Skills -->
         <div
-          ng-if="guru.userType == guru"
+          ng-if="guru.userType == 'guru'"
           class="section">
           <div class="chip" ng-if="guru.mobile">
             Mobile
@@ -74,7 +75,6 @@
       <div class="center section">
         <a
           class="modalATag btn deep-purple"
-          ng-if="currentUserId == guru.id"
           data-target="updateModal" modal> 
           Update user
         </a>

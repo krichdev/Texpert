@@ -11,8 +11,11 @@ angular
     // VARIABLES
     $scope.guru;
     $scope.chatHistory;
-    $scope.currentUserId;
     $scope.isCurrentUsersPage;
+    $scope.currentUserInfo = {
+      id: '',
+      userType: ''
+    };
 
     //public functions
     $scope.updateUser = updateUser;
@@ -22,10 +25,9 @@ angular
 
     // FUNCTIONS
     function getPageData() {
-      $scope.currentUserId = AuthFactory.getCurrentUserId();
+      $scope.currentUserInfo = JSON.parse(AuthFactory.getCurrentUserInfo());
       getAProfile();
-
-      if ($state.currentUserId == $stateParams.id) {
+      if ($scope.currentUserInfo.id == $stateParams.id) {
         $scope.isCurrentUsersPage = true;
       } else {
         $scope.isCurrentUsersPage = false;

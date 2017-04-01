@@ -4,9 +4,10 @@ angular
   '$scope',
   '$state',
   '$location',
+  '$window',
   'AuthFactory',
   'UserFactory',
-  function($scope, $state, $location, AuthFactory, UserFactory) {
+  function($scope, $state, $location, $window, AuthFactory, UserFactory) {
     // VARIABLES
 
     // login
@@ -30,6 +31,13 @@ angular
       profilePic: '',
     }
 
+    // logged in user
+    $scope.currentUser;
+    $scope.currentUserInfo = {
+      id: '',
+      userType: ''
+    };
+
     // FUNCTIONS
 
     //navbar
@@ -40,10 +48,20 @@ angular
       AuthFactory.removeToken();
       Materialize.toast('You have logged out', '2000');
       $scope.loginUser = { email: '', password: '' }; 
+      $scope.currentUserInfo = {};
       $location.path('/');
     }
 
-    // login
+    // gets current user's db info
+    function getUser() {
+      UserFactory.getUser($scope.currentUserInfo.id)
+      .then(
+        function success(res) { $scope.currentUser = res.data; },
+        function error(err){ errorMsg(err); }
+      )
+    }
+
+    // login, takes email & password obj
     $scope.userLogin = function () {
       UserFactory.userLogin($scope.loginUser)
       .then(
@@ -52,7 +70,7 @@ angular
       )
     }
 
-    // signup
+    // signup, creates an account and auto logs in
     $scope.userSignup = function() {
       UserFactory.userSignup($scope.user)
       .then(
@@ -70,12 +88,16 @@ angular
     // helper functions
     // success login
     function loginSuccess(res) {
-      console.log('res after fresh signup', res.data.user);
-      console.log('id', res.data.user.id);
+      $scope.currentUserInfo = {
+        id: res.data.user.id,
+        userType: res.data.user.userType
+      };
+
       AuthFactory.saveToken(res.data.token);
-      AuthFactory.saveCurrentUserId(res.data.user.id);
+      AuthFactory.saveCurrentUserInfo($scope.currentUserInfo);
+      $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+      getUser();
       Materialize.toast('Successfully Logged in', '2000');
-      $scope.showLogin = false;
       $state.go('allGurus');
     }
     // displays error message for 5 seconds

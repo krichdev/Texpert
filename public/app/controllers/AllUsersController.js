@@ -14,14 +14,14 @@ angular
     $scope.currentUserId;
 
     //DB call to get required Info on page render
-    startFunction();
+    getPageData();
 
-    function startFunction() {
+    // FUNCTIONS
+    function getPageData() {
       $scope.currentUserId = AuthFactory.getCurrentUserId();
       getUser();
       getAllUsers();
     }
-
     function getAllUsers() {
       UserFactory.getAllUsers()
       .then(

@@ -32,6 +32,8 @@ app.use('/api/users', expressJWT({secret: secret})
     path: [{ url: '/api/users', methods: ['POST'] }]
   }), require('./controllers/users'));
 
+app.use('/api/messages', expressJWT({secret: secret}), require('./controllers/messages'));
+
 // this middleware will check if expressJWT did not authorize the user, and return a message
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
@@ -50,7 +52,7 @@ io.sockets.on('connection', function(socket) {
  });
 // new user
  socket.on('join', function(data) {
-   console.log('this is my data ', data);
+  //console.log('this is my data ', data);
  //user name
    socket.nickname = data.nickname;
    socket.room = data.room;
@@ -60,9 +62,9 @@ io.sockets.on('connection', function(socket) {
      nickname: data.nickname,
      socketid: socket.id
    };
-   console.log('this is my userObj ', userObj)
+   // console.log('this is my userObj ', userObj)
    users.push(userObj);
-   console.log('all users', users);
+   // console.log('all users', users);
    io.emit('all-users', users);
  });
 
@@ -76,7 +78,7 @@ io.sockets.on('connection', function(socket) {
  });
 
  socket.on('send-like', function(data){
-   console.log(data);
+   // console.log(data);
    socket.broadcast.to(data.like).emit('user-liked',data);
  });
 
@@ -93,7 +95,7 @@ io.sockets.on('connection', function(socket) {
 
 // POST /api/auth - if authenticated, return a signed JWT
 app.post('/api/auth', function(req, res) {
-  console.log('trying to log user in ',req.body)
+  // console.log('trying to log user in ',req.body)
   User.findOne({ email: req.body.email }, function(err, user) {
     // return 401 if error or no user
     if (err || !user) return res.status(401).send({ message: 'User not found' });

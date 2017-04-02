@@ -112,7 +112,7 @@ angular
     function clearUserData() {
       $scope.loginUser = { email: '', password: '' }; 
       $scope.currentUserInfo = {};
-      $scope.user = {};
+      $scope.currentUser = {};
     }
 
   }

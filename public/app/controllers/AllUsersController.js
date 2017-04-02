@@ -16,10 +16,25 @@ angular
       userType: ''
     };
 
-    //DB call to get required Info on page render
-    getPageData();
+    //runs on page render
+    checkViewer();
 
     // FUNCTIONS
+    function checkViewer() {
+      // Only allows signed-in users to see Guru list
+      if (!isLoggedIn()) {
+        $state.go('home');
+        Materialize.toast('You need to be logged in to see our excellent list of Texpert Gurus', 10000);
+      } else { 
+        //DB call to get required Info on page render
+        getPageData();
+      }
+    }
+
+    function isLoggedIn() {
+      return AuthFactory.isLoggedIn();
+    };
+
     function getPageData() {
       $scope.currentUserInfo = JSON.parse(AuthFactory.getCurrentUserInfo());
       getUser();

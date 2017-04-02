@@ -13,29 +13,29 @@ angular
 
     // login
     $scope.loginUser = {
-      email: '',
+      email:    '',
       password: ''
     };
 
     // signup
     $scope.user = {
-      name: '',
-      email: '',
-      password: '',
-      mobile: false,
-      pc: false,
-      homeTheater: false,
-      printer: false,
-      homeRouter: false,
-      tv: false,
-      userType: '',
-      profilePic: '',
+      name:         '',
+      email:        '',
+      password:     '',
+      userType:     '',
+      profilePic:   '',
+      mobile:       false,
+      pc:           false,
+      homeTheater:  false,
+      printer:      false,
+      homeRouter:   false,
+      tv:           false,
     }
 
     // logged in user
     $scope.currentUser;
     $scope.currentUserInfo = {
-      id: '',
+      id:       '',
       userType: ''
     };
 
@@ -81,11 +81,7 @@ angular
       UserFactory.userSignup($scope.user)
       .then(
         function success(res) {
-          UserFactory.userLogin(res)
-          .then (
-            function success(res) { loginSuccess(res); },
-            function error(err) { errorMsg(err); }
-          )
+         Materialize.toast('You\'re now signed up. You can now sign in', 7000);
         },
         function error(err) { errorMsg(err); }
       )
@@ -99,9 +95,11 @@ angular
         userType: res.data.user.userType
       };
 
+      // save user token & other info in localStorage
       AuthFactory.saveToken(res.data.token);
       AuthFactory.saveCurrentUserInfo($scope.currentUserInfo);
       $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+      
       getUser();
       Materialize.toast('Successfully Logged in', '2000');
       $state.go('allGurus');

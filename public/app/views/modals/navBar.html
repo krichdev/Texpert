@@ -1,7 +1,10 @@
 <div ng-controller="NavCtrl">
+  {{currentUserInfo.id}}
   <nav class="navbar-fixed deep-purple" role="navigation">
     <div class="nav-wrapper">
-      <a class="brand-logo" href="/"><img class="logo" ng-src="../../img/logo.png"></a>
+      <a class="brand-logo" href="/">
+        <img class="logo" ng-src="../../img/logo.png">
+      </a>
 
       <a 
         href="#" 
@@ -10,6 +13,14 @@
         <i class="material-icons">menu</i>
       </a>
       <ul class="right hide-on-med-and-down">
+        <li>
+          <a 
+            ng-show="isLoggedIn()"
+            ng-href="/users/{{ currentUserInfo.id }}">
+            My Profile
+          </a>
+        </li>
+
         <li>
           <a
             ng-show="currentUser && currentUser.userType == 'user'" 
@@ -32,7 +43,9 @@
           </a>
         </li>
         <li>
-          <a ng-click="logout()" ng-show="isLoggedIn()">
+          <a 
+            ng-click="logout()" 
+            ng-show="isLoggedIn()">
             Logout
           </a>
         </li>

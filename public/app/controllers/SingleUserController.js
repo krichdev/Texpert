@@ -27,6 +27,7 @@ angular
     function getPageData() {
       $scope.currentUserInfo = JSON.parse(AuthFactory.getCurrentUserInfo());
       getAProfile();
+
       if ($scope.currentUserInfo.id == $stateParams.id) {
         $scope.isCurrentUsersPage = true;
       } else {

@@ -13,7 +13,6 @@ angular
     .state('home', {
       url: '/',
       templateUrl:'/app/views/home.html'
-      // ,controller: 'HomeCtrl'
     })
     .state('404', {
       url: '/404',

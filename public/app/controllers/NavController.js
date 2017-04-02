@@ -56,10 +56,10 @@ angular
     }
 
     // runs on every page render
-    // if (isLoggedIn()) {
-    //   $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
-    //   getUser();
-    // }
+    if (isLoggedIn()) {
+      $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+      getUser();
+    }
 
 
     // FUNCTIONS

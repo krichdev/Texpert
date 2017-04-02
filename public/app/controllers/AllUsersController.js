@@ -18,24 +18,21 @@ angular
       userType: ''
     };
 
-    //runs on page render
-    checkViewer();
+    // Runs on page render
+    verifyUser();
+
 
     // FUNCTIONS
-    function checkViewer() {
+    function verifyUser() {
       // Only allows signed-in users to see Guru list
-      if (!isLoggedIn()) {
+      if (!AuthFactory.isLoggedIn()) {
         $state.go('home');
-        Materialize.toast('You need to be logged in to see our excellent list of Texpert Gurus', 10000);
+        Materialize.toast('You need to be logged in to see this page', 10000);
       } else { 
         //DB call to get required Info on page render
         getPageData();
       }
     }
-
-    function isLoggedIn() {
-      return AuthFactory.isLoggedIn();
-    };
 
     function getPageData() {
       $scope.currentUserInfo = JSON.parse(AuthFactory.getCurrentUserInfo());
@@ -50,7 +47,6 @@ angular
         function error(err){ errorMsg(err); }
       )
     }
-
 
     // gets current User's db info
     function getUser() {

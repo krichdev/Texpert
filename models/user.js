@@ -4,33 +4,33 @@ var bcrypt = require('bcrypt');
 var UserSchema = mongoose.Schema({
   name: String,
   email: {
-    type: String,
+    type:     String,
     required: true,
-    unique: true
+    unique:   true
   },
   password: {
-    type: String,
+    type:     String,
     required: true
   },
-  mobile: Boolean,
-  pc: Boolean,
-  homeTheater: Boolean,
-  printer: Boolean,
-  homeRouter: Boolean,
-  tv: Boolean,
-  reviews: String,
-  bio: String,
+  mobile:       Boolean,
+  pc:           Boolean,
+  homeTheater:  Boolean,
+  printer:      Boolean,
+  homeRouter:   Boolean,
+  tv:           Boolean,
+  reviews:      String,
+  bio:          String,
   phone: {
-    type: String,
+    type:     String,
     required: true
   },
   userType: {
-    type: String,
+    type:     String,
     required: true
   },
   profilePic: String,
   chatHistory: {
-    type:Object,
+    type:     Object,
     required: false
   }
 });
@@ -38,21 +38,21 @@ var UserSchema = mongoose.Schema({
 UserSchema.set('toJSON', {
   transform: function(doc, ret, options) {
     var returnJson = {
-      id: ret._id,
-      email: ret.email,
-      name: ret.name,
-      reviews: ret.reviews,
-      bio: ret.bio,
-      phone: ret.phone,
-      mobile: ret.mobile,
-      pc: ret.pc,
-      homeTheater: ret.homeTheater,
-      printer: ret.printer,
-      homeRouter: ret.homeRouter,
-      tv: ret.tv,
-      userType: ret.userType,
-      profilePic: ret.profilePic,
-      chatHistory: ret.chatHistory
+      id:           ret._id,
+      email:        ret.email,
+      name:         ret.name,
+      reviews:      ret.reviews,
+      bio:          ret.bio,
+      phone:        ret.phone,
+      mobile:       ret.mobile,
+      pc:           ret.pc,
+      homeTheater:  ret.homeTheater,
+      printer:      ret.printer,
+      homeRouter:   ret.homeRouter,
+      tv:           ret.tv,
+      userType:     ret.userType,
+      profilePic:   ret.profilePic,
+      chatHistory:  ret.chatHistory
     };
     return returnJson;
   }

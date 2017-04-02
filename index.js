@@ -118,7 +118,7 @@ app.get('/*', function(req, res) {
 
 // var server = app.listen(process.env.PORT || 3000);
 server.listen(process.env.PORT || 3000, function() {
-  console.log("beibs is in the building");
+  console.log("Cory in the House!!!");
 });
 
 module.exports = app;

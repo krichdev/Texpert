@@ -12,7 +12,13 @@
         <i class="material-icons">menu</i>
       </a>
       <ul class="right hide-on-med-and-down">
-
+        <li>
+          <a
+            ng-show="currentUser" 
+            href="/messages">
+            MessageBoard
+          </a>
+        </li>
         <li>
           <a
             ng-show="currentUser && currentUser.userType == 'user'" 

@@ -45,6 +45,9 @@ angular
 
     // help request modal
     $scope.helpForm = {
+      userName: '',
+      userId: '',
+      userPhoto: '',
       issueTitle: '',
       device: '',
       description: ''
@@ -61,10 +64,18 @@ angular
 
     // help request modal
     function submitHelpRequest() {
+      // add requester data to form
+      $scope.helpForm.userName = $scope.currentUser.name;
+      $scope.helpForm.userId = $scope.currentUser.id;
+      $scope.helpForm.userPhoto = $scope.currentUser.profilePic;
+      
+      //POST request to db
       MessageFactory.createMessage($scope.helpForm)
       .then(
         function success(res) {
-         Materialize.toast('Your request has been pinned to the help board.', 7000);
+          $scope.helpForm = {};
+          Materialize.toast('Your request has been pinned to the help board.\
+            To see your help requests, go to your profile page', 10000);
         },
         function error(err) { errorMsg(err); }
       )

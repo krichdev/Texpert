@@ -1,0 +1,50 @@
+<h3 class="center">Help Board</h3>
+
+<div class="container" >
+
+  <!-- CREATE LARGE BUTTON FOR USERS TO MAKE NEW HELP REQUEST -->
+  <div 
+    ng-if="currentUserInfo.userType == 'user'">
+    <button>click me</button>
+  </div>
+
+  <!-- RENDER ALL REQUESTS FOR GURUS -->
+  <div class="row">
+    <div ng-repeat="message in messageList">
+      <div class="col s12 m4">
+
+        <!-- Single Message -->
+        <div class="card teal">
+          <div class="card-content white-text center">
+            <h5>{{ message.issueTitle }}</h5>
+            <img 
+              ng-src="{{ message.userPhoto }}"
+              class="responsive-img userImg allUserImg">
+            <strong>
+              <p>{{ message.device }}</p>
+            </strong>
+            <p class="profileBio">{{ message.description }}</p>
+          </div>
+          
+          <div class="section center">
+            <a 
+              href="#"
+              class="btn deep-purple">
+              Assist
+            </a>
+          </div>
+        </div>
+
+      </div>      
+    </div>
+  </div>
+  
+
+</div>
+
+<!-- helpform modal -->
+<div 
+  id="helpModal" 
+  class="modal">
+  <div ng-include="'app/views/modals/helpRequestForm.html'"></div>
+</div>

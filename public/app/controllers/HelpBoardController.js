@@ -57,13 +57,15 @@ angular
 
 
     $scope.createUserLink = function() {
+      roomId = generateRoomId();
+      $scope.messageList[this.$index].chatId = roomId;
+      $scope.messageList[this.$index].claimed = $scope.currentUserInfo.id;
+
       console.log($scope.messageList[this.$index])
-      $scope.messageList[this.$index].claimed = true;
-      //db update call
+      //db call, updates the message with a chatroomId & User assigned to task
       MessageFactory.claimMessage($scope.messageList[this.$index])
       .then(
         function success(res) {
-          roomId = generateRoomId();
           createChatroom(roomId);
           console.log('success')
         },
@@ -71,8 +73,6 @@ angular
           console.log('error', err)
         }
       )
-      console.log($scope.messageList[this.$index])
-      console.log('clicks')
     }
 
     function generateRoomId(){

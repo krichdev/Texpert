@@ -44,4 +44,14 @@ router.route('/:id')
     });
   })
 
+router.route('/chatroom/:id')
+  .get(function(req, res) {
+    Message.findOne({ chatId: req.params.id }, function(err, message) {
+      if (err) return res.status(400).send(
+        { message: 'There was some sort of error' }
+      )
+      return res.send(message);
+    });
+  })
+
 module.exports = router;

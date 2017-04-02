@@ -5,9 +5,17 @@
     .module('TexpertApp')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$stateParams', '$window', 'socket', 'AuthFactory','MessageFactory', 'UserFactory'];
+  MainCtrl.$inject = [
+    '$scope', 
+    '$state', 
+    '$stateParams', 
+    '$window', 
+    'socket', 
+    'AuthFactory',
+    'MessageFactory', 
+    'UserFactory'];
 
-  function MainCtrl($scope, $stateParams, $window, socket, AuthFactory, MessageFactory, UserFactory) {
+  function MainCtrl($scope, $state, $stateParams, $window, socket, AuthFactory, MessageFactory, UserFactory) {
       
       // VARIABLES
       $scope.message = '';
@@ -43,7 +51,7 @@
         MessageFactory.getMessageByRoomId($stateParams.id)
         .then(
           function success(res) {
-            $scope.originalIssueForm = res.data
+            $scope.originalIssueForm = res.data;
             console.log('success, ', res.data);
           },
           function error(err) {
@@ -55,25 +63,40 @@
         UserFactory.getUser($scope.currentUserInfo.id)
         .then(
           function success(res) {
-            $scope.singleUser = res.data;
-            $scope.mynickname = $scope.singleUser.name;
-            $scope.myUserType = $scope.singleUser.userType;
-            $scope.chatHistory = $scope.singleUser.chatHistory;
-            $scope.profilePic = $scope.singleUser.profilePic;
+            $scope.singleUser   = res.data;
+            $scope.mynickname   = $scope.singleUser.name;
+            $scope.myUserType   = $scope.singleUser.userType;
+            $scope.chatHistory  = $scope.singleUser.chatHistory;
+            $scope.profilePic   = $scope.singleUser.profilePic;
           },
           function error(err) {
-            console.log('error', err);
+            con$scope.sole.log('error', err);
           });
       }
       
       $scope.exitChat = function(resolution) {
         if (resolution == 'resolved') {
-          //make factory delete call to db
+          $scope.originalIssueForm.claimed  = 'archive';
         } else {
-          //make factory update call to db
-          //mark issue as claimed = false
+          $scope.originalIssueForm.claimed  = '';
+          $scope.originalIssueForm.chatId   = '';
         }
-        //state.go to profile page
+
+        MessageFactory.updateMessage($scope.originalIssueForm)
+        .then (
+          function success() {
+            $state.go('profilePage', { id: $scope.currentUserInfo.id });
+            var toastMsg = (resolution == 'resolved') ? 
+            'Sounds like your issue was resolved :)' :
+            'Sorry that tech could\'nt figure it out';
+            
+            Materialize.toast(toastMsg, '5000');
+          },
+          function error(err) {
+            console.log('error', err);
+            Materialize.toast('Oh no, looks like something went wrong', 5000);
+          }
+        )
       }
 
 
@@ -97,9 +120,9 @@
       // Socket Stuff
       $scope.sendMessage = function(data) {
         var newMessage = {
-          message: $scope.message,
-          from: $scope.mynickname,
-          pic: $scope.profilePic
+          message:  $scope.message,
+          from:     $scope.mynickname,
+          pic:      $scope.profilePic
         };
         socket.emit('send-message', newMessage);
         $scope.message = '';

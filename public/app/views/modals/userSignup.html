@@ -1,6 +1,6 @@
 <div class="modal-content">
   <form>
-  <h4>SignUp</h4>
+  <h4>Sign Up Form</h4>
     <!-- Name -->
     <div input-field>
       <label for="name">Name</label>
@@ -52,7 +52,9 @@
     <!-- User Type -->
     <div>
       <label for="userType">Type of User</label>
-      <select class="browser-default" ng-model="user.userType">
+      <select 
+        class="browser-default" 
+        ng-model="user.userType">
         <option value="" disabled selected>Type of User</option>
         <option value="user">I Need Help</option>
         <option value="guru">I Can Help</option>
@@ -61,8 +63,13 @@
 
     <!-- Skills -->
     <div>
-      <label ng-show="user.userType == 'guru'">Your Skills</label>
-      <div class="skillGroup" ng-show="user.userType == 'guru'">
+      <label 
+        ng-show="user.userType == 'guru'">
+        Your Skills
+      </label>
+      <div 
+        class="skillGroup" 
+        ng-show="user.userType == 'guru'">
         <div>
           <p>
             <input
@@ -134,7 +141,9 @@
     </div>
 
     <!-- Text Area -->
-    <div input-field ng-show="user.userType == 'guru'">
+    <div 
+      input-field 
+      ng-show="user.userType == 'guru'">
       <textarea 
         id="bio"
         length="120" 

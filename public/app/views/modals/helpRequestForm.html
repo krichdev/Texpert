@@ -1,0 +1,49 @@
+<div class="modal-content">
+  <form>
+    <h4>Issue Form</h4>
+    <div input-field>
+      <label for="issue">Issue</label>
+    </div>
+
+    <div>
+      <label for="device">Device</label>
+      <select 
+        class="browser-default"
+        ng-model="form.error">
+          <option 
+            value="" 
+            disabled 
+            selected>
+            Choose a device with an issue 
+          </option>
+          <option value="mobileAndroid">Android phone</option>
+          <option value="mobileIOS">Apple phone</option>
+          <option value="pcWindows">PC Windows</option>
+          <option value="pcMac">Mac</option>
+          <option value="homeRouter">Home Router</option>
+          <option value="homeTheater">Home Theater</option>
+          <option value="tv">Television</option>
+          <option value="printer">Printer</option>
+        </select>
+    </div>
+
+    <!-- Description of error -->
+    <div input-field>
+      <textarea
+        id="errorDescription"
+        length="120"
+        class="materialize-textarea"
+        ng-model="form.textarea">
+      </textarea>
+      <label>In summary, what's the problem?</label>
+    </div>
+  </form>  
+</div>
+
+<div class="modal-footer">
+  <button
+    ng-click="submit"
+    class="modal-action modal-close waves-effect btn-flat teal white-text">
+    Submit
+  </button>
+</div>

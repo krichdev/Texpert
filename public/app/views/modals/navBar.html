@@ -1,7 +1,9 @@
 <div ng-controller="NavCtrl">
   <nav class="navbar-fixed deep-purple" role="navigation">
     <div class="nav-wrapper">
-      <a class="brand-logo" href="/"><img class="logo" ng-src="../../img/logo.png"></a>
+      <a class="brand-logo" href="/">
+        <img class="logo" ng-src="../../img/logo.png">
+      </a>
 
       <a 
         href="#" 
@@ -10,28 +12,21 @@
         <i class="material-icons">menu</i>
       </a>
       <ul class="right hide-on-med-and-down">
-        <!-- TEST -->
+        <li>
+          <a 
+            ng-show="isLoggedIn()"
+            ng-href="/users/{{ currentUserInfo.id }}">
+            My Profile
+          </a>
+        </li>
+
         <li>
           <a
-            ng-show="isLoggedIn && currentUser.userType == 'user'" 
-            href="#">
+            ng-show="currentUser && currentUser.userType == 'user'" 
+            data-target="helpModal" modal>
             Request Help
           </a>
         </li>
-        
-        <li>
-          <a ng-show="isLoggedIn()"
-            href="/users">
-            Gurus
-          </a>
-        </li>
-        <li>
-          <a ng-show="isLoggedIn()"
-            href="/main/join">
-            TEST chatroom
-          </a>
-        </li>
-        <!-- TEST -->
         <li>
           <a 
             ng-hide="isLoggedIn()" 
@@ -47,16 +42,27 @@
           </a>
         </li>
         <li>
-          <a ng-click="logout()" ng-show="isLoggedIn()">
+          <a href="#">
+            {{ currentUser.name }}
+          </a>
+        </li>
+        <li>
+          <a 
+            ng-click="logout()" 
+            ng-show="isLoggedIn()">
             Logout
           </a>
         </li>
       </ul>
+
     </div>
   </nav>
-  {{ isLoggedIn }}
-
   <!-- Modals -->
+  <div 
+    id="helpModal" 
+    class="modal">
+    <div ng-include="'app/views/modals/helpRequestForm.html'"></div>
+  </div>
   <div 
     id="loginModal" 
     class="modal">
@@ -68,4 +74,6 @@
     class="modal">
     <div ng-include="'app/views/modals/userSignup.html'"></div>
   </div>
+
+
 </div>

@@ -129,4 +129,8 @@ img.chatImg {
   display: -webkit-inline-box;
 }
 
+#chat_history {
+  padding: 10px;
+}
+
 

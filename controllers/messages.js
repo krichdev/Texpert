@@ -17,8 +17,10 @@ router.route('/')
     // find the message first in case the message already exists
     console.log('message post route, before database call')
     console.log('message**************\n', req.body)
-    Message.findOne({ email: req.body.email }, function(err, message) {
-      if (message) return res.status(400).send({ message: 'Email already exists' });
+    Message.findOne({ issueTitle: req.body.issueTitle }, function(err, message) {
+      if (message) return res.status(400).send(
+        { message: 'An issue with that Title already exists' }
+      );
 
       Message.create(req.body, function(err, message) {
         if (err) return res.status(500).send(err);

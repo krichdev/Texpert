@@ -7,17 +7,21 @@ angular
   '$window',
   'AuthFactory',
   'UserFactory',
-  function($scope, $state, $location, $window, AuthFactory, UserFactory) {
+  'MessageFactory',
+  function($scope, $state, $location, $window, AuthFactory, UserFactory, MessageFactory) {
+    
     // VARIABLES
+    // public functions tied to private functions
     $scope.isLoggedIn = isLoggedIn;
+    $scope.submitHelpRequest = submitHelpRequest;
 
-    // login
+    // login modal
     $scope.loginUser = {
       email:    '',
       password: ''
     };
 
-    // signup
+    // signup modal
     $scope.user = {
       name:         '',
       email:        '',
@@ -39,6 +43,13 @@ angular
       userType: ''
     };
 
+    // help request modal
+    $scope.helpForm = {
+      issueTitle: '',
+      device: '',
+      description: ''
+    }
+
     // runs on every page render
     if (isLoggedIn()) {
       $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
@@ -47,10 +58,23 @@ angular
 
 
     // FUNCTIONS
+
+    // help request modal
+    function submitHelpRequest() {
+      MessageFactory.createMessage($scope.helpForm)
+      .then(
+        function success(res) {
+         Materialize.toast('Your request has been pinned to the help board.', 7000);
+        },
+        function error(err) { errorMsg(err); }
+      )
+    }
+
     //navbar
     function isLoggedIn() {
       return AuthFactory.isLoggedIn();
     };
+
     $scope.logout = function() {
       AuthFactory.removeToken();
       Materialize.toast('You have logged out', '2000');
@@ -87,9 +111,9 @@ angular
       )
     }
 
-    // helper functions
     // success login
     function loginSuccess(res) {
+      // saves response data
       $scope.currentUserInfo = {
         id: res.data.user.id,
         userType: res.data.user.userType
@@ -104,7 +128,8 @@ angular
       Materialize.toast('Successfully Logged in', '2000');
       $state.go('allGurus');
     }
-    // displays error message for 5 seconds
+
+    // displays generic error message for 5 seconds
     function errorMsg(err) {
       Materialize.toast('An error occurred: ' + err.data.message, '5000');
     }

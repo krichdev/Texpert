@@ -1,13 +1,14 @@
 <div class="modal-content">
   <form>
+    {{helpForm}}
     <h4>Issue Form</h4>
     <div input-field>
       <label for="issueTitle">The Issue</label>
       <input 
         type="text"
         id="issueTitle"
-        length="16"
-        ng-model="form.issueTitle">
+        length="25"
+        ng-model="helpForm.issueTitle">
 
     </div>
 
@@ -15,17 +16,15 @@
       <label for="device">Device</label>
       <select 
         class="browser-default"
-        ng-model="form.device">
+        ng-model="helpForm.device">
           <option 
             value="" 
             disabled 
             selected>
             Choose a device with an issue 
           </option>
-          <option value="mobileAndroid">Android phone</option>
-          <option value="mobileIOS">Apple phone</option>
-          <option value="pcWindows">PC Windows</option>
-          <option value="pcMac">Mac</option>
+          <option value="mobile">Mobile Phone</option>
+          <option value="pc">PC/Computer</option>
           <option value="homeRouter">Home Router</option>
           <option value="homeTheater">Home Theater</option>
           <option value="tv">Television</option>
@@ -39,7 +38,7 @@
         id="errorDescription"
         length="120"
         class="materialize-textarea"
-        ng-model="form.description">
+        ng-model="helpForm.description">
       </textarea>
       <label>In summary, what's the problem?</label>
     </div>
@@ -48,7 +47,7 @@
 
 <div class="modal-footer">
   <button
-    ng-click="submit"
+    ng-click="submitHelpRequest()"
     class="modal-action modal-close waves-effect btn-flat teal white-text">
     Submit
   </button>

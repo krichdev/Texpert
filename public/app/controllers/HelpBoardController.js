@@ -63,7 +63,7 @@ angular
 
       console.log($scope.messageList[this.$index])
       //db call, updates the message with a chatroomId & User assigned to task
-      MessageFactory.claimMessage($scope.messageList[this.$index])
+      MessageFactory.updateMessage($scope.messageList[this.$index])
       .then(
         function success(res) {
           createChatroom(roomId);

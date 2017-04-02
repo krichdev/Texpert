@@ -48,6 +48,11 @@ angular
      templateUrl: 'app/views/main.html',
      controller: 'MainCtrl'
    })
+   .state('allMessages', {
+    url:'/messages',
+    templateUrl: 'app/views/helpBoard.html',
+    controller: 'HelpBoardCtrl'
+   })
 
     $locationProvider.html5Mode(true);
 

@@ -48,19 +48,19 @@ io.sockets.on('connection', function(socket) {
  console.log('a user has connected');
 //connections
  socket.on('get-users', function() {
-     socket.emit('all-users', users);
+    socket.emit('all-users', users);
  });
 // new user
  socket.on('join', function(data) {
-  //console.log('this is my data ', data);
- //user name
-   socket.nickname = data.nickname;
-   socket.room = data.room;
-   users[socket.nickname] = socket;
+  console.log('this is my data ', data);
+  //user name
+  socket.nickname = data.nickname;
+  socket.room = data.room;
+  users[socket.nickname] = socket;
 
    var userObj = {
-     nickname: data.nickname,
-     socketid: socket.id
+    nickname: data.nickname,
+    socketid: socket.id
    };
    // console.log('this is my userObj ', userObj)
    users.push(userObj);

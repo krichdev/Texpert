@@ -10,7 +10,7 @@
 
   <!-- RENDER ALL REQUESTS FOR GURUS -->
   <div class="row">
-    <div ng-repeat="message in messageList">
+    <div ng-repeat="message in messageList track by $index">
       <div class="col s12 m4">
 
         <!-- Single Message -->
@@ -29,11 +29,13 @@
           <div class="section center">
             <a 
               href="#"
+              ng-click="createUserLink()"
               class="btn deep-purple">
               Assist
             </a>
           </div>
         </div>
+        <!-- Single Message End -->
 
       </div>      
     </div>

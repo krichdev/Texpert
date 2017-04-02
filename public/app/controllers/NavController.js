@@ -50,7 +50,8 @@ angular
       userPhoto: '',
       issueTitle: '',
       device: '',
-      description: ''
+      description: '',
+      claimed: false
     }
 
     // runs on every page render

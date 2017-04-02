@@ -6,7 +6,8 @@ var MessageSchema = mongoose.Schema({
   userPhoto:    String,
   issueTitle:   String,
   device:       String,
-  description:  String
+  description:  String,
+  claimed:      Boolean,
 });
 
 MessageSchema.set('toJSON', {
@@ -17,7 +18,8 @@ MessageSchema.set('toJSON', {
       userPhoto:    ret.userPhoto,
       issueTitle:   ret.issueTitle,
       device:       ret.device,
-      description:  ret.description
+      description:  ret.description,
+      claimed:      ret.claimed
     };
     return returnJson;
   }

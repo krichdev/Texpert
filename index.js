@@ -11,8 +11,8 @@ var secret = process.env.JWT_SECRET;
 var app = express();
 
 //Sockets
-// var server = require('http').Server(app);
-// var io = require('socket.io')(server);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 // mongoose models and connection
 var mongoose = require('mongoose');
@@ -42,53 +42,53 @@ app.use(function (err, req, res, next) {
 //Socket user
 var users = [];
 
-// io.sockets.on('connection', function(socket) {
-//  console.log('a user has connected');
-// //connections
-//  socket.on('get-users', function() {
-//      socket.emit('all-users', users);
-//  });
-// // new user
-//  socket.on('join', function(data) {
-//    console.log('this is my data ', data);
-//  //user name
-//    socket.nickname = data.nickname;
-//    socket.room = data.room;
-//    users[socket.nickname] = socket;
+io.sockets.on('connection', function(socket) {
+ console.log('a user has connected');
+//connections
+ socket.on('get-users', function() {
+     socket.emit('all-users', users);
+ });
+// new user
+ socket.on('join', function(data) {
+   console.log('this is my data ', data);
+ //user name
+   socket.nickname = data.nickname;
+   socket.room = data.room;
+   users[socket.nickname] = socket;
 
-//    var userObj = {
-//      nickname: data.nickname,
-//      socketid: socket.id
-//    };
-//    console.log('this is my userObj ', userObj)
-//    users.push(userObj);
-//    console.log('all users', users);
-//    io.emit('all-users', users);
-//  });
+   var userObj = {
+     nickname: data.nickname,
+     socketid: socket.id
+   };
+   console.log('this is my userObj ', userObj)
+   users.push(userObj);
+   console.log('all users', users);
+   io.emit('all-users', users);
+ });
 
-//  socket.on('send-message', function(data) {
-//    //socket.broadcast.emit('message-received', data);
-//    io.emit('message-received', data);
-//  });
+ socket.on('send-message', function(data) {
+   //socket.broadcast.emit('message-received', data);
+   io.emit('message-received', data);
+ });
 
-//  socket.on('create', function(room){
-//     socket.join(room);
-//  });
+ socket.on('create', function(room){
+    socket.join(room);
+ });
 
-//  socket.on('send-like', function(data){
-//    console.log(data);
-//    socket.broadcast.to(data.like).emit('user-liked',data);
-//  });
+ socket.on('send-like', function(data){
+   console.log(data);
+   socket.broadcast.to(data.like).emit('user-liked',data);
+ });
 
-//  socket.on('disconnect', function(){
-//    // console.log('user disconnected', function() {
-//    users = users.filter(function(item) {
-//      return item.nickname !== socket.nickname;
-//    });
-//    io.emit('all-users', users);
-//  });
+ socket.on('disconnect', function(){
+   // console.log('user disconnected', function() {
+   users = users.filter(function(item) {
+     return item.nickname !== socket.nickname;
+   });
+   io.emit('all-users', users);
+ });
 
-// });
+});
 
 
 // POST /api/auth - if authenticated, return a signed JWT
@@ -114,9 +114,11 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-var server = app.listen(process.env.PORT || 3000);
-//server.listen(process.env.PORT || 3000)
+// var server = app.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3000, function() {
+  console.log("beibs is in the building");
+});
 
-module.exports = server;
+module.exports = app;
 
 

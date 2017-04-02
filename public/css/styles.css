@@ -117,3 +117,16 @@ img.singleUserImg {
 .userBtnBox {
   margin-bottom: 10px;
 }
+
+img.chatImg {
+  height: 25px;
+  max-width: 25px;
+  display: inline;
+}
+
+.chatText {
+  line-height: 0;
+  display: -webkit-inline-box;
+}
+
+

@@ -12,19 +12,19 @@
         <i class="material-icons">menu</i>
       </a>
       <ul class="right hide-on-med-and-down">
-        <li>
-          <a 
-            ng-show="isLoggedIn()"
-            ng-href="/users/{{ currentUserInfo.id }}">
-            My Profile
-          </a>
-        </li>
 
         <li>
           <a
             ng-show="currentUser && currentUser.userType == 'user'" 
             data-target="helpModal" modal>
             Request Help
+          </a>
+        </li>
+        <li>
+          <a 
+            ng-show="isLoggedIn()"
+            ng-href="/users/{{ currentUserInfo.id }}">
+            {{ currentUser.name }}
           </a>
         </li>
         <li>
@@ -39,11 +39,6 @@
             ng-hide="isLoggedIn()"
             data-target="loginModal" modal>
             Login
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            {{ currentUser.name }}
           </a>
         </li>
         <li>

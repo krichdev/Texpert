@@ -2,14 +2,20 @@
   <form>
     <h4>Issue Form</h4>
     <div input-field>
-      <label for="issue">Issue</label>
+      <label for="issueTitle">The Issue</label>
+      <input 
+        type="text"
+        id="issueTitle"
+        length="16"
+        ng-model="form.issueTitle">
+
     </div>
 
     <div>
       <label for="device">Device</label>
       <select 
         class="browser-default"
-        ng-model="form.error">
+        ng-model="form.device">
           <option 
             value="" 
             disabled 
@@ -33,7 +39,7 @@
         id="errorDescription"
         length="120"
         class="materialize-textarea"
-        ng-model="form.textarea">
+        ng-model="form.description">
       </textarea>
       <label>In summary, what's the problem?</label>
     </div>

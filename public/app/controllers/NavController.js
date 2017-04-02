@@ -45,6 +45,8 @@ angular
 
     // help request modal
     $scope.helpForm = {
+      userName: '',
+      userId: '',
       issueTitle: '',
       device: '',
       description: ''
@@ -61,6 +63,8 @@ angular
 
     // help request modal
     function submitHelpRequest() {
+      $scope.helpForm.userName = $scope.currentUser.name;
+      $scope.helpForm.userId = $scope.currentUser.id;
       MessageFactory.createMessage($scope.helpForm)
       .then(
         function success(res) {

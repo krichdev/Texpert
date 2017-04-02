@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 
 var MessageSchema = mongoose.Schema({
+  userName: String,
+  userId: String,
   issueTitle: String,
   device: String,
   description: String

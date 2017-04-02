@@ -17,18 +17,22 @@
       $scope.myUserType = '';
       $scope.singleUser = {};
       $scope.profilePic;
-      $scope.currentUserId = $window.localStorage['currentUserId'].id;
+      $scope.currentUserInfo;
       $scope.chatLog = {
         messages: $scope.messages
       };
       
       // call this function on chatroom start
-      getSingleUser();
+      getPageData();
 
 
       // get user object from database and store into $scope.singleUser
+      function getPageData() {
+        $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+        getSingleUser();
+      }
       function getSingleUser() {
-        UserFactory.getUser($scope.currentUserId)
+        UserFactory.getUser($scope.currentUserInfo.id)
         .then(
           function success(res) {
             $scope.singleUser = res.data;
@@ -52,7 +56,7 @@
         Materialize.toast('Chatlog has been saved', 2000);
 
         //make put request to update user's db
-        UserFactory.updateUser($scope.currentUserId, $scope.singleUser)
+        UserFactory.updateUser($scope.currentUserInfo.id, $scope.singleUser)
       }
 
       var nickname = $scope.mynickname;

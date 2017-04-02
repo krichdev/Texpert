@@ -42,10 +42,10 @@ angular
 
         try {
           var payload = JSON.parse($window.atob(token.split('.')[1]));
-          console.log('authfactory currentUser() payload: ', payload)
           return payload;
         }
         catch(err) {
+          Materialize.toast('Oh no an error occured!');
           console.log('error', err);
           return false;
         }

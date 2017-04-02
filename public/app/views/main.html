@@ -1,35 +1,37 @@
 <div class="container">
+
+  <!-- Chat Box -->
   <h2 class="center"> Welcome <b>{{mynickname}}!</b></h2>
     <div class="col-md-8">
+
       <form>
         <div class='input-group'>
+          <!-- Enter Message to Chat -->
           <input 
             class='input-sm form-control'
             ng-model='message'
             type='text'
             placeholder="Type a message...">
           <span class='input-group-btn'>
+            <!-- Submit message to chat box -->
             <input class='btn btn-default deep-purple'
             type='submit'
             ng-click='sendMessage()'
             value='Send'>
-          </span>
-          <input 
-            type="text" 
-            length="10" 
-            class='input-sm form-control'
-            ng-model="chatName"
-            placeholder="Name your chat">
-          <button 
-            class='btn btn-default saveBtn'
-            ng-if="myUserType == 'user'"
-            ng-click="saveChat()">
-            Save Chat
-          </button>
-          
+
+            <!-- Complete Chat Button -->
+            <a 
+              href=""
+              class="right btn waves-effect btn-flat teal white-text"
+              data-target="completeChatModal" modal>
+              Complete Chat
+            </a>
+          </span>          
         </div>
       </form>
+
       <br>
+      <!-- Chat Box -->
       <div class='well chatbox' id='chat_history'>
           <ul class='list-unstyled'>
             <li ng-repeat='m in messages'>
@@ -42,6 +44,14 @@
             </li>
           </ul>
       </div>
+
     </div>
   </div>
+</div>
+
+<!-- Modal -->
+<div
+  id="completeChatModal"
+  class="modal">
+  <div ng-include="'app/views/modals/completeChatSession.html'"></div>
 </div>

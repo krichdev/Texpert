@@ -1,0 +1,34 @@
+<div class="modal-content">
+  <form>
+    <h4>Complete Chat Session</h4>
+    <label for="chatName">
+      Name &amp; save your chat session
+    </label>
+    <input 
+      id="chatName"
+      type="text"
+      length="10" 
+      class='input-sm'
+      ng-model="chatName">
+    <button 
+      class='btn btn-default saveBtn'
+      ng-if="myUserType == 'user'"
+      ng-click="saveChat()">
+      Save Chat
+    </button>
+  </form>
+
+  <div class="modal-footer">
+    <!-- resolved -->
+    <button
+      class="modal-action modal-close waves-effect btn-flat teal white-text">
+      Issue Resolved
+    </button>
+
+    <!-- unresolved -->
+    <button
+      class="modal-action modal-close waves-effect btn-flat teal white-text">
+      Issue Unresolved      
+    </button>
+  </div>
+</div>

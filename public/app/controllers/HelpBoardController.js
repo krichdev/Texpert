@@ -10,7 +10,6 @@ angular
     
     // VARIABLES
     $scope.messageList;
-    
     $scope.currentUserInfo = {
       id: '',
       userType: '',
@@ -19,9 +18,6 @@ angular
 
     // Runs on page render
     verifyUser();
-
-
-
 
 
     // FUNCTIONS
@@ -52,6 +48,51 @@ angular
       )
     }
 
+
+    //SOCKET CHAT CODE
+    var nickname;
+    var roomId;
+
+    console.log(roomId)
+
+    $scope.createUserLink = function() {
+      console.log($scope.messageList[this.$index].issueTitle)
+      $scope.messageList[this.$index].claimed = true;
+      //db update call
+      MessageFactory.claimMessage($scope.messageList[this.$index])
+      .then(
+        function success(res) {
+          console.log('success')
+        },
+        function error(err) {
+          console.log('error', err)
+        }
+      )
+      console.log($scope.messageList[this.$index])
+      console.log('clicks')
+    }
+
+    function generateRoomId(){
+      var room = '';
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()";
+
+      for(var i = 0; i < 4; i++){
+        room += possible.charAt(Math.floor(Math.random() * possible.length));
+      } 
+      roomId = room;
+    }
+
+    $scope.join = function() {
+      nickname = AuthFactory.currentUser();
+      $window.localStorage['nickname'] = nickname;
+      console.log('nickname, ', nickname)
+      socket.emit('join', {
+        nickname: nickname,
+        room: roomId
+      });
+
+      $state.go('chat', {id: roomId});
+    };
 
 
 

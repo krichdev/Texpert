@@ -1,19 +1,23 @@
 var mongoose = require('mongoose');
 
 var MessageSchema = mongoose.Schema({
-  userName: String,
-  userId: String,
-  issueTitle: String,
-  device: String,
-  description: String
+  userName:     String,
+  userId:       String,
+  userPhoto:    String,
+  issueTitle:   String,
+  device:       String,
+  description:  String
 });
 
 MessageSchema.set('toJSON', {
   transform: function(doc, ret, options) {
     var returnJson = {
-      issueTitle: ret.issueTitle,
-      device: ret.device,
-      description: ret.description
+      userName:     ret.userName,
+      userId:       ret.userId,
+      userPhoto:    ret.userPhoto,
+      issueTitle:   ret.issueTitle,
+      device:       ret.device,
+      description:  ret.description
     };
     return returnJson;
   }

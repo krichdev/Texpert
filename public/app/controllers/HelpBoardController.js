@@ -9,7 +9,7 @@ angular
   function($scope, $state, AuthFactory, MessageFactory, UserFactory) {
     
     // VARIABLES
-    $scope.allMessages;
+    $scope.messageList;
     
     $scope.currentUserInfo = {
       id: '',
@@ -43,7 +43,8 @@ angular
       MessageFactory.getAllMessages()
       .then(
         function success(res) {
-          console.log(res);
+          $scope.messageList = res.data;
+          console.log($scope.messageList);
         },
         function error(err) {
           console.log(err);

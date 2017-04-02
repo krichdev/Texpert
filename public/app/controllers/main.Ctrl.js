@@ -5,9 +5,11 @@
     .module('TexpertApp')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$window', 'socket', 'AuthFactory', 'UserFactory'];
+  MainCtrl.$inject = ['$scope', '$stateParams', '$window', 'socket', 'AuthFactory','MessageFactory', 'UserFactory'];
 
-  function MainCtrl($scope, $window, socket, AuthFactory, UserFactory) {
+  function MainCtrl($scope, $stateParams, $window, socket, AuthFactory, MessageFactory, UserFactory) {
+      
+      // VARIABLES
       $scope.message = '';
       $scope.messages = [];
       $scope.chatName = '';
@@ -18,6 +20,7 @@
       $scope.singleUser = {};
       $scope.profilePic;
       $scope.currentUserInfo;
+      $scope.originalIssueForm = {};
       $scope.chatLog = {
         messages: $scope.messages
       };
@@ -26,10 +29,27 @@
       getPageData();
 
 
+      // FUNCTIONS
+
       // get user object from database and store into $scope.singleUser
       function getPageData() {
         $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+        
         getSingleUser();
+        getMessage();
+      }
+      function getMessage() {
+        console.log('params: ', $stateParams.id)
+        MessageFactory.getMessageByRoomId($stateParams.id)
+        .then(
+          function success(res) {
+            $scope.originalIssueForm = res.data
+            console.log('success, ', res.data);
+          },
+          function error(err) {
+            console.log(err);
+          }
+        )
       }
       function getSingleUser() {
         UserFactory.getUser($scope.currentUserInfo.id)
@@ -46,6 +66,17 @@
           });
       }
       
+      $scope.exitChat = function(resolution) {
+        if (resolution == 'resolved') {
+          //make factory delete call to db
+        } else {
+          //make factory update call to db
+          //mark issue as claimed = false
+        }
+        //state.go to profile page
+      }
+
+
       $scope.saveChat = function(){
         // if !user.chatHistory, make it
         if (!$scope.singleUser.chatHistory) {         

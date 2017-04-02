@@ -51,7 +51,8 @@ angular
       issueTitle: '',
       device: '',
       description: '',
-      claimed: false
+      claimed: '',
+      chatId: ''
     }
 
     // runs on every page render

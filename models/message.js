@@ -7,7 +7,8 @@ var MessageSchema = mongoose.Schema({
   issueTitle:   String,
   device:       String,
   description:  String,
-  claimed:      Boolean,
+  claimed:      String,
+  chatId:       String
 });
 
 MessageSchema.set('toJSON', {
@@ -19,7 +20,8 @@ MessageSchema.set('toJSON', {
       issueTitle:   ret.issueTitle,
       device:       ret.device,
       description:  ret.description,
-      claimed:      ret.claimed
+      claimed:      ret.claimed,
+      chatId:       ret.chatId
     };
     return returnJson;
   }

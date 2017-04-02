@@ -55,17 +55,17 @@ angular
     var nickname;
     var roomId;
 
-    console.log(roomId)
 
     $scope.createUserLink = function() {
-      console.log($scope.messageList[this.$index].issueTitle)
-      $scope.messageList[this.$index].claimed = true;
-      //db update call
+      roomId = generateRoomId();
+      $scope.messageList[this.$index].chatId = roomId;
+      $scope.messageList[this.$index].claimed = $scope.currentUserInfo.id;
+
+      console.log($scope.messageList[this.$index])
+      //db call, updates the message with a chatroomId & User assigned to task
       MessageFactory.claimMessage($scope.messageList[this.$index])
       .then(
         function success(res) {
-          roomId = generateRoomId();
-          console.log(roomId);
           createChatroom(roomId);
           console.log('success')
         },
@@ -73,8 +73,6 @@ angular
           console.log('error', err)
         }
       )
-      console.log($scope.messageList[this.$index])
-      console.log('clicks')
     }
 
     function generateRoomId(){
@@ -90,7 +88,6 @@ angular
     function createChatroom(roomId) {
       nickname = AuthFactory.currentUser();
       $window.localStorage['nickname'] = nickname;
-      console.log('nickname, ', nickname)
       console.log('room id ', roomId)
       socket.emit('join', {
         nickname: nickname,

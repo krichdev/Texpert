@@ -2,7 +2,16 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var UserSchema = mongoose.Schema({
-  name: String,
+  mobile:       Boolean,
+  pc:           Boolean,
+  homeTheater:  Boolean,
+  printer:      Boolean,
+  homeRouter:   Boolean,
+  tv:           Boolean,
+  name:         String,
+  reviews:      String,
+  bio:          String,
+  profilePic:   String,
   email: {
     type:     String,
     required: true,
@@ -12,14 +21,6 @@ var UserSchema = mongoose.Schema({
     type:     String,
     required: true
   },
-  mobile:       Boolean,
-  pc:           Boolean,
-  homeTheater:  Boolean,
-  printer:      Boolean,
-  homeRouter:   Boolean,
-  tv:           Boolean,
-  reviews:      String,
-  bio:          String,
   phone: {
     type:     String,
     required: true
@@ -28,7 +29,6 @@ var UserSchema = mongoose.Schema({
     type:     String,
     required: true
   },
-  profilePic: String,
   chatHistory: {
     type:     Object,
     required: false

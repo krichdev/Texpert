@@ -32,13 +32,13 @@
 
       <br>
       <!-- Chat Box -->
-      <div class='well chatbox' id='chat_history'>
+      <div class='card teal' id='chat_history'>
           <ul class='list-unstyled'>
             <li ng-repeat='m in messages'>
               <!--<i class='fa fa-comment'></i>-->
               <img ng-src="{{ profilePic }}" class="responsive-img chatImg circle">
               &nbsp;
-              <p class="chatText"><b>{{m.from}} </b>:
+              <p class="chatText white-text"><b>{{m.from}} </b>:
               &nbsp;
               {{m.message}}</p>
             </li>

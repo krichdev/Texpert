@@ -5,12 +5,12 @@
   <!-- CREATE LARGE BUTTON FOR USERS TO MAKE NEW HELP REQUEST -->
   <div 
     ng-if="currentUserInfo.userType == 'user'">
-    <button>click me</button>
+    <a class="btn btn-large btn-block" data-target="helpModal" modal>Get Help</a>
   </div>
 
   <!-- RENDER ALL REQUESTS FOR GURUS -->
   <div class="row">
-    <div ng-repeat="message in messageList track by $index">
+    <div ng-if="message.claimed == 'null'" ng-repeat="message in messageList track by $index">
       <div class="col s12 m4">
 
         <!-- Single Message -->

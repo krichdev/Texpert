@@ -57,14 +57,13 @@ angular
     // runs on every page render
     verifyUser();
     
+    $scope.userLoggedIn = isLoggedIn;
 
     // FUNCTIONS
     function verifyUser() {
-      $scope.userLoggedIn;
       
       if (isLoggedIn()) {
         $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
-        $scope.userLoggedIn = true;
         getUser();
       }
     }

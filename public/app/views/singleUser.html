@@ -86,6 +86,7 @@
 </div>
 
 <!-- Chat messages, Shows if current users profile page & user !=guru -->
+{{ chatHistory }}
 <div 
   ng-if="isCurrentUsersPage" 
   ng-repeat="(chatName, chatObj) in chatHistory">

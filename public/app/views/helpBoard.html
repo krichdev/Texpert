@@ -10,7 +10,7 @@
 
   <!-- RENDER ALL REQUESTS FOR GURUS -->
   <div class="row">
-    <div ng-if="message.claimed == 'null'" ng-repeat="message in messageList track by $index">
+    <div ng-if="currentUserInfo.userType == 'guru' && message.claimed == ''" ng-repeat="message in messageList track by $index">
       <div class="col s12 m4">
 
         <!-- Single Message -->

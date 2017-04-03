@@ -55,11 +55,12 @@ angular
     }
 
     // runs on every page render
-    $scope.userLoggedIn = isLoggedIn();
+    $scope.userLoggedIn;
     console.log('you logged in?', $scope.userLoggedIn)
     
-    if (userLoggedIn) {
+    if (isLoggedIn()) {
       $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+      $scope.userLoggedIn = true
       getUser();
     }
 

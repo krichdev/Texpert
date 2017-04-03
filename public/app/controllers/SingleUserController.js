@@ -71,8 +71,8 @@ angular
         function success(res) {
           $scope.guru = res.data;
           if ($scope.guru.chatHistory) {
-            $scope.chatHistory = $scopie.guru.chatHistory;
-            console.log($scope.chatHistory)
+            $scope.chatHistory = $scope.guru.chatHistory;
+            console.log($scope.guru)
           }
         },
         function error(err){

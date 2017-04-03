@@ -21,7 +21,7 @@ router.route('/')
 
       Message.create(req.body, function(err, message) {
         if (err) return res.status(500).send(err);
-        console.log('message server after added to db', message);
+        //console.log('message server after added to db', message);
         return res.send(message);
       });
     });
@@ -39,7 +39,7 @@ router.route('/:id')
     // find single message
     Message.findById(req.params.id, function(err, message) {
       if (err) return res.status(500).send(err);
-      console.log(message)
+      //console.log(message)
       return res.send(message);
     });
   })

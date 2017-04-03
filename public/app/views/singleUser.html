@@ -125,7 +125,7 @@
   ng-repeat="(chatName, chatObj) in chatHistory">
   <div class="row">
     <div class="card col s10 offset-s1 card-content"> 
-      <h3>{{ chatName }}</h3>
+      <h3>{{ messages.chatName }}</h3>
       <div ng-repeat="msgObj in chatObj.messages">
         <p>
           {{ msgObj.from }}: {{ msgObj.message }}

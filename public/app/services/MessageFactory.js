@@ -18,12 +18,9 @@ angular
       getMessageByRoomId: function(id) {
         return $http.get("/api/messages/chatroom/" + id);
       },
-      claimMessage: function(messageObj) {
+      updateMessage: function(messageObj) {
         return $http.put('/api/messages/', messageObj);
       }
-
-      // delete route
-
     }
   }
 ])

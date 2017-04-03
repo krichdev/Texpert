@@ -12,7 +12,7 @@ angular
     $stateProvider
     .state('home', {
       url: '/',
-      templateUrl:'/app/views/home.html'
+      templateUrl:'app/views/home.html'
     })
     .state('404', {
       url: '/404',

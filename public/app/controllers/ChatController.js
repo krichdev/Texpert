@@ -27,6 +27,7 @@
       $scope.myUserType = '';
       $scope.singleUser = {};
       $scope.profilePic;
+      $scope.otherUserPic;
       $scope.currentUserInfo;
       $scope.originalIssueForm = {};
       $scope.chatLog = {

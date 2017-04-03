@@ -58,7 +58,7 @@ angular
       .then(
         function success(res) { 
           $scope.messageList = res.data.filter(function(message) {
-            return message.userId == $scope.currentUserInfo.id && message.claimed == '';
+            return message.userId == $scope.currentUserInfo.id || message.claimed == 'archive';
           }) 
         },
         function error(err) { errorMsg(err); }

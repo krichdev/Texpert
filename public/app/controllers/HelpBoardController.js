@@ -40,7 +40,11 @@ angular
       // db call to load all messages
       MessageFactory.getAllMessages()
       .then(
-        function success(res) { $scope.messageList = res.data; },
+        function success(res) { 
+          $scope.messageList = res.data.filter(function(message) {
+            return message.claimed == '';
+          });
+        },
         function error(err) { errorMsg(err); }
       )
     }
@@ -80,7 +84,7 @@ angular
         room: roomId
       });
       $state.go('chat', {id: roomId});
-    };
+    }
     // displays generic error message for 5 seconds
     function errorMsg(err) {
       Materialize.toast('An error occurred: ' + err.data.message, '5000');

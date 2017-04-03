@@ -28,21 +28,21 @@
         </li>
         <li>
           <a 
-            ng-show="userLoggedIn"
+            ng-show="userLoggedIn()"
             ng-href="/users/{{ currentUserInfo.id }}">
             {{ currentUser.name }}
           </a>
         </li>
         <li>
           <a 
-            ng-hide="userLoggedIn" 
+            ng-hide="userLoggedIn()" 
             data-target="signupModal" modal>
             Signup
           </a>
         </li>
         <li>
           <a
-            ng-hide="userLoggedIn"
+            ng-hide="userLoggedIn()"
             data-target="loginModal" modal>
             Login
           </a>
@@ -50,7 +50,7 @@
         <li>
           <a 
             ng-click="logout()" 
-            ng-show="userLoggedIn">
+            ng-show="userLoggedIn()">
             Logout
           </a>
         </li>

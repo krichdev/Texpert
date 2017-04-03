@@ -60,7 +60,7 @@ angular
     
     if (isLoggedIn()) {
       $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
-      $scope.userLoggedIn = true
+      $scope.userLoggedIn = true;
       getUser();
     }
 

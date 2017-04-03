@@ -57,9 +57,8 @@ angular
       MessageFactory.getAllMessages()
       .then(
         function success(res) { 
-          console.log(res);
           $scope.messageList = res.data.filter(function(message) {
-            return message.userId == $scope.currentUserInfo.id;
+            return message.userId == $scope.currentUserInfo.id && message.claimed == '';
           }) 
         },
         function error(err) { errorMsg(err); }

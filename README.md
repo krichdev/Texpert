@@ -1,5 +1,5 @@
 # Texperts
-==================
+
 A MEAN stack app that connects tech experts (texperts) with users who need technical support for a variety of devices.
 
 This application allows users to either sign up as a texpert and select which areas they can provide help, or as a user who is looking for help. 

@@ -55,18 +55,19 @@ angular
     }
 
     // runs on every page render
-    $scope.userLoggedIn;
-    console.log('you logged in?', $scope.userLoggedIn)
+    verifyUser();
     
-    if (isLoggedIn()) {
-      $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
-      $scope.userLoggedIn = true;
-      getUser();
-    }
-
 
     // FUNCTIONS
-
+    function verifyUser() {
+      $scope.userLoggedIn;
+      
+      if (isLoggedIn()) {
+        $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+        $scope.userLoggedIn = true;
+        getUser();
+      }
+    }
     // help request modal
     function submitHelpRequest() {
       // add requester data to form

@@ -52,16 +52,10 @@
         getMessage();
       }
       function getMessage() {
-        console.log('params: ', $stateParams.id)
         MessageFactory.getMessageByRoomId($stateParams.id)
         .then(
-          function success(res) {
-            $scope.originalIssueForm = res.data;
-            console.log('success, ', res.data);
-          },
-          function error(err) {
-            console.log(err);
-          }
+          function success(res) { $scope.originalIssueForm = res.data; },
+          function error(err) { errorMsg(err); }
         )
       }
       function getSingleUser() {
@@ -74,9 +68,7 @@
             $scope.chatHistory  = $scope.singleUser.chatHistory;
             $scope.profilePic   = $scope.singleUser.profilePic;
           },
-          function error(err) {
-            con$scope.sole.log('error', err);
-          });
+          function error(err) { errorMsg(err); });
       }
       
       $scope.exitChat = function(resolution) {
@@ -97,14 +89,14 @@
             
             Materialize.toast(toastMsg, '5000');
           },
-          function error(err) {
-            console.log('error', err);
-            Materialize.toast('Oh no, looks like something went wrong', 5000);
-          }
+          function error(err) { errorMsg(err); }
         )
       }
 
-
+      // displays generic error message for 5 seconds
+      function errorMsg(err) {
+        Materialize.toast('An error occurred: ' + err.data.message, '5000');
+      }
       $scope.saveChat = function(){
         // if !user.chatHistory, make it
         if (!$scope.singleUser.chatHistory) {         
@@ -118,11 +110,10 @@
         UserFactory.updateUser($scope.currentUserInfo.id, $scope.singleUser)
       }
 
+      // Socket Stuff
       var nickname = $scope.mynickname;
       socket.emit('get-users');
 
-
-      // Socket Stuff
       $scope.sendMessage = function(data) {
         var newMessage = {
           message:  $scope.message,
@@ -135,7 +126,7 @@
       };
 
       socket.on('all-users', function(data) {
-        console.log(data);
+        //console.log(data);
         $scope.users = data.filter(function(item){
           return item.nickname !== nickname;
         });
@@ -143,13 +134,14 @@
 
       socket.on('message-received', function(data) {
         $scope.messages.push(data);
-        console.log('from main ctrl msg arr ', $scope.chatLog.messages)
+        //console.log('from main ctrl msg arr ', $scope.chatLog.messages)
       });
 
       socket.on('user-liked', function(data) {
-        console.log(data);
+        //console.log(data);
         $scope.likes.push(data.from);
       });
+
 
   }
 })();

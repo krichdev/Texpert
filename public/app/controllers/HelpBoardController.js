@@ -40,13 +40,8 @@ angular
       // db call to load all messages
       MessageFactory.getAllMessages()
       .then(
-        function success(res) {
-          $scope.messageList = res.data;
-          console.log($scope.messageList);
-        },
-        function error(err) {
-          console.log(err);
-        }
+        function success(res) { $scope.messageList = res.data; },
+        function error(err) { errorMsg(err); }
       )
     }
 
@@ -61,20 +56,13 @@ angular
       $scope.messageList[this.$index].chatId = roomId;
       $scope.messageList[this.$index].claimed = $scope.currentUserInfo.id;
 
-      console.log($scope.messageList[this.$index])
       //db call, updates the message with a chatroomId & User assigned to task
       MessageFactory.updateMessage($scope.messageList[this.$index])
       .then(
-        function success(res) {
-          createChatroom(roomId);
-          console.log('success')
-        },
-        function error(err) {
-          console.log('error', err)
-        }
+        function success(res) { createChatroom(roomId); },
+        function error(err) { errorMsg(err); }
       )
     }
-
     function generateRoomId(){
       var room = '';
       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()";
@@ -84,21 +72,18 @@ angular
       } 
       return room;
     }
-
     function createChatroom(roomId) {
       nickname = AuthFactory.currentUser();
       $window.localStorage['nickname'] = nickname;
-      console.log('room id ', roomId)
       socket.emit('join', {
         nickname: nickname,
         room: roomId
       });
-
       $state.go('chat', {id: roomId});
     };
-
-
-
-
+    // displays generic error message for 5 seconds
+    function errorMsg(err) {
+      Materialize.toast('An error occurred: ' + err.data.message, '5000');
+    }
   }
 ]);

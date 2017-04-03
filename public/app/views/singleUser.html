@@ -1,10 +1,3 @@
-<!-- Update Modal -->
-<div 
-  id="updateModal" 
-  class="modal">
-  <div ng-include="'app/views/modals/updateUser.html'"></div>
-</div>
-
 <div class="row">
   <div class="col">
     <!-- Shows if not currentUser -->
@@ -85,7 +78,41 @@
   </div> 
 </div>
 
+<!-- Open help Requests -->
+<div class="container">
+  <div class="row">
+    <div
+      ng-if="isCurrentUsersPage"
+      ng-repeat="message in messageList track by $index">
+      <div class="col s4">
+        <div class="card helpRequestCard">
+          <div class="card-content"> 
+            <h5 class="center">
+              {{message.issueTitle}}
+            </h5>
+            <label>Description</label>
+            <p class="issueDescription">{{message.description}}</p>
+            <div class="section center">
+              <a
+                ng-if="message.chatId"
+                ng-href="/chat/{{message.chatId}}"
+                class="btn btn-primary">
+                Chat with a Guru
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Chat messages, Shows if current users profile page & user !=guru -->
+<div class="container">
+  <h4
+    ng-if="guru.chatHistory">
+    Saved Chats</h4>
+</div>
 <div 
   ng-if="isCurrentUsersPage" 
   ng-repeat="(chatName, chatObj) in chatHistory">
@@ -100,4 +127,11 @@
     </div>
   </div>
 
+</div>
+
+<!-- Update Modal -->
+<div 
+  id="updateModal" 
+  class="modal">
+  <div ng-include="'app/views/modals/updateUser.html'"></div>
 </div>

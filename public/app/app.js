@@ -33,20 +33,10 @@ angular
       templateUrl: 'app/views/updateUser.html',
       controller: 'SingleUserCtrl'
     })
-    .state('main', {
-     url:'/main/main',
-     templateUrl: 'app/views/main.html',
-     controller: 'MainCtrl'
-   })
-   .state('join', {
-     url:'/main/join' ,
-     templateUrl: 'app/views/join.html',
-     controller: 'JoinCtrl'
-   })
    .state('chat', {
      url: '/chat/:id',
      templateUrl: 'app/views/main.html',
-     controller: 'MainCtrl'
+     controller: 'ChatCtrl'
    })
    .state('allMessages', {
     url:'/messages',

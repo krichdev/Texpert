@@ -1,5 +1,4 @@
 <div class="container">
-{{ originalIssueForm }}
   <!-- Chat Box -->
   <h2 class="center"> Welcome <b>{{mynickname}}!</b></h2>
     <div class="col-md-8">
@@ -20,7 +19,8 @@
             value='Send'>
 
             <!-- Complete Chat Button -->
-            <a 
+            <a
+              ng-if="currentUserInfo.userType != 'guru'"
               href=""
               class="right btn waves-effect btn-flat teal white-text"
               data-target="completeChatModal" modal>
@@ -36,7 +36,7 @@
           <ul class='list-unstyled'>
             <li ng-repeat='m in messages'>
               <!--<i class='fa fa-comment'></i>-->
-              <img ng-src="{{ profilePic }}" class="responsive-img chatImg circle">
+              <img ng-src="{{ singleUser.profilePic }}" class="responsive-img chatImg circle">
               &nbsp;
               <p class="chatText white-text"><b>{{m.from}} </b>:
               &nbsp;

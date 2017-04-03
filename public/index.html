@@ -61,8 +61,10 @@
   </head>
   <body>
     <div>
-<!--       <div ng-include="'app/views/modals/navbar.html'"></div> -->
-      <div ui-view></div>
+      <div ui-view>
+        <div ng-include="'app/views/modals/navbar.html'"></div>
+          
+      </div>
     </div>
   </body>
 </html>

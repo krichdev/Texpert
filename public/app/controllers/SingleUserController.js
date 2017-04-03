@@ -5,29 +5,45 @@ angular
   '$state',
   '$stateParams',
   'AuthFactory',
+  'MessageFactory',
   'UserFactory',
-  function($scope, $state, $stateParams, AuthFactory, UserFactory) {
+  function($scope, $state, $stateParams, AuthFactory, MessageFactory, UserFactory) {
    
     // VARIABLES
     $scope.guru;
     $scope.chatHistory;
     $scope.isCurrentUsersPage;
+    $scope.messageList;
     $scope.currentUserInfo = {
       id: '',
       userType: ''
     };
-
     //public functions
     $scope.updateUser = updateUser;
 
-    //DB call to get required Info on page render
-    getPageData();
+    // Runs on page render
+    verifyUser();
 
     // FUNCTIONS
+    function verifyUser() {
+      // Only allows signed-in users to see Guru list
+      if (!AuthFactory.isLoggedIn()) {
+        $state.go('home');
+        Materialize.toast('You need to be logged in to see this page', 10000);
+        return;
+      } else { 
+        //DB call to get required Info on page render
+        getPageData();
+      }
+    }
+
     function getPageData() {
       $scope.currentUserInfo = JSON.parse(AuthFactory.getCurrentUserInfo());
-      getAProfile();
+      
+      getAProfile(); 
+      getMessages();
 
+      // determines if current user is current page's owner
       if ($scope.currentUserInfo.id == $stateParams.id) {
         $scope.isCurrentUsersPage = true;
       } else {
@@ -35,6 +51,18 @@ angular
       }
     }
 
+    //db call for all Messages
+    function getMessages() {
+      MessageFactory.getAllMessages()
+      .then(
+        function success(res) { 
+          $scope.messageList = res.data.filter(function(message) {
+            return message.userId == $scope.currentUserInfo.id;
+          }) 
+        },
+        function error(err) { errorMsg(err); }
+      )
+    }
     // get data for current page's user detail
     function getAProfile() {
       UserFactory.getUser($stateParams.id)

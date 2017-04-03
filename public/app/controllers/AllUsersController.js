@@ -28,6 +28,7 @@ angular
       if (!AuthFactory.isLoggedIn()) {
         $state.go('home');
         Materialize.toast('You need to be logged in to see this page', 10000);
+        return;
       } else { 
         //DB call to get required Info on page render
         getPageData();

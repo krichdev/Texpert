@@ -3,9 +3,9 @@
 
   angular
     .module('TexpertApp')
-    .controller('MainCtrl', MainCtrl);
+    .controller('ChatCtrl', ChatCtrl);
 
-  MainCtrl.$inject = [
+  ChatCtrl.$inject = [
     '$scope', 
     '$state', 
     '$stateParams', 
@@ -15,7 +15,7 @@
     'MessageFactory', 
     'UserFactory'];
 
-  function MainCtrl($scope, $state, $stateParams, $window, socket, AuthFactory, MessageFactory, UserFactory) {
+  function ChatCtrl($scope, $state, $stateParams, $window, socket, AuthFactory, MessageFactory, UserFactory) {
       
       // VARIABLES
       $scope.message = '';
@@ -41,6 +41,11 @@
 
       // get user object from database and store into $scope.singleUser
       function getPageData() {
+        if (!AuthFactory.isLoggedIn()) {
+          $state.go('home');
+          Materialize.toast('Hey you don\'t belong there!', 10000);
+          return;
+        }
         $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
         
         getSingleUser();

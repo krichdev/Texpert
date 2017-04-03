@@ -133,4 +133,9 @@ img.chatImg {
   padding: 10px;
 }
 
-
+.helpRequestCard {
+  height: 15.5em;
+}
+.issueDescription {
+  height: 65px;
+}

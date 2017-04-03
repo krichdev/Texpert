@@ -42,6 +42,7 @@ angular
       
       getAProfile(); 
       getMessages();
+      
 
       // determines if current user is current page's owner
       if ($scope.currentUserInfo.id == $stateParams.id) {
@@ -57,7 +58,7 @@ angular
       .then(
         function success(res) { 
           $scope.messageList = res.data.filter(function(message) {
-            return message.userId == $scope.currentUserInfo.id;
+            return message.userId == $scope.currentUserInfo.id && message.claimed == '';
           }) 
         },
         function error(err) { errorMsg(err); }
@@ -71,6 +72,7 @@ angular
           $scope.guru = res.data;
           if ($scope.guru.chatHistory) {
             $scope.chatHistory = $scope.guru.chatHistory;
+            console.log($scope.chatHistory)
           }
         },
         function error(err){

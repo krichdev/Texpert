@@ -12,9 +12,8 @@ angular
     
     // VARIABLES
     // public functions tied to private functions
-    $scope.isLoggedIn = isLoggedIn;
     $scope.submitHelpRequest = submitHelpRequest;
-
+    $scope.loggedIn;
     // login modal
     $scope.loginUser = {
       email:    '',
@@ -56,14 +55,19 @@ angular
     }
 
     // runs on every page render
-    if (isLoggedIn()) {
-      $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
-      getUser();
-    }
-
+    verifyUser();
+    
 
     // FUNCTIONS
-
+    function verifyUser() {
+      $scope.userLoggedIn;
+      
+      if (isLoggedIn()) {
+        $scope.currentUserInfo = JSON.parse($window.localStorage['currentUserInfo']);
+        $scope.userLoggedIn = true;
+        getUser();
+      }
+    }
     // help request modal
     function submitHelpRequest() {
       // add requester data to form

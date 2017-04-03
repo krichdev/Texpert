@@ -7,12 +7,12 @@ angular
   '$locationProvider',
   function($stateProvider, $urlRouterProvider, $locationProvider) {
     //Routing
-    $urlRouterProvider.otherwise('/404');
+    //$urlRouterProvider.otherwise('/404');
 
     $stateProvider
     .state('home', {
       url: '/',
-      templateUrl:'/app/views/home.html'
+      templateUrl:'app/views/home.html'
     })
     .state('404', {
       url: '/404',

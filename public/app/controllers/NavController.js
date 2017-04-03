@@ -121,8 +121,9 @@ angular
     $scope.userSignup = function() {
       UserFactory.userSignup($scope.user)
       .then(
-        function success(res) {
-         Materialize.toast('You\'re now signed up. You can now sign in', 7000);
+        functon success(res) {
+          $scope.form = {};
+          Materialize.toast('You\'re now signed up. You can now sign in', 7000);
         },
         function error(err) { errorMsg(err); }
       )

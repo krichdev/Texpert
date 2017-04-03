@@ -72,7 +72,7 @@ angular
           $scope.guru = res.data;
           if ($scope.guru.chatHistory) {
             $scope.chatHistory = $scope.guru.chatHistory;
-            console.log($scope.chatHistory)
+            console.log($scope.guru)
           }
         },
         function error(err){

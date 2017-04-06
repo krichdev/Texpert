@@ -35,3 +35,8 @@ We used [SOCKET.IO](https://socket.io/) to manage the chat room functionality of
 
 * Include Twilio api to text a Texpert when their services are requested.
 * Allow users to leave reviews and comments about texperts
+
+### Difficulties
+* message system and how to contact a user once a help request was answered
+* handling db to store/retrieve required information. Seems like all db calls were required everywhere, specifically handling user session information to display only the correct information for them
+* materialize/angular/jquery issues and working around that

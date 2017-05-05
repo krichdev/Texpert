@@ -16,10 +16,19 @@
   text-align: center;
   background-color: rgba(54, 69, 79, 0.75)
 }
+@media (max-width: 600px) {
+  .heroText {
+    width: inherit;
+  }
+}
 .heroText a {
   margin-bottom: 10px; 
 }
-
+.reason-text {
+  display: flex;
+  align-items: center;
+  height: 70px;
+}
 /*Modals*/
 
 .modalATag:hover {
@@ -57,7 +66,6 @@
   text-align: center;
 }
 .steps {
-  height: 450px;
   margin-top: 50px;
   text-align: center;
 }

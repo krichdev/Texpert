@@ -1,8 +1,8 @@
 angular
 .module('TexpertApp')
 .factory('UserFactory', [
-  '$http',
-  function($http) {
+  '$http', '$state',
+  function($http, $state) {
     return {
       // User stuff
       userLogin: function(userObject) {
